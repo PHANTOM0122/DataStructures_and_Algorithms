@@ -9,6 +9,7 @@ Stack
   Transformer
   * push
   * pop </br>
+  
   Observer
   * IsEmpty
   * IsFull
