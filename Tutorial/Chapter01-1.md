@@ -131,7 +131,63 @@ int main()
 </code>
 </pre>
 ![pointer_doublearray](https://user-images.githubusercontent.com/50229148/106553365-9ff59300-655c-11eb-95a4-b77d2a7e51ed.png)
+##### 스트링(STL String)
+<pre>
+<code>
+#include <string>
+using std::string;
 
+string s = "to be";
+stirng t = "not" + s;
+if(s>t)
+  cout << t;
+ char c = s[1] // c = 'o'; 
+</code>
+</pre>
+##### C-style Struct
+* **구조체(Struct)**는 요소들의 집합을 저장하는데 유용하다. 배열과는 다르게 구조체의 구성요소들은 **서로 다른 타입일 수 있다.** 구조체의 각 멤버 또는 필드는 주어진 이름을 가지고 있다.
+<pre>
+<code>
+enum Mealtype{ NO_pref, Regular, Low_Fat, Vegetarian };
+struct Passenger{
+  string name; 
+  Mealtype meal;
+  bool isFreqFlyer;
+  string freqFlyerNo;
+}
+Passenger pass = {"Heejoon Moon", No_pref, true, "293145"};
+pass.name = "John smith"; // 이름을 바꾼다!
+pass.meal = Low_Fat; // 식사를 바꾼다!
+</code>
+</pre>
+##### 포인터, 동적 메모리, "new"연산자
+* 많은 자료구조에서 객체를 동적으로 생성해야 하는 필요성을 자주 느낀다. 이러한 이유로 C++ 실행 시스템은 **자유 저장소(free store)"라 불리는 큰 블록의 메모리를 확보한다.
+연산자 **new는 주어진 타입의 객체를 생성하는데 필요한 메모리를 자유저장소부터 동적으로 할당하여 이 객체에 대한 포인터를 반환한다. 즉, 이 포인터의 값은 이 객체가 위치한 메모리 주소이다.** 
+* **delete**연산자를 통해 **new**를 통해 할당받은 메모리를 프로그램 종료 후에 다시 반납한다.(C++은 garbage collection)을 제공하지 않는다.
+<pre>
+<code>
+Passenger *p;
+p = new Passenger;
+p->name = "Pocha";
+p->meal = Regular;
+p->isFreqFlyer = false;
+p->freqFlyer = "None";
+
+char* buffer = new char [500];
+buffer[3] = 'a';
+delete[] buffer;
+</code>
+</pre>
+##### Reference
+* 레퍼런스는 단순히 객체에 대한 다른 이름이다. 레퍼런스는 반드시 실제 변수를 가르켜야 한다. 선언될 때 반드시 초기화되어야 한다. 
+* 함수에 매게변수를 전달하는데 많이 사용되고 함수로 부터 결과를 반환하는 데에도 많이 사용된다.
+<pre>
+<code>
+string author = "Sam smith";
+string& penName = author; // penName은 author에 대한 별칭이다
+penName = "Mark Twain"; // author = "Mark Twain"
+</code>
+</pre>
 ###### 1.1-4 named constant, scope, namespaces
 
 <pre>
