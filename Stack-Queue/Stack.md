@@ -4,12 +4,12 @@ Stack
 * ### homogenous한 item들이 **한쪽으로만 넣고 빼고 하는 것(LIFO)**
 
 > ### Stack operations
-1) makeEmpty 2) IsEmpty 3) IsFull 4) Push(Itemtype newItem) 5) Pop 6) Itemtype Top()
+1) makeEmpty 2) IsEmpty 3) IsFull 4) Push(Itemtype newItem) 5) Pop 6) Itemtype Top() </br>
 
-  <Transformer>
+  Transformer
   * push
-  * pop
-  <Observer>
+  * pop </br>
+  Observer
   * IsEmpty
   * IsFull
 
