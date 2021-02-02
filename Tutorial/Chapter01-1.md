@@ -130,6 +130,7 @@ int main()
 }
 </code>
 </pre>
+![pointer_doublearray](https://user-images.githubusercontent.com/50229148/106553365-9ff59300-655c-11eb-95a4-b77d2a7e51ed.png)
 
 ###### 1.1-4 named constant, scope, namespaces
 
