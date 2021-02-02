@@ -271,8 +271,8 @@ void reverse(vector<E>& V){
   }
   </code>
   </pre>
-  > ### 응용 문제 괄호와 HTML 태그 맞추기
-  ### 괄호 맞추기를 위한 기본 알고리즘
+ > ### 응용 문제 괄호와 HTML 태그 맞추기
+  ##### 괄호 맞추기를 위한 기본 알고리즘
   <pre>
   <code>
   Algorithm ParenMatch(X,n);
@@ -291,4 +291,4 @@ void reverse(vector<E>& V){
       return false; // 맞춰지지 않는 심볼이 남아있다.
   </code>
   </pre>
-  
+ * 백준 관련 문제 : <https://www.acmicpc.net/problem/9012>
