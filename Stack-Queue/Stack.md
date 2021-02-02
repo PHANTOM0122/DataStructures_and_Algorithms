@@ -147,7 +147,7 @@ Ex) static int y; // y의 구조는 프로그램 종료시까지 바뀌지 않�
 * STL vector를 기반으로 하고 있다.
   
 > ### ArrayStack class sample codes // ArrayStack.h
-* 문제점 : **메모리 낭비 및 초가 되기가 싶다!!**
+* 문제점 : **메모리 낭비 및 초과 되기가 싶다!!**
 <pre>
 <code>
 class RuntimeException{
@@ -225,3 +225,35 @@ int main() { // Test Driver
 }
 </code>
 </pre>
+> ### Linked list를 이용한 Stack의 구현
+<pre>
+<code>
+typedef string Elem;
+class LinkedStack{
+public:
+  // 위와 동일 (push만 제외 throw 없는거 제외, 소멸자는 SlinkedList의 소멸자 이용!)
+  void push(const Elem& e);
+private:
+  SLinkedList<Elem> S; // 원소의 링크드 리스트
+  int n; // 원소의 갯수
+};
+
+LinkedStack::LinkedStack() : S(nullptr), n(0) {} // Default
+int LinkedStack::size() const { return n; } // 스택 내의 아이템 갯수 반환
+bool LinkdedStack empty() const { return n==0; } 
+const Elem& LinkdedStack::top() const throw(StackEmpty){
+ if(empty())
+    throw StackEmpty("Pop from empty stack!");
+ return S.front(); // Slinkedlist는 head에서만 상수 시간에 원소를 삽입 삭제가 가능하기 때문에, head를 당연히 선택해야 한다.
+ }
+void Linked::push(const E& e){
+  ++n; 
+  S.addFront(e); // 스택의 최상위에 원소 삽입
+}
+void Linked::pop() throw(Stackempty){
+  if(empty()) 
+    throw StackEmpty("Pop from empty stack!");
+  n--;
+  S.removeFront(e); // 스택의 최상위에 원소 삽입
+}
+
