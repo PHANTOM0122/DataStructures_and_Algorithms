@@ -74,3 +74,50 @@ ItemType StackType::Top()
 }   
 </code>
 </pre>
+### Example
+![image](https://user-images.githubusercontent.com/50229148/106563240-d6d4a480-656e-11eb-8a96-2e1cca7b9bc2.png)
+### Stack class sample codes // Using template class
+<pre>
+<code>
+template<class ItemType>
+bool StackType<ItemType>::IsFull() const
+{
+  return (top == MAX_ITEMS-1);
+}
+template<class ItemType>
+void StackType<ItemType>::Push(ItemType newItem) 
+{
+  if (IsFull())
+       throw FullStack()
+  top++;
+  items[top] = newItem;
+}
+template<class ItemType>
+void StackType<ItemType>::Pop()
+{
+  if( IsEmpty() )
+    throw EmptyStack();
+  top--;
+}
+template<class ItemType>
+ItemType StackType<ItemType>::Top()
+{
+  if (IsEmpty())
+    throw EmptyStack();
+  return items[top];
+} 
+</code>
+</pre>
+### Test Driver 중 Exception Handling 
+<pre>
+<code>
+    catch (FullStack)
+    {
+      outFile << "FullStack exception thrown." << endl;
+    }
+    catch (EmptyStack)
+    {
+      outFile << "EmtpyStack exception thrown." << endl;
+    }    
+</code>
+</pre>
