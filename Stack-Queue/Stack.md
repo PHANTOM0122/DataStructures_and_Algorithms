@@ -259,7 +259,8 @@ void Linked::pop() throw(Stackempty){
 </code>
 </pre>
   > ### 스택을 이용한 벡터의 역순화
-'''
+ <pre>
+ <code>
 template<typename E>
 void reverse(vector<E>& V){
   ArrayStack<E> S(V.size()); // 생성
@@ -268,10 +269,12 @@ void reverse(vector<E>& V){
   for(int i=0; i<V.size();i++_
       v[i] = S.top(); S.pop(); // 원소들을 역순으로 재지정 및 pop!
   }
-'''
+  </code>
+  </pre>
   > ### 응용 문제 괄호와 HTML 태그 맞추기
   ### 괄호 맞추기를 위한 기본 알고리즘
-  '''
+  <pre>
+  <code>
   Algorithm ParenMatch(X,n);
     입력: n개의 토큰으로 이루어진 배열 X.(수학 연산자, 이름, 심볼, 숫자 등)
     출력: true(만약 X의 모든 분류 심볼이 맞을 경우)
@@ -286,5 +289,6 @@ void reverse(vector<E>& V){
       return true;
     else
       return false; // 맞춰지지 않는 심볼이 남아있다.
-  '''
+  </code>
+  </pre>
   
