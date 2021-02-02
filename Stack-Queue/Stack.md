@@ -138,3 +138,88 @@ ItemType StackType<ItemType>::Top()
 Ex) static int y; // y의 구조는 프로그램 종료시까지 바뀌지 않는다.
 * AUTOMATIC DATA : **함수가 실행시에 메모리를 할당 받고, 함수가 종료시에 메모리가 사라진다.**
 * **DYNAMIC DATA** : **new, delete** 연산자 사용 시까지 메모리가 할당된다. **다이내믹 데이터는 변수 이름을 가지지 않는다!** 
+
+# 수업시간 외 plus alpha!!
+> ### STL Stack
+* 원소가 삽입되면 동적으로 자신의 크기를 변경한다
+* STL구현에는 빈 스택에 대한 top, pop연산이 정의 되어 있지 않다. 
+  -> **오류가 발생하지 않는다.**
+  
+> ### Stack class sample codes // StackType.h
+<pre>
+<code>
+class RuntimeException{
+  private: 
+    string errorMsg;
+  public:
+     RuntimeException(const string& err) : errorMsg(err) {}
+     string getMessage() const {return errorMsg;}
+};
+
+class StackEmpty : public RuntimeException{ // 빈 스택에 대해서 top 또는 pop을 시키면 발생하는 에러. StackFull도 이와 동일!
+public:
+  StackEmpty(const string& err) : RumtimeException(err){}
+};
+
+template <typename E>
+class ArrayStack {
+    enum { DEF_CAPACITY = 100 };
+public:
+    ArrayStack(int cap = DEF_CAPACITY);
+    int size() const;
+    bool empty() const;
+    const E& top() const throw(StackEmpty);
+    void push(const E& e) throw(StackFull);
+    void pop() throw(StackEmpty);
+private:
+    E* S; // 스택 원소들의 배열
+    int capacity; // 스택 용량
+    int t; // 스택 최상위 원소의 인덱스
+};
+template<typename E>
+ArrayStack<E>::ArrayStack(int cap) : S(new E[cap]), capacity(cap), t(-1) {} // 스택 생성 및 디폴트 값 입력
+
+template<typename E>
+int ArrayStack<E>::size() {
+    return (t + 1); // 스택에 저장된 아이템 갯수
+}
+
+template<typename E>
+bool ArrayStack<E>::empty() const {
+    return (t < 0); // t가 -1이면 비어있는 상태!
+}
+
+template<typename E>
+const E& ArrayStack<E>::top() const throw(StackEmpty) {
+    if (empty())
+        throw stackEmpty("Top of empty stack");
+    return S[t];
+}
+
+template<typename E>
+void ArrayStack<E>::push(const E& e) throw(StackFull) {
+    if (size() >= capacity)
+        throw StackFull("Push to full stack");
+    t++;
+    S[t] = e;
+}
+template<typename E>
+void ArrayStack<E>::pop() throw(StackEmpty) {
+    if (empty())
+        throw StackEmpty("Pop from empty stack!");
+    t--;
+} 
+  
+int main() { // Test Driver 
+    try {
+        // Do something!
+    }
+    catch (StackEmpty& e) {
+        cout << e.getMessage() << endl;
+    }
+    catch (StackFull& e) {
+        cout << e.getMessage() << endl;
+    }
+}
+</code>
+</pre>
