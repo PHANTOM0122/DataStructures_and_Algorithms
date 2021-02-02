@@ -62,7 +62,22 @@ Mood myMood = Sleepy;
 ###### 부동 소수점
 * **float**변수는 single-precision 부동 소수점 숫자를 저장하고, **double**변수는 double-precision 부동 소수점 숫자를 저정한다. 기본적으로 3.14159와 -1234.567같은 부동 소수점 실수는 **double** 타입이 된다. 과학적,지수 표기법은 3.14E5와 같이 "E", "e"를 사용하여 가수와 지수를 구분할 수 있다. 실수를 **float**으로 만들기 위해서는 20.f나 1.234E-3f와 같이 "f"나'F'를 붙인다.
 
-###### 1.1-3 포인터, 배열 , 구조체
+#### 1.1-3 포인터, 배열 , 구조체
+
+##### 포인터
+* 각 변수는 컴퓨터 메모리의 어떤 위치, **address**에 저장된다. **pointer**는 그러한 메모리 주소값을 갖는 변수이다. 주어진 T타입에 대하여 'T*'는 타입 T 변수에 대한 포인터를 나타낸다. 예를 들어 'int*'는 정수에 대한 포인터이다.
+* **참조(referencing)**: 객체의 메모리 내의 주소를 반환한다. **'&'**연산자에 의해 수행된다. 예를 들면 X가 정수형 변수라면, &X는 메모리상에서 X의 주소를 나타낸다.
+* **역참조(dereferencing)**: 주소의 contents를 반환한다. 이는 **'*'** 연산자에 의해 수행된다. 예를 들어 q를 정수를 가리키는 포인터이고, q=&X 로 설정하면 X의 값을 * q로 접근할 수 있다.
+### Example code
+<pre>
+<code>
+**enum** Day { SUN, MON, TUE, WED, THU, FRI, SAT };
+**enum** Mood { Happy = 3, Sad = 1, Anxious = 4, Sleepy = 2 };
+
+Day today = THU;
+Mood myMood = Sleepy;
+</code>
+</pre>
 ###### 1.1-4 named constant, scope, namespaces
 
 <pre>
