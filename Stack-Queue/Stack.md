@@ -6,10 +6,10 @@ Stack
 > ### Stack operations
 1) makeEmpty 2) IsEmpty 3) IsFull 4) Push(Itemtype newItem) 5) Pop 6) Itemtype Top()
 
-  #####<Transformer>#####
+  <Transformer>
   * push
   * pop
-  #####<Observer>#####
+  <Observer>
   * IsEmpty
   * IsFull
 
