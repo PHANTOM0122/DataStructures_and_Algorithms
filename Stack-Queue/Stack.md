@@ -108,6 +108,8 @@ ItemType StackType<ItemType>::Top()
 } 
 </code>
 </pre>
+* **template class에 대한 parameter는 any data type이나 상관없다!**
+* **When creating class template(선언과 정의시), .h와 .cpp를 같은 파일에 넣거나 .h에 .cpp를 include 시켜야 Link오류가 나지 않는다!**
 ### Test Driver 중 Exception Handling 
 <pre>
 <code>
@@ -121,3 +123,17 @@ ItemType StackType<ItemType>::Top()
     }    
 </code>
 </pre>
+> ### Recall Pointer (수업시간 내용)
+![image](https://user-images.githubusercontent.com/50229148/106565164-b65a1980-6571-11eb-9fb3-cd79d8289d58.png)
+* '\0' : 문자열이 끝났음을 알려주는 개행문자!
+* int * x, y == int* x, int y // (Not int* x, int* y !!) -> **Tricky!**
+
+> ### STATIC Allocation vs DYNAMIC Allocation
+* **STATIC Allocation**: compile 시간 동안 메모리 공간이 할당
+* **DYNAMIC Allocation**: **new**연산자를 이용하여 **run-time**에만 메모리 공간이 할당
+
+##### 3가지 종류의 program Data
+* STATIC DATA : 함수의 사용 여부와 상관없이 **프로그램이 시작될 때 만들어진다. 함수가 종료후에도 메모리 공간이 남아있다.(살아있다)** 프로그램이 종료되어야 메모리가 반납된다.
+Ex) static int y; // y의 구조는 프로그램 종료시까지 바뀌지 않는다.
+* AUTOMATIC DATA : **함수가 실행시에 메모리를 할당 받고, 함수가 종료시에 메모리가 사라진다.**
+* **DYNAMIC DATA** : **new, delete** 연산자 사용 시까지 메모리가 할당된다. **다이내믹 데이터는 변수 이름을 가지지 않는다!** 
