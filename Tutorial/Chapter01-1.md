@@ -87,7 +87,50 @@ cout << *p; // 문자 X가 출력된다
 * 배열(array)은 **같은 타입을 갖는 요소들의 모임이다. Index에 의하여 참조된다.** 
 * C++는 인덱스가 배열의 범위를 벗어나는지 확인하는 기능을 제공하지 않는다.(실행속도를 늦츨 수 있는 요소를 배제하는 C++의 원칙에 따른 것)
 * 2차원 배열은 **배열의 배열로 구성된다. A[i][j]로 인덱스 된다.**
-##### 포인터와 
+##### 포인터와 배열
+### Example code 1
+<pre>
+<code>
+char c[] = {'c','a','t'};
+char* p = c; // address : 'c'
+char* q = &c[0]; // address : 'c'
+cout << c[2] << p[2] << q[2];  // address : 'c' 
+</code>
+</pre>
+### Example code 2 // 2차원 배열과 pointer
+<pre>
+<code>
+#include <stdio.h>
+
+int main()
+{
+    int numArr[3][4] = {    // 세로 3, 가로 4 크기의 int형 2차원 배열 선언
+        { 11, 22, 33, 44 },
+        { 55, 66, 77, 88 },
+        { 99, 110, 121, 132 }
+    };
+
+    int (*numPtr)[4] = numArr;
+
+    printf("%p\n", *numPtr); // 002BFE5C: 2차원 배열 포인터를 역참조하면 세로 첫 번째의 주소가 나옴
+                             // 컴퓨터마다, 실행할 때마다 달라짐
+
+    printf("%p\n", *numArr); // 002BFE5C: 2차원 배열을 역참조하면 세로 첫 번째의 주소가 나옴
+                             // 컴퓨터마다, 실행할 때마다 달라짐
+
+    printf("%d\n", numPtr[2][1]);    // 110: 2차원 배열 포인터는 인덱스로 접근할 수 있음
+
+    printf("%d\n", sizeof(numArr));  // 48: sizeof로 2차원 배열의 크기를 구하면 배열이 메모리에 
+                                     // 차지하는 공간이 출력됨
+
+    printf("%d\n", sizeof(numPtr));  // 4 : sizeof로 2차원 배열 포인터의 크기를 
+                                     // 구하면 포인터의 크기가 출력됨(64비트라면 8)
+
+    return 0;
+}
+</code>
+</pre>
+
 ###### 1.1-4 named constant, scope, namespaces
 
 <pre>
