@@ -268,7 +268,7 @@ void reverse(vector<E>& V){
       v[i] = S.top(); S.pop(); // 원소들을 역순으로 재지정 및 pop!
   }
 '''
->### 응용 문제 괄호와 HTML 태그 맞추기
+  >###응용 문제 괄호와 HTML 태그 맞추기
   ### 괄호 맞추기를 위한 기본 알고리즘
   '''
   Algorithm ParenMatch(X,n);
