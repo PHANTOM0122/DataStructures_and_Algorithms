@@ -256,7 +256,8 @@ void Linked::pop() throw(Stackempty){
   n--;
   S.removeFront(e); // 스택의 최상위에 원소 삽입
 }
-
+</code>
+</pre>
   > ###스택을 이용한 벡터의 역순화
 '''
 template<typename E>
