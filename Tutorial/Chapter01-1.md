@@ -59,6 +59,8 @@ Day today = THU;
 Mood myMood = Sleepy;
 </code>
 </pre>
+###### 부동 소수점
+* **float**변수는 single-precision 부동 소수점 숫자를 저장하고, **double**변수는 double-precision 부동 소수점 숫자를 저정한다. 기본적으로 3.14159와 -1234.567같은 부동 소수점 실수는 **double** 타입이 된다. 과학적,지수 표기법은 3.14E5와 같이 "E", "e"를 사용하여 가수와 지수를 구분할 수 있다. 실수를 **float**으로 만들기 위해서는 20.f나 1.234E-3f와 같이 "f"나'F'를 붙인다.
 
 ###### 1.1-3 포인터, 배열 , 구조체
 ###### 1.1-4 named constant, scope, namespaces
