@@ -93,8 +93,20 @@ bool QueType::IsFull() const{
   return ((rear+1) % maxQue == front);
 }
 
-void QueType::Enqueue(ItemType newItem){
+void QueType::Enqueue(ItemType newItem) throw(FullQueue) {
   if(Isfull())
-    throw FullQueue();
-  else
+    throw FullQueue("Full Queue");
+  else{
+    rear = (rear + 1) % maxQue;
+    items[rear] = newItem;
+    }
+}
+
+void QueType::Dequeue(ItemType& item) throw(EmptyQueue) {
+  if(IsEmpty())
+    throw EmptyQueue("Empty Queue");
+  else{
+    front = (front + 1) % maxQue;
+    item = items[front]}
+}
     
