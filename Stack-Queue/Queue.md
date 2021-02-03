@@ -79,3 +79,22 @@ QueType::~QueType()
 {
   delete [] items;
 }
+
+void QueType::MakeEmpty(){
+  front = maxQue - 1; 
+  rear = maxQue - 1;
+}
+
+bool QueType::IsEmpty() const{
+  return (front==rear);
+}
+
+bool QueType::IsFull() const{
+  return ((rear+1) % maxQue == front);
+}
+
+void QueType::Enqueue(ItemType newItem){
+  if(Isfull())
+    throw FullQueue();
+  else
+    
