@@ -111,4 +111,46 @@ void QueType::Dequeue(ItemType& item) throw(EmptyQueue) {
 }
 </code> </pre>
     
-> ### Example
+> ### CountedQuetype.h
+<pre> <code>
+template<class Itemtype>
+class CountedQueType<Itemtype> : publlic QueType<Itemtype>{
+public:
+  CountedQueType(int max);		
+  void Enqueue(ItemType newItem);	
+  void Dequeue(ItemType& item);
+  int LengthIs() const;	
+private:
+  int length; // Returns the number of items on the queue.
+};
+  
+template<class Itemtype>
+CountedQueType<Itemtype>::CountedQueType<Itemtype>(int max) : QueType(max)
+{
+  length = 0;
+}
+
+template<class Itemtype>
+void CountedQueType<ItemType>::Enqueue<Itemtype>(ItemType newItem){
+try{
+  QueType::Enqueue(newItem);
+  length++;}
+catch{
+    throw FullQueue("Full Queue");}
+}
+
+template<class Itemtype>
+void CountedQueType<Itemtype>::Dequeue<Itemtype>(ItemType& item){
+try{
+  QueType::Dequeue(item);
+  length--;}
+catch{
+  throw EmptyQueue("Empty Queue");}
+}
+
+template<class Itemtype>
+int CountedQueType<Itemtype>::LengthIs<Itemtype>() const
+{
+  return length;
+}
+  </code><pre?
