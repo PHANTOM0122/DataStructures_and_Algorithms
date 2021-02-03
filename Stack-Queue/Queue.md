@@ -109,4 +109,6 @@ void QueType::Dequeue(ItemType& item) throw(EmptyQueue) {
     front = (front + 1) % maxQue;
     item = items[front]}
 }
+</code> </pre>
     
+> ### Example
