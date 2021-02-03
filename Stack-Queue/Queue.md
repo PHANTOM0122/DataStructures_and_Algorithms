@@ -153,7 +153,7 @@ int CountedQueType<Itemtype>::LengthIs<Itemtype>() const
 {
   return length;
 }
-  </code><pre>
+  </code></pre>
   
 > ### Palindrome
   * **Able was i ere i saw Elba**
