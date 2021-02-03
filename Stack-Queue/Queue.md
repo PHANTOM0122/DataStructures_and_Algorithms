@@ -155,7 +155,7 @@ int CountedQueType<Itemtype>::LengthIs<Itemtype>() const
 }
   </code><pre>
   
-> ###Palindromes
+> ### Palindrome
   * **Able was i ere i saw Elba**
   * 스택과 큐를 사용하여 해결!
 <pre> <code>
