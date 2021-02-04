@@ -45,7 +45,6 @@ private:
 * makeFrequentFlyer() 함수는 접근 함수인데, **const**를 사용하여 **멤버 변수들을 수정하지 않는 다는 것을 알려준다. 수정시 Error!**
 * C++스타일의 클래스 정의 내의 깔끔한 public interface를 위해 정의는 외부에 하는 것을 권고
 * class외부에서 정의시 함수 이름 앞에 지정자(**class_name :: member_name**)을 두어서 할 수 있다.
-
 ### In-Class 함수 정의]
 * member함수를 class 내에서 정의할 수도 있는데, 이 역시 in-line을 확장한다.
 * 함수 정의는 반복문이나 조건문이 포함되지 않는다.
@@ -97,3 +96,6 @@ Passenger::Passenger(const Passenger& pass){
  Passenger* pp2 = new Passenger("Joe",No_pref); // 두번째 생성자
  Passenger pa[20]; // default 생성자
 </code></pre>
+  ### 소멸자
+  * **클래스가 시스템부터 메모리와 같은 리소스를 할당 받았으면 반드시 필요하다**
+  * **new**연산을 통해 메모리 할당을 받은 경우 **delete**를 통해 메모리를 반납해야 한다.
