@@ -125,6 +125,7 @@ Passenger::Passenger(const Passenger& pass){
       for(int i=0;i<size;i++)
         data[i] = a.data[i];} // 벡터의 내용을 복사
     }
+    
     Vect& vect::operator=(const Vect& a){ // a로부터의 배정 연산자
       if(this != a) { // 자체 배정을 피한다
         delete[] data; // 존재하는(this) 배열 공간을 파괴!
