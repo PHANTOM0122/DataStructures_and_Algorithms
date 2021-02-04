@@ -119,14 +119,12 @@ Passenger::Passenger(const Passenger& pass){
     **복사 생성자의 경우 같은 클래스의 객체를 참조하는 단일 매개변수를 갖도록 선언한다**
     ### Example code
   <pre><code>
-    Vect::Vect(const Vect& a){ // a로부터의 복사 생성자
-      size = a.size(); // 크기 복사
-      data = new int [size]; // 새 배열을 할당
-      for(int i=0; i<size;i++)
-        data[i] = a.data[i];} // 벡터의 내용을 복사
-    }
- </code></pre>
- <pre><code>
+  Vect::Vect(const Vect& a){ // a로부터의 복사 생성자
+    size = a.size(); // 크기 복사
+    data = new int [size]; // 새 배열을 할당
+    for(int i=0; i<size;i++)
+       data[i] = a.data[i];} // 벡터의 내용을 복사
+  }
  Vect& vect::operator=(const Vect& a){ // a로부터의 배정 연산자
       if(this != a) { // 자체 배정을 피한다
         delete[] data; // 존재하는(this) 배열 공간을 파괴!
