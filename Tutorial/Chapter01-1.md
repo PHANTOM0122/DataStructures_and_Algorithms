@@ -190,8 +190,47 @@ penName = "Mark Twain"; // author = "Mark Twain"
 </pre>
 ###### 1.1-4 named constant, scope, namespaces
 
+> **Constant & typedef**
+* 선언할 때 키워드 const를 추가하여 객체에 저장된 값이 변할 수 없음을 나타낸다.
+* 상수의 이름에는 모두 대문자를 사용한다.
+* typedef는 타입에 이름을 연관지을 때 사용한다.
 <pre>
 <code>
-Mat& MAt::SetTo(InputArray value, InputArray mask = noArray());
+const double PI = 3.14523;
+typedef char* BufferPtr; // BufferPtr 타입은 char의 포인터이다
+typedef couble Coordinate; // Coordinate 타입은 double이다
 </code>
 </pre>
+
+> **Local&Global**
+* {}에 포함된 C++ 명령문들을 **블록**이라 한다.
+* **Local: Block내에서 선언된 변수들은 block내에서만 사용이 가능하다**
+* **Global: C++에서 모든 블록의 외부에서 변수가 선언될 수 있다. 프로그램 어디서나 사용 가능하다**
+* 같은 이름을 갖는 두개의 변수가 포함된 nested block에 정의될 수 있다
+  > **Exmaple code**
+  <pre><code>
+  Const int cat = 1; // Global Cat
+  int main(){
+    const int cat = 2; // main 함수의 local cat
+    cout << cat; // local cat = 2가 출력
+    return 0;}
+  int dog = cat; // global cat, dog = 1
+  </code></pre>
+  
+ > **Namespace** 
+  * Global변수는 프로그램 어느 곳에서나 사용되고 수정 될 수 있으므로 많은 문제 발생 -> 가능한 사용 자제!
+  * **Namespace 관련된 이름들을 한곳에서 선언될 수 있게 하는 매케니즘**
+  * Namespace는 일반적으로 타입, 클래스, 함수와 같은 보다 복잡한 객체들의 정의를 포함할 수 있다.
+  * **myglobals::cat**과 같이 정의한 객체에 접근하기 위한 표현을 **Fully-qualified name**라고 한다.
+  * cin, cout등은 **std라 불리는 시스템 이름공간에 저장. std::cin / std::cout**
+  > **Exmaple code**
+  <pre><code>
+  namespace myglobals{
+    int cat;
+    string dog = "bow ow";
+    }
+    
+  > **Using 명령문**
+  * 시스템에서 사용할 Namespace를 등록해서 namespace를 변수 앞에 붙이지 않도록 하는 것이다.
+  * using namespace myglobal;
+ 
