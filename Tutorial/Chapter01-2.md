@@ -14,3 +14,6 @@ int k = --i; // k = 2, i = 2;
 cout << a[k++]; // a[2]가 출력되고 k=3이 된다.
 </code></pre>
 
+> **other 연산자**
+* class name :: member -> 클래스 영역 지정
+* namespace name :: member -> 이름공간 지정
