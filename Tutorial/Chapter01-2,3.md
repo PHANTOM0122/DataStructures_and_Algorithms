@@ -39,7 +39,7 @@ double v3 = double(i1/i2); // dv3의 값은 1
 > **static_cast**
 * 두 타입간의 형변환에서 사용한다.
 * **잠정적으로 안전하지 않은 연산이 제기된 경우 경고를 제시할 수 있다.**
- > **static_cast <desired_type> (expression)
+ > ** static_cast <desired_type> (expression)
 <pre> <code>
 double d1 = 3.2;
 double d2 = 3.999;
