@@ -2,7 +2,7 @@ Class
 ==================
 #### C++의 근간이다. 객체지향 프로그래밍의 기본이다.
 
-> ### 1.5-1) Class 구조
+### 1.5-1) Class 구조
 * **클래스는 member들로 구성된다. Data member, member Function이 있다.**
 ### Example 1.
 <pre><code>
@@ -40,6 +40,7 @@ private:
   bool isFreqFlyer;
   string freqFlyerNo;
 };
+</code></pre>
 * class member 함수들은 크게 **접근 함수(access function)**, **수정 함수(update function)**으로 나뉜다.
 * makeFrequentFlyer() 함수는 접근 함수인데, **const**를 사용하여 **멤버 변수들을 수정하지 않는 다는 것을 알려준다. 수정시 Error!**
 * C++스타일의 클래스 정의 내의 깔끔한 public interface를 위해 정의는 외부에 하는 것을 권고
@@ -48,3 +49,13 @@ private:
 > ### In-Class 함수 정의]
 * member함수를 class 내에서 정의할 수도 있는데, 이 역시 in-line을 확장한다.
 * 함수 정의는 반복문이나 조건문이 포함되지 않는다.
+
+### 1.5-2) 생성자와 소멸자
+* 객체가 생성될 때 생성자가 호출되며, 소멸 시 소멸자가 호출된다.
+  > ### 생성자
+  * **객체의 멤버 변수를 초기화 시키는 함수이다**
+  * 생성자 멤버 함수의 이름은 클래스와 같고 반환 타입이 없다
+  * 여러개의 생성자가 정의될 수 있으며 함수 오버로딩에 의존하여 사용된다
+  * **Default constructor:** 아무 초기화 정보가 없을 시에 사용
+  * **Copy constructor: ** 초기화될 멤버 변수들이 주어질 때 사용
+  
