@@ -2,7 +2,7 @@ Class
 ==================
 #### C++의 근간이다. 객체지향 프로그래밍의 기본이다.
 
-### 1.5-1) Class 구조
+## 1.5-1) Class 구조
 * **클래스는 member들로 구성된다. Data member, member Function이 있다.**
 ### Example 1.
 <pre><code>
@@ -50,7 +50,7 @@ private:
 * member함수를 class 내에서 정의할 수도 있는데, 이 역시 in-line을 확장한다.
 * 함수 정의는 반복문이나 조건문이 포함되지 않는다.
 
-### 1.5-2) 생성자와 소멸자
+## 1.5-2) 생성자와 소멸자
 * 객체가 생성될 때 생성자가 호출되며, 소멸 시 소멸자가 호출된다.
   ### 생성자
   * **객체의 멤버 변수를 초기화 시키는 함수이다**
@@ -76,7 +76,8 @@ private:
  }
 
 Passenger::Passenger(const string& nm, Mealtype mp, const string& ffn){
-  name = nm; mealpref = mp;
+  name = nm; 
+  mealpref = mp;
   isFreqFlyer = (ffn != "None"); // ffn이 주어질 경우 참이 된다.
   freqFlyerNo = ffn;
 }
@@ -85,4 +86,14 @@ Passenger::Passenger(const Passenger& pass){
   name = pass.name; mealPref = pass.mealPref; isFreqFlyer = pass.isFreqFlyer; freqFlyerNo = pass.freqFlyerNo;
 }
 </code></pre>
-
+ ### Example case
+ <pre><code>
+ Passenger p1; // Default
+ Passenger p2("joon",vegeterian, 293145); // 2번째 생성자 - 상용고객
+ Passenger p3("pocan",regular); // 2번째 생성자 - 상용고객이 아님
+ Passenger p4(p3); // 3번째 생성자
+ Passenger p5 = p2; // p2로부터 복제, 3번째 
+ Passenger* pp1 = new Passenger; // 디폴트 생성자
+ Passenger* pp2 = new Passenger("Joe",No_pref); // 두번째 생성자
+ Passenger pa[20]; // default 생성자
+</code></pre>
