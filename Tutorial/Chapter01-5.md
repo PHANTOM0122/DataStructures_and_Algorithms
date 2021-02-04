@@ -99,3 +99,41 @@ Passenger::Passenger(const Passenger& pass){
   ### 소멸자
   * **클래스가 시스템부터 메모리와 같은 리소스를 할당 받았으면 반드시 필요하다**
   * **new**연산을 통해 메모리 할당을 받은 경우 **delete**를 통해 메모리를 반납해야 한다.
+
+## 1.5-3) 클래스와 메모리 할당
+* **class에서 new를 이용하여 메모리 할당을 하는 경우, 메모리를 할당하는 복사 생성자나 배정 연산자를 제공하지 않으면 큰 문제가 생길 수 있다**
+  ### problem case
+  <pre><code>
+  Vect a(100);
+  Vect b = a;
+  Vect c;
+  c = a;
+  </code></pre>
+  * **"Vect b = a"에서는 복사 생성자가 제공되지 않았기 때문에, 배열의 내용을 복사하는 것이 아니라 첫 번째 요소에 대한 포인터를 복사(Shallow copy)하는 것이다!!**
+  * **shallow copy**의 경우 위처럼 a,b,c가 **모두 free storage의 같은 배열을 가리키는 멤버를 가지고 있다**
+  * **shallow copy**는 메모리를 할당하고 시스템의 디폴트 복사 생성자와 배정 연산자를 이용하기 때문이다.
+  * **따라서 new를 사용하여 자신의 객체를 할당하는 모든 class는 다음 사항을 정의해야 한다(Deep copy)**
+    1) 할당된 객체를 반환할 소멸자
+    2) 자신의 새로운 멤버 저장소를 할당하고(새로운 메모리를 할당) 멤버 변수의 contents를 복사하는 복사 생성자
+    3) 오래된 저장소는 할당을 해제하고 새로운 저장소를 할당하며 모든 멤버 변수를 복사할 배정 연산자
+    **복사 생성자의 경우 같은 클래스의 객체를 참조하는 단일 매개변수를 갖도록 선언한다**
+    ### Example code
+    <pre><code>
+    Vect::Vect(const Vect& a){ // a로부터의 복사 생성자
+      size = a.size(); // 크기 복사
+      data = new int [size]; // 새 배열을 할당
+      for(int i=0;i<size;i++)
+        data[i] = a.data[i];} // 벡터의 내용을 복사
+    }
+    Vect& vect::operator=(const Vect& a){ // a로부터의 배정 연산자
+      if(this != a) { // 자체 배정을 피한다
+        delete[] data; // 존재하는(this) 배열 공간을 파괴!
+        size = a.size(); // 새 크기를 설정
+        data = new int [size]; // 새 배열을 할당
+        for(int i=0; i<size; i++)
+          data[i] = a.data[i]; // 벡터의 내용을 복사한다.
+      }
+      return *this // 현재 객체의 레퍼런스를 반환한다.
+   }
+   </code></pre>
+   
