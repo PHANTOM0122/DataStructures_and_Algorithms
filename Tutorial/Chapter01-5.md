@@ -117,14 +117,16 @@ Passenger::Passenger(const Passenger& pass){
     2) 자신의 새로운 멤버 저장소를 할당하고(새로운 메모리를 할당) 멤버 변수의 contents를 복사하는 복사 생성자 -> Deep copy를 위해 
     3) 오래된 저장소는 할당을 해제하고 새로운 저장소를 할당하며 모든 멤버 변수를 복사할 배정 연산자
     **복사 생성자의 경우 같은 클래스의 객체를 참조하는 단일 매개변수를 갖도록 선언한다**
-    ### Example code
-  <pre><code>
+### Example code
+<pre><code>
   Vect::Vect(const Vect& a){ // a로부터의 복사 생성자
     size = a.size(); // 크기 복사
     data = new int [size]; // 새 배열을 할당
     for(int i=0; i<size;i++)
        data[i] = a.data[i];} // 벡터의 내용을 복사
   }
+</code></pre>
+<pre><code>
  Vect& vect::operator=(const Vect& a){ // a로부터의 배정 연산자
       if(this != a) { // 자체 배정을 피한다
         delete[] data; // 존재하는(this) 배열 공간을 파괴!
