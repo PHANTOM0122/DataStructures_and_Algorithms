@@ -20,5 +20,32 @@
   * **call-by-pointer**
     * **매개변수 자체를 전달하는 대신, 매개변수의 주소를 전달 -> 주소값을 수정하진 못하더라도 포인터를 엑세스해서 이것이 가리키는 값을 변경할 수 있다**
     * **배열 매개변수: 배열역시 전체를 복사하기 보다는, 첫 번째 원소에 대한 포인터로 변환된다. 즉 T[]인 객체가 "T*"로 변환된다. -> T는 배열의 첫 원소를 가리킨다.**
-    * 
-  
+
+> ### 1.4-2)Overloading&Inlining
+ * **Function overloading**
+   * 두 개 이상의 함수가 같은 이름을 가졌지만, 서로 다른 매개변수 리스트를 가질 때 발생한다.
+   ### Example 
+   <pre><code>
+   void print(int x) {cout << x;} // 정수를 프린트하다.
+   void print(const Passenger& pass){ // passenger를 프린트하다
+         cout << pass.name << " " << pass.meal << " " << pass.FlyerNo << endl;
+         }
+   </code></pre>
+   
+ * **연산자 오버로딩**
+   * **class 외부에서 선언 및 정의시, friend함수를 사용해야 한다**
+   ### 이진 operator Example
+   <pre><code>
+   bool operator == (const Passenger& x, const Passenger& y){
+    return x.name == y.name; && x.meal == y.meal && x.FlyerNo == y.FlyerNo;
+   }
+   </code> </pre>
+   ### 단일 operator Example
+   <pre> <code>
+   ostream& operator << (ostream& out, const Passenger& pass){
+    out << pass.name << pass.meal << pass.FlyerNo;
+   }
+   </code></pre>
+ * **In-line 함수**
+   * 매우 짧은 함수.
+   * inline int min(int x, int y) { return (x < y ? x : y); }
