@@ -47,5 +47,5 @@
    }
    </code></pre>
  * **In-line 함수**
-   * 매우 짧은 함수.
+   * 매우 짧은 함수. **함수 정의는 반복문 또는 조건문이 포함되서는 안된다**
    * inline int min(int x, int y) { return (x < y ? x : y); }
