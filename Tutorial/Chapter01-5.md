@@ -135,6 +135,57 @@ Passenger::Passenger(const Passenger& pass){
         for(int i=0; i<size; i++)
           data[i] = a.data[i]; // 벡터의 내용을 복사한다.
       }
-      return *this // 현재 객체의 레퍼런스를 반환한다.
+      return *this // 현재 객체의 레퍼런스를 반환한다. -> a=b=c처럼 배정을 함께 묶는 것을 지원하기 위해서다.
    }  
 </code></pre>
+## 1.5-4) Class friend & Static member data,functuions
+  * **어떤 함수를 friend로 선언하여 그 함수에게 private 데이터 접근을 허용할 수 있다**
+  * **다른 클래스에서 friend를 사용해서 class안의 데이터를 사용할 수 있다**
+  * 서로 다른 두 클래스가 밀집되어 있는 경우 사용한다
+  * **Static data: class의 모든 객체가 share하는 data이다**
+  ### Example code
+ <pre><code>
+#include <iostream>
+using namespace std;
+class Point {
+double x;
+double y;
+static int countCreatedObjects;
+public:
+Point();
+Point(int x, int y);
+void setPoint(int x, int y);
+int getX(void) const;
+int getY(void) const;
+static int getCreatedObject(void);
+Point operator+(const Point& point); 
+Point& operator=(const Point& point);
+friend ostream& operator<<(ostream& os, const Point& pt);
+};
+
+// Initialize the static variables.
+int Point::countCreatedObjects = 0;
+
+Point::Point()
+{x = y = 0; countCreatedObjects++;}
+
+Point::Point(int x, int y)
+{this->x = x;this->y = y;countCreatedObjects++;}
+
+void Point::setPoint(int x, int y) { this->x = x; this->y = y;}
+int Point::getX (void) const {return this->x;}
+int Point::getY (void) const {return this->y;}
+int Point::getCreatedObject(void) {return countCreatedObjects;}
+
+Point Point::operator+(const Point& point)
+{Point result(this->x + point.getX(), this->y + point.getY()); 
+  return result;}
+
+Point& Point::operator=(const Point& point)
+{this->x = point.getX(); this->y = point.getY(); return * this;}
+
+ostream& operator<<(ostream& os, const Point& pt)
+{ os << pt.x << pt.y << endl; }
+</code></pre>
+
+  
