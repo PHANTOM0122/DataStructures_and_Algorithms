@@ -122,7 +122,7 @@ Passenger::Passenger(const Passenger& pass){
     Vect::Vect(const Vect& a){ // a로부터의 복사 생성자
       size = a.size(); // 크기 복사
       data = new int [size]; // 새 배열을 할당
-      for(int i=0;i<size;i++)
+      for(int i=0; i<size;i++)
         data[i] = a.data[i];} // 벡터의 내용을 복사
     }
     
