@@ -21,12 +21,12 @@ private:
   * **Constructor(생성자): class member 변수들의 값을 초기화시키는 역할. 반환 타입을 갖지 않는다.**
   * **getter함수: class의 private 멤버로의 접근을 제공한다**
 
-> ### 접근 제어 (Access control)
+### 접근 제어 (Access control)
 * **public member들은 class 외부에서도 접근 가능하지만, private은 내부에서만 가능하다.** (protected는 후에 설명)
 * 만일 access specifier가 주어지지 않으면, class는 기본으로 **private**, 구조체에서는 **public**이다.
 * 대부분의 C++에서는 public 멤버들이 관심부분이기 때문에, public 멤버들을 먼저 쓰는 것을 권고
 
-> ### 멤버 함수
+### 멤버 함수
 ### Example 2.
 <pre><code>
 class Passenger{
@@ -46,7 +46,7 @@ private:
 * C++스타일의 클래스 정의 내의 깔끔한 public interface를 위해 정의는 외부에 하는 것을 권고
 * class외부에서 정의시 함수 이름 앞에 지정자(**class_name :: member_name**)을 두어서 할 수 있다.
 
-> ### In-Class 함수 정의]
+### In-Class 함수 정의]
 * member함수를 class 내에서 정의할 수도 있는데, 이 역시 in-line을 확장한다.
 * 함수 정의는 반복문이나 조건문이 포함되지 않는다.
 
@@ -58,4 +58,31 @@ private:
   * 여러개의 생성자가 정의될 수 있으며 함수 오버로딩에 의존하여 사용된다
   * **Default constructor:** 아무 초기화 정보가 없을 시에 사용
   * **Copy constructor: ** 초기화될 멤버 변수들이 주어질 때 사용
+  * **Default 매개변수들은 생성자뿐 아니라 모든 함수에 사용가능하며, 선언에는 제공되지만 정의에는 포함되지 않는다!**
+  ### Example code
+  <pre><code>
+  class Passenger{
+  public:
+    Passenger(); // 디폴트 생성자
+    Passenger(const string& nm, Mealtype mp. const string& ffn = "NONE"); // 복사 생성자
+    Passenger(const Passenger& pass); // 복사 생성자
+  }
   
+ Passenger::Passenger() { // 디폴트 생성자
+  name = "--No Name--";
+  meal = NO_PREF;
+  isFreqFlyer = false;
+  freqFlyerNO = "None";
+ }
+
+Passenger::Passenger(const string& nm, Mealtype mp, const string& ffn){
+  name = nm; mealpref = mp;
+  isFreqFlyer = (ffn != "None"); // ffn이 주어질 경우 참이 된다.
+  freqFlyerNo = ffn;
+}
+    
+Passenger::Passenger(const Passenger& pass){
+  name = pass.name; mealPref = pass.mealPref; isFreqFlyer = pass.isFreqFlyer; freqFlyerNo = pass.freqFlyerNo;
+}
+</code></pre>
+
