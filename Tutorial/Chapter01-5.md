@@ -188,8 +188,8 @@ ostream& operator<<(ostream& os, const Point& pt)
 { os << pt.x << pt.y << endl; }
 </code></pre>
 * **실행결과**
-  Number of created object is : 0
-  [X:10][Y:20]
-  (11,22)
-  Number of created object is : 3
+ <br> Number of created object is : 0 </br>
+ <br> [X:10][Y:20] </br>
+ <br> (11,22) </br>
+ <br> Number of created object is : 3  </br>
   
