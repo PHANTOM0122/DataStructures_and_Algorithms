@@ -45,3 +45,8 @@ double d1 = 3.2;
 double d2 = 3.999;
 int i1 = static_cast<int> (d1); // i1의 값은 3
 int t2 = static_cast<int> (d2); // i2의 값은 3
+
+> **break와 continue문**
+* **break: loop, switch를 깨고 나오는데 사용**
+* **continue: loop내부에서만 사용되며, 실행흐름을 loop끝으로 건너뛰게 하여 다음 반복으로 넘어가게 한다.**
+
