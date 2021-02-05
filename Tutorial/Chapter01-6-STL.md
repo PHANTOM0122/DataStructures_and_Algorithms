@@ -17,16 +17,16 @@ Standard Template Library
   * 크기를 resize 가능하다!
   
   ## STL string에 대한 추가 사항
-  * **+:**스트링을 연결시키는 연산자
-  * **str.size():**스트링의 길이를 알려주는 함수
-  * **str[i]:**스트링의 각각의 문자에 접근 하기 위한 index 연산자
-  * **str.find(p):**str에서 string p 가 처음 출현한 index 반환
-  * **str.find(p,i):**str에서 index i 이후에 srtring p가 처음 출현한 index 반환, string p가 발견되지 않은 것을 가리키기 위해 string::npos반환.
-  * **str.substr(i,m):**str에서 i위치에서 시작하고 m개의 문자로 이루어진 sub-string 반환
-  * **str.insert(i,p):**string p를 str[i] 앞에 삽입
-  * **str.erase(i,m):**str[i]에서부터 길이 m만큼의 sub-string을 삭제
-  * **str.replace(i,m,p):**index[i]에서 시작해서 길이 m만큼의 sub-string을 p로 대체
-  * **getline(is,str):**입력 stream is에서 단일 라인을 읽고, str에 결과를 저장
+  * **+:스트링을 연결시키는 연산자**
+  * **str.size():스트링의 길이를 알려주는 함수**
+  * **str[i]:스트링의 각각의 문자에 접근 하기 위한 index 연산자**
+  * **str.find(p):str에서 string p 가 처음 출현한 index 반환**
+  * **str.find(p,i):str에서 index i 이후에 srtring p가 처음 출현한 index 반환, string p가 발견되지 않은 것을 가리키기 위해 string::npos반환.**
+  * **str.substr(i,m):str에서 i위치에서 시작하고 m개의 문자로 이루어진 sub-string 반환**
+  * **str.insert(i,p):string p를 str[i] 앞에 삽입**
+  * **str.erase(i,m):str[i]에서부터 길이 m만큼의 sub-string을 삭제**
+  * **str.replace(i,m,p):index[i]에서 시작해서 길이 m만큼의 sub-string을 p로 대체**
+  * **getline(is,str):입력 stream is에서 단일 라인을 읽고, str에 결과를 저장**
   #####Example code
   <pre><code>
   string s = "a dog";
