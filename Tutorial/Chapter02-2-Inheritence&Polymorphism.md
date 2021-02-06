@@ -38,3 +38,16 @@ public:
     cout << "Major" << major << endl;
     cout << "Year" << year << endl;
   }</code></pre>
+  > **Protected member**
+  * **protected멤버는 모든 다른 함수들에게는 private하지만, 현재의 클래스로부터 derieved된 class에 대해서는 public하다.**
+  ![image](https://user-images.githubusercontent.com/50229148/107111389-1ebb3a80-6893-11eb-968e-c0379e154cf8.png)
+  > **Inheritance relation 생성자와 소멸자**
+  * derieved class가 생성될 때, base class에 대한 적당한 생성자가 호출되게 하는 것은 derieved class의 책임이다.
+  <pre><code>
+  Person::Person(const string& nm, const string& id) : name(nm), idNum(id) {} // Base-class
+  Student::Student(const string& nm, const string& id, const string& maj, int year) : Person(nm, id), major(maj), gradYear(year) {} // Derieved-class
+  </code></pre>
+  * Person(nm,id)호출만이 derievedclass 초기화 리스트에 있으면 된다.
+  * **소멸자의 경우 derieved-class 소멸자가 먼저 호출되고 base-class소멸자가 호출되어야 한다.**
+  
+  
