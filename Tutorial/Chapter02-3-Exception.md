@@ -28,3 +28,9 @@ public:
 > **throw(예외이름1, 예외이름2)**
   * try{ try 명령문 } -> catch(예외타입  식별자) { catch 명령문 }
   ##### Example code
+  <pre><code>
+  try{ if(divisor==0){throw ZeroDivide("Divide by zero in module x");}}
+  catch (ZeroDivide& zde) { // 0으로 나누는걸 처리하는 코드}
+  cathc (MathException& me) { //0으로 나눈 것과 다른 산술 예외 처리 }
+  </code></pre>
+  
