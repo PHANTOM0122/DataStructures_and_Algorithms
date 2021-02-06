@@ -25,6 +25,7 @@ public:
 	void print();
 	void changeMajor(const string& newmajor);
 };</code></pre>
+## 2.2-2
   > **멤버 함수**
   * print()함수처럼 **어떤 class의 함수가 사용되었는지 나타내기 위해서 class범위 연산자(::)를 사용한다.**
   * derived class 객체들은 base class의 public 영역에 접근이 가능하다.
