@@ -63,15 +63,25 @@ public:
   * **객체의 내용이 어떠한 멤버 함수를 호출할지를 결정한다**
   * **동적 바인딩을 사용하기 위해서는 함수 앞에 virtual을 추가한다**
   <pre><code>
-  class Person {
-  virtual void print() {//...}
-  };
-  class Student : public Person {
-	vitrual void print() { ... }
-  };
-  Person* pp[100];
-  pp[0] = new Person(...);
-  pp[1] = new Student(...);
-  pp[0]->print(); // person print 호출
-  pp[1]->print(); // Student print 호출
-  </code></pre>
+ #include <iostream>
+using namespace std;
+class Base {
+public:
+  void f(void) {cout << "in function 'Base::f()'\n";}
+  virtual void vf(void) {cout << "in function 'Base::vf()'\n";}
+};
+class Derived : public Base {
+public:
+  void f(void) {cout << "in function 'Derived::f()'\n";}
+  void vf(void) override {cout << "in function 'Derived::vf()'\n";}
+};
+int main()
+{
+Base *p; Base myB;
+Derived myD;
+p = &myB;
+p->f(); p->vf();
+p = &myD;
+p->f();p->vf();}
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/107111700-65119900-6895-11eb-8a73-104464f85376.png)
