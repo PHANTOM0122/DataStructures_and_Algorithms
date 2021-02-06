@@ -25,7 +25,6 @@ public:
 	void print();
 	void changeMajor(const string& newmajor);
 };</code></pre>
-## 2.2-2
   > **멤버 함수**
   * print()함수처럼 **어떤 class의 함수가 사용되었는지 나타내기 위해서 class범위 연산자(::)를 사용한다.**
   * derived class 객체들은 base class의 public 영역에 접근이 가능하다.
@@ -86,3 +85,59 @@ p = &myD;
 p->f();p->vf();}
 </code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/107111700-65119900-6895-11eb-8a73-104464f85376.png)
+## 2.2-2 Polymorphism 다형성
+* C++에서는 pointer를 사용하여 다형성을 적용한다.
+* **어떤 class S를 가리키는 pointer * P는 S로부터 유도된 T에 속한 객체도 point 할 수 있다는 것을 의미**
+#### Example
+p -> a()를 호출할 때, p가 T타입의 객체를 가리키면 T::a()가 호출된다. 이 경우, T가 S로 부터 a()함수를 **override**한 것이다.
+대신에 p가 S타입을 가리키면 S::a()가 호출된다.
+* **p는 참조하는 객체의 특성 class에 따라 많은 행태를 취할 수 있다**
+#### 특수화
+* 특수화를 사용함에 있어 우리는 general-class를 특정한 유도된 class들로 특수화할 수 있다.
+* 유도된 특수화된 class들은 전형적으로 **is-a** relationship을 가지고 있다.
+> **is-a relationship: derieved 객체는 base 객체의 특성을 갖지만, base 객체는 derived 객체의 특성을 완전히 갖진 않는다. 일방향성!!**
+* **override: derieved 객체의 함수는 base 객체의 함수를 받는다. base함수가 잘 작동되지 않는 경우, derived class에서 잘 작동시키기 위해서 override를 해야한다**
+* Dog라는 객체의 sniff, drink함수는 Booldok라는 객체에서는 drink는 같은 메커니즘이지만, sniff는 종마다 다르므로 override를 해야한다.
+#### 확장
+* **확장을 사용함에 있어서 base-class 함수를 위해 코드를 재활용한다. 다만, 기본 클래스에 없던 함수를 추가한다**
+* base-class에는 derived 객체의 함수가 존재하지 않을 것이다.
+#### 상속 계층에서의 형변환
+* **dynamic_cast<desired_type> (expression)**
+* derived-class에만 존재하는 함수를 사용하기 위한 예시
+<pre><code>
+Person * p[100];
+p[0] = new Person()
+p[1] = new Student()
+Student* sp = dynamic_cast<Student*>(p[1]); // p[1]을 student로 형변환
+sp -> changeMajor("Chemistry") // derived만의 함수 사용 가능
+</code></pre>
+* 부당한 형변환이 일어날 경우 **nullptr**이 된다. (ex. p[0]를 형변환 할 경우)
+#### 추상 클래스와 인터페이스
+* 객체가 상호작용하기 위해서는 서로의 멤버 함수에 대해 알아야한다. 클래스들이 자신들의 객체를 다른 객체에 보여주는 API 등을 요청한다.
+> **추상 클래스(Abstract-class)**
+* **오직 상속에 대한 base-class로만으로 사용된다. 직접 객체를 만들 수 없다**
+* Abstract class에서 **pure virtual function(순수 가상함수)를 사용하여 선언만 가능하며, 정의는 derived-class에서만 가능하다.(직접 객체생산X)**
+* 함수 뒤에 "=0"을 사용함으로써 순수 가상함수임을 나타낸다.
+> **인터페이스와 추상 기본 클래스**
+* C++에서는 ADT에 대한 인터페이스를 직접 정의하는 메커니즘을 제공하지는 않는다.
+* 위의 목적을 수행하기 위해 추상적인 기본 클래스들을 사용 가능하다.
+#### Example
+<pre><code>
+class Stack{
+public:
+	virtual bool isEmpty() const = 0;
+	virtual void push(int x) = 0;
+	virtual int pop() = 0;
+}
+class ConcreteStack : public Stack{
+public:
+	virtual bool isEmpty() { ... }
+	virtual void push(int x) { ... }
+	virtual int pop() {...}
+{
+</code></pre>
+
+
+
+
+
