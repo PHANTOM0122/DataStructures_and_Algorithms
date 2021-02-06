@@ -133,8 +133,8 @@ public:
 }
 class ConcreteStack : public Stack{
 public:
-	virtual bool isEmpty() { // 정의 }
-	virtual void push(int x) { // 정의 }
-	virtual int pop() { // 정의 }
+	virtual bool isEmpty() override{ // 정의 }
+	virtual void push(int x) override{ // 정의 }
+	virtual int pop() override{ // 정의 }
 {
 </code></pre>
