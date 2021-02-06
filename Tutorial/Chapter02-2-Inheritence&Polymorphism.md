@@ -97,6 +97,8 @@ p -> a()를 호출할 때, p가 T타입의 객체를 가리키면 T::a()가 호�
 * 유도된 특수화된 class들은 전형적으로 **is-a** relationship을 가지고 있다.
 > **is-a relationship: derieved 객체는 base 객체의 특성을 갖지만, base 객체는 derived 객체의 특성을 완전히 갖진 않는다. 일방향성!!**
 * **override: derieved 객체의 함수는 base 객체의 함수를 받는다. base함수가 잘 작동되지 않는 경우, derived class에서 잘 작동시키기 위해서 override를 해야한다**
+* **overriding은 결국 base class의 특성과 상관없이 derived class의 특성을 customize 하게 재정의 하는 것이다**
+* **virtual 함수에 대해서만 override 가능하다**
 * Dog라는 객체의 sniff, drink함수는 Booldok라는 객체에서는 drink는 같은 메커니즘이지만, sniff는 종마다 다르므로 override를 해야한다.
 #### 확장
 * **확장을 사용함에 있어서 base-class 함수를 위해 코드를 재활용한다. 다만, 기본 클래스에 없던 함수를 추가한다**
@@ -131,13 +133,8 @@ public:
 }
 class ConcreteStack : public Stack{
 public:
-	virtual bool isEmpty() { ... }
-	virtual void push(int x) { ... }
-	virtual int pop() {...}
+	virtual bool isEmpty() { // 정의 }
+	virtual void push(int x) { // 정의 }
+	virtual int pop() { // 정의 }
 {
 </code></pre>
-
-
-
-
-
