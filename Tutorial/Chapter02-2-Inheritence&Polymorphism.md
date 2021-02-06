@@ -49,5 +49,29 @@ public:
   </code></pre>
   * Person(nm,id)호출만이 derievedclass 초기화 리스트에 있으면 된다.
   * **소멸자의 경우 derieved-class 소멸자가 먼저 호출되고 base-class소멸자가 호출되어야 한다.**
-  
-  
+  > **Static-binding** 
+  * **객체의 선언된 type을 고려하여, derieved 되더라도 base로 선언되었으면 base멤버들만 사용된다**
+  * Stuendt와 Person의 관계처럼 기본 클래스로부터 상속될 때, 유도된 클래스는 기본클래스의 특수형이 된다.
+  <pre><code>
+  Person* pp[100];
+  pp[0] = new Person(...);
+  pp[1] = new Student(...);
+  </code></pre>
+  * getName()은 공통 함수지만, pp[i]는 **Static-binding**으로 인해 Student member에 접근하지 못한다.
+  ![image](https://user-images.githubusercontent.com/50229148/107111410-4b6f5200-6893-11eb-927c-f1a4127d1391.png)
+  > **Dynamic-binding** 
+  * **객체의 내용이 어떠한 멤버 함수를 호출할지를 결정한다**
+  * **동적 바인딩을 사용하기 위해서는 함수 앞에 virtual을 추가한다**
+  <pre><code>
+  class Person {
+  virtual void print() {//...}
+  };
+  class Student : public Person {
+	vitrual void print() { ... }
+  };
+  Person* pp[100];
+  pp[0] = new Person(...);
+  pp[1] = new Student(...);
+  pp[0]->print(); // person print 호출
+  pp[1]->print(); // Student print 호출
+  </code></pre>
