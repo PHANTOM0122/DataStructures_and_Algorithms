@@ -116,8 +116,43 @@ void SLinkedList<E>::removeFront()
 	head = old->next;
 	delete old;
 }</code></pre>
-## 3.2-3) Linked list를 활용한 Stack
+## 3.2-5) Linked list를 활용한 Stack
 <pre><code>
+typedef int ItemType;
+struct NodeType;
+
+class StackFull : public exception {
+public:
+	StackFull(const string& err) {
+		cout << err << endl;
+	}
+};
+
+class StackEmpty : public exception {
+public:
+	StackEmpty(const string& err) { 
+		cout << err << endl;
+	}
+};
+
+class LinkedStack {
+public:
+	LinkedStack();
+	~LinkedStack();
+	bool IsFull() const;
+	bool empty() const;
+	const ItemType& top() const throw(StackEmpty);
+	void push(const ItemType& item);
+	void pop() throw(StackEmpty);
+private:
+	NodeType* topPtr;
+};
+
+struct NodeType {
+	ItemType info;
+	NodeType* next;
+};
+
 LinkedStack::LinkedStack()
 {
 	topPtr = nullptr;
@@ -182,4 +217,4 @@ void LinkedStack::pop() throw(StackEmpty)
 		topPtr = tempPtr->next;
 		delete tempPtr;
 	}
-}
+}</code></pre>
