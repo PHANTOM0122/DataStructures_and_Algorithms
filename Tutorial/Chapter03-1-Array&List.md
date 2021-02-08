@@ -96,3 +96,12 @@ for(int i = 1; i< n; i++){
   A[j+1] = cur; // 변화 없으면 j = i, 있으면 j = i - 1
  }}
 </code></pre>
+## 3.1-3) 이차원 배열과 동적 할당
+> **int matrix[row][col]**
+<pre><code>
+int** M = new int*[row];// 행 포인터의 배열을 할ㄷ강
+for (int i=0;i<row;i++)
+   M[i] = new int [col]; // i번째 행을 할당 
+for(int i = 0; i<row; i++)
+   delete[] M[i]; // i번째 행을 반환
+delete[] M; // 행 포인터의 배열을 
