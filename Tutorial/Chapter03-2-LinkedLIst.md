@@ -51,3 +51,4 @@ void stringLinkedLIst::removeFront() {
 	head = old->next; // 이전 head 건너뛴다
 	delete old; // 이전 head 삭제
 }</code></pre>
+## 3.2-4) 일반적인 단일 링크드 리스트 구현
