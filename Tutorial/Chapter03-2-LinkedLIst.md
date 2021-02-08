@@ -12,7 +12,7 @@ class stringNode {
 private:
 	string elem;
 	stringNode* next;
-	friend class stringLinkedLIst;
+	friend class stringLinkedLIst; // friend 사용하기 싫으면 struct로 사용하면 된다!
 };
 
 class stringLinkedLIst {
