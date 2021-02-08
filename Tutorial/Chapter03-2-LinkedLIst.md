@@ -218,3 +218,4 @@ void LinkedStack::pop() throw(StackEmpty)
 		delete tempPtr;
 	}
 }</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/107236329-f2591700-6a68-11eb-91bd-9c251f962509.png)
