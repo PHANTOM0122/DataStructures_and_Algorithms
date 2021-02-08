@@ -38,8 +38,8 @@ const string& stringLinkedLIst::front() const { return head->elem; } // 이전 �
 <pre><code>
 void stringLinkedLIst::addFront(const string& e) {
 	stringNode* v = new stringNode;
-	v->elem = e;
-	v->next = head;
+	v->elem = e; // v = location
+	v->next = head; // head = topPtr
 	head = v;
 }</code></pre>
 
