@@ -42,4 +42,12 @@ void stringLinkedLIst::addFront(const string& e) {
 	v->next = head; // head = topPtr
 	head = v;
 }</code></pre>
-
+## 3.2-3) 단일 링크드 리스트 delete
+* **기존의 head가 가리키는 pointer를 먼저 저장하고, head pointer가 리스트의 다음 노드를 가리키도록 바꾸어준다. 그런 후 기존의 node를 지운다.**
+![image](https://user-images.githubusercontent.com/50229148/107225482-30037300-6a5c-11eb-88b5-024e2d2b69bf.png)
+<pre><code>
+void stringLinkedLIst::removeFront() {
+	stringNode* old = head; // 현재 head 저장
+	head = old->next; // 이전 head 건너뛴다
+	delete old; // 이전 head 삭제
+}</code></pre>
