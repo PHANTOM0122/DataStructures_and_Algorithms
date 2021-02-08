@@ -80,3 +80,19 @@ GameEntry Scores::remove(int i) throw(IndexOutOfBounds) {
 	numEntries--; // 엔트리수 줄이기
 	return e; // 제거된 객체를 반환
 }</code></pre>
+## 3.1-2) 배열 정렬
+#### 삽입-정렬 알고리즘
+* **배열의 첫번째부터 시작하여 원소의 적정 위치에 도달할 때까지 왼쪽으로 교체)**
+###### Example
+<pre><code>
+void insertionSort(char * A, int n){ // n개의 문자열을 정렬
+for(int i = 1; i< n; i++){
+  char cur = A[i]; // 기준!
+  int j = i - 1; // 바로 앞의 문자에서 시작
+  while(j>=0 && A[j] > cur){ // A[j]보다 cur이 될때가지 j--하며 찾음
+    A[j+1] = A[j]; // 오른쪽으로 원소 이동
+    j--; 
+  }
+  A[j+1] = cur;
+ }}
+</code></pre>
