@@ -87,4 +87,21 @@ void CircleList::remove() // cursor의 다음 node 삭제!
 	}
 	delete old; // 원소 삭제
 }</code></pre>
-#### Circle link의 예시 - digital 오디오 플레이어의 재생 모
+#### Circle link의 예시 - digital 오디오 플레이어의 재생 palylist 순환형 구현
+* **cursor:현재 노래를 가리킨다. 커서를 다음으로 이동시켜 다음 노래 재생 가능**
+* **insert/remove:새로운 노래를 추가시키거나 삭제시킬수 있다**
+<pre><code>
+#include "CircularLinkedList.h"
+#include <iostream>
+using namespace std;
+int main() {
+	CircleList playList;
+	playList.add("Stayin Alive");// [Stayin*]
+	playList.add("Le Freak");// [Le, Stayin* ]
+	playList.add("Jelive Talking");// [Jive, Le, Stayin*]
+	playList.advance(); // [Jive*, Le, Stayin]
+	playList.advance(); // [Jive, Le*, Stayin]
+	playList.remove(); // [Jive, Le*]
+	cout << playList.front(); // Jive
+	return 0;
+}</code></pre>
