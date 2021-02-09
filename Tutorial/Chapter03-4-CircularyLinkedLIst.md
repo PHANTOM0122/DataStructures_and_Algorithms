@@ -87,4 +87,4 @@ void CircleList::remove() // cursor의 다음 node 삭제!
 	}
 	delete old; // 원소 삭제
 }</code></pre>
-
+#### Circle link의 예시 - digital 오디오 플레이어의 재생 모
