@@ -38,5 +38,51 @@ else
 # 3.5-1) 선형 재귀
 * 재귀의 가장 간단한 형태이다.
 * **선형 재귀는 호출이 발생할 때마다 최대로 하나의 재귀 호출이 이뤄지는 함수이다**
+## Example1) Value in list?
 <pre><code>
-struct 
+bool ValueInList(ListType list, int value, int startIndex)
+{
+  if (list.info[startIndex] == value)
+    return true; // Base case 1 -> search 과정중에서 발견
+  else if (startIndex == list.length-1)
+    return false; // Base case 2 -> list의 마지막까지 search했지만 없는 경우
+  else return ValueInList(list, value, startIndex + 1); // General case
+}</code></pre>
+## Example2) Print ReverseArray
+<pre><code>
+struct NodeType {
+	int info;
+	NodeType* next;
+};
+
+class SortedType {
+public:
+	SortedType();
+	~SortedType();
+	void RevPrint(NodeType* listPtr);
+private:
+	NodeType* listData;
+};
+
+SortedType::SortedType()
+{
+	listData = new NodeType[100]; // Default
+}
+
+SortedType::~SortedType()
+{
+	delete[] listData;
+}
+
+void SortedType::RevPrint(NodeType* listPtr)
+{
+	if (listPtr != NULL) { // general case!
+		RevPrint(listPtr->next); // process the rest
+		cout << listPtr->info << endl; // After recursive call, print elements backwards!
+	}
+	// Base case : when list is empty, do nothing!
+}</code></pre>
+* 먼저 recursive call을 통해 마지막 원소까지 갔다가 print elem하는 것이다!
+![image](https://user-images.githubusercontent.com/50229148/107460242-14eb4d00-6b9b-11eb-99f9-9916e7290066.png)
+
+
