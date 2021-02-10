@@ -38,6 +38,7 @@ else
 # 3.5-1) 선형 재귀
 * 재귀의 가장 간단한 형태이다.
 * **선형 재귀는 호출이 발생할 때마다 최대로 하나의 재귀 호출이 이뤄지는 함수이다**
+* **후미 재귀(tail recursion): 선형 재귀를 사용하는 알고리즘이 맨 마지막 연산으로 재귀적 호출을 하는 재귀 알고리즘**
 ## Example1) Value in list?
 <pre><code>
 bool ValueInList(ListType list, int value, int startIndex)
@@ -84,5 +85,21 @@ void SortedType::RevPrint(NodeType* listPtr)
 }</code></pre>
 * 먼저 recursive call을 통해 마지막 원소까지 갔다가 print elem하는 것이다!
 ![image](https://user-images.githubusercontent.com/50229148/107460242-14eb4d00-6b9b-11eb-99f9-9916e7290066.png)
-
-
+## Example3) ReverseArray
+<pre><code>
+1) loop를 사용하는 경우
+Algorithm IterativeReversArray(A, start index i, end index j):
+입력: 정수 배열 A와 정수 색인 i, j
+출력: i~j사이 reverse 배열
+while i<j do
+  Swap(A[i],A[j]);
+  i ++; j--;
+</code></pre>
+2) 선형 재귀를 사용하는 경우
+Algorithm ReverseArray(A, start index i, end index j):
+입력: 정수 배열 A와 정수 색인 i, j
+출력: i~j사이 reverse 배열
+if i<j then
+  swap(A[i],A[j]);
+  ReverseArray(A,i+1,j-1);
+return</code></pre>
