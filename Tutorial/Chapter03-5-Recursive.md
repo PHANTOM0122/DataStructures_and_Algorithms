@@ -94,12 +94,68 @@ Algorithm IterativeReversArray(A, start index i, end index j):
 while i<j do
   Swap(A[i],A[j]);
   i ++; j--;
-</code></pre>
+
 2) 선형 재귀를 사용하는 경우
 Algorithm ReverseArray(A, start index i, end index j):
 입력: 정수 배열 A와 정수 색인 i, j
 출력: i~j사이 reverse 배열
 if i<j then
   swap(A[i],A[j]);
-  ReverseArray(A,i+1,j-1);
+  ReverseArray(A,i+1,j-1); 
+// Base-case : i=j(n이 홀수) or i>j(n이 짝수)
 return</code></pre>
+# 3.5-2) 이진 재귀
+* **이진 재귀는 호출이 발생할 때마다 2개의 재귀 호출이 이뤄지는 함수이다**
+## Example) Binary search function
+![image](https://user-images.githubusercontent.com/50229148/107461718-f470c200-6b9d-11eb-9782-a1401dd8763f.png)
+* **bool found = BinarySearch(List, item, left(front), right(end))**
+<pre><code>
+// Non-recursive implementation
+template<class ItemType>
+class SortedType {
+public:
+	SortedType() { info = new ItemType[length]; }
+	void Retrieveitem(ItemType& item, bool& found);
+private:
+	ItemType* info;
+	int length;
+};
+
+template<class ItemType>
+void SortedType<ItemType>::Retrieveitem(ItemType& item, bool& found) {
+	int midPoint;
+	int first = 0;
+	int last = length - 1;
+
+	found = false;
+	while ((first < last) && !found) {
+		midPoint = (first + last) / 2;
+		if (item < info[midPoint])
+			last = midPoint - 1; // 왼쪽 part -> last 감소
+		else if (item > info[midPoint])
+			first = midPoint + 1; // 오른쪽 part -> first 증가
+		else { // item == midPoint
+			found = true;
+			item = info[midPoint];
+		}
+	}
+}
+
+// Recursive implementation
+template<class ItemType>
+bool BInarSearch(ItemType list[], ItemType item, int left, int right) {
+	int mid;
+	if (left > right) { return false; } // Base case 1 : not found!
+	else {
+		mid = (left + right) / 2;
+		if (list[mid] == item) // Base case 2 : found at mid
+			return true;
+		else if (item < list[mid]) // Search lower half
+			return BInarSearch(list, ItemType item, left, mid - 1);
+		else // Search upper half
+			return BInarSearch(list, ItemType item, mid+1, right);
+	}
+}
+					  </code></pre>
+					  
+
