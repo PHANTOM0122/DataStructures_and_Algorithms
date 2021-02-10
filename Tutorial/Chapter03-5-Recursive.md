@@ -177,6 +177,7 @@ X = Fucn(5,2) // original call is instruction 100
 ![image](https://user-images.githubusercontent.com/50229148/107464661-2127d800-6ba4-11eb-8f4a-0e018b93abb7.png)
 # Recursive InsertItem(sortedlist)
 ![image](https://user-images.githubusercontent.com/50229148/107466670-cb552f00-6ba7-11eb-905b-8fa7e39356b0.png)
+* **&location => refrence로 해서 이전 node와 자동으로 연결된다!**
 <pre><code>
 template <class ItemType>
 void Insert(NodeType<ItemType>* &location, ItemType item) {
@@ -192,3 +193,16 @@ void Insert(NodeType<ItemType>* &location, ItemType item) {
 	}
 }</code></pre>
 # Recursive DeleteItem(sortedlist)
+* **&location => refrence로 해서 이전 node와 자동으로 연결된다!**
+<pre><code>
+template <class ItemType>
+void Delete(NodeType<ItemType>* &location, ItemType item) {
+	if (item == location->info) { // base cases ! , delete nodepointed by location
+		NodeType<ItemType>* tempPtr = location;
+		location = location->next;
+		delete tempPtr;
+	}
+	else {
+		Delete(location->next,item) // general case!
+	}
+}</code></pre>
