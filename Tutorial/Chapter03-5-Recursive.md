@@ -157,5 +157,21 @@ bool BInarSearch(ItemType list[], ItemType item, int left, int right) {
 	}
 }
 					  </code></pre>
-					  
+# Stack activation frame
+* cpp파일을 분리하면 **CODE 영역과 DATA** 영역으로 나뉜다
+* **DATA영역에는 **local variable, return address, parmeter, return value**가 저장된다.
+* **Return address: 함수가 다른 영역의 메모리에서 실행되고 난 이후 다시 코드영역으로 반한되기 위하여 저장되는 code영역 메모리주소**
+* **DATA영역을 run-time-stack으로 관리한다!**
+## Example) Func(int a, int b)
+<pre><code>
+Func(int a, int b){
+int result;
+if (b==0) result = 0; // base case
+else if(b>0) result = a + Func(a, b-1) ; // general case - instruction 50
+else result = Func(-a,-b); // second general case - instruction 70
+return result;}
+
+X = Fucn(5,2) // original call is instruction 100
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/107464661-2127d800-6ba4-11eb-8f4a-0e018b93abb7.png)
 
