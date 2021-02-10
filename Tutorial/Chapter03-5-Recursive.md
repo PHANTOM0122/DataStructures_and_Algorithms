@@ -35,3 +35,8 @@ else
 * Base-Case question: base case를 가지고 있나? // Ex) 0! = 1
 * smaller_caller question: 재귀 call이 더 작은 case를 call 하는지? // Ex) f(n){ n * f(n-1);}
 * General-Case question: recursive call이 정확하다고 할때, function이 올바르게 작동하는가?
+# 3.5-1) 선형 재귀
+* 재귀의 가장 간단한 형태이다.
+* **선형 재귀는 호출이 발생할 때마다 최대로 하나의 재귀 호출이 이뤄지는 함수이다**
+<pre><code>
+struct 
