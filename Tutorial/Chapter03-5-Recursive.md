@@ -206,3 +206,6 @@ void Delete(NodeType<ItemType>* &location, ItemType item) {
 		Delete(location->next,item) // general case!
 	}
 }</code></pre>
+# Recursion의 단점
+* **아래와 같이 똑같은 경우를 다시 계산해야 하는 경우가 발생한다!**
+![image](https://user-images.githubusercontent.com/50229148/107471834-23446380-6bb1-11eb-85d1-92a6f9d1db8a.png)
