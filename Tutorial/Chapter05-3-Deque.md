@@ -21,4 +21,141 @@ deque<string> myDeque;
 > member function
 * size() / empty() / push_front() / push_back() / pop_front() / pop_back() / front() / back()
 
-## 5.3-2) STL of Deque
+## 5.3-3) 이중 링크드 리스트를 이용한 데크의 구현 
+<pre><code>
+class LinkedDeque {
+public:
+	LinkedDeque();
+	int Size() const;
+	bool empty() const;
+	const Elem& front() const throw(DequeEmpty);
+	const Elem& back() const throw(DequeEmpty);
+	void insertFront(const Elem& e);
+	void insertBack(const Elem& e);
+	void removeFront() throw(DequeEmpty);
+	void removeBack() throw(DequeEmpty);
+private:
+	DLinkedList D;
+	int size;
+};
+
+LinkedDeque::LinkedDeque()
+{
+	DLinkedList();
+}
+
+int LinkedDeque::Size() const
+{
+	return size;
+}
+
+bool LinkedDeque::empty() const
+{
+	return (size == 0);
+}
+
+const Elem& LinkedDeque::front() const throw(DequeEmpty)
+{
+	if (empty()) {
+		throw DequeEmpty("removeFront of empty deque");
+	}
+	else {
+		return D.front();
+	}
+}
+
+const Elem& LinkedDeque::back() const throw(DequeEmpty)
+{
+	if (empty()) {
+		throw DequeEmpty("removeFront of empty deque");
+	}
+	else {
+		return D.back();
+	}
+}
+
+void LinkedDeque::insertFront(const Elem& e)
+{
+	D.addFront(e);
+	size++;
+}
+
+void LinkedDeque::insertBack(const Elem& e)
+{
+	D.addBack(e);
+	size++;
+}
+
+void LinkedDeque::removeFront() throw(DequeEmpty)
+{
+	if (empty()) {
+		throw DequeEmpty("removeFront of empty deque");
+	}
+	else {
+		return D.removeFront();
+		size--;
+	}
+
+}
+
+void LinkedDeque::removeBack() throw(DequeEmpty)
+{
+	if (empty()) {
+		throw DequeEmpty("removeFront of empty deque");
+	}
+	else {
+		return D.removeBack();
+		size--;
+	}
+}
+</code></pre>
+## 5.3-4) Deque를 이용한 stack 의 구현
+<pre><code>
+class DequeStack {
+public:
+	DequeStack();
+	int size() const;
+	bool empty() const;
+	const Elem& top() const throw(StackEmpty);
+	void push(const Elem& e);
+	void pop() throw(StackEmpty);
+private:
+	LinkedDeque D;
+};
+DequeStack::DequeStack()
+{
+	DLinkedList();
+}
+
+int DequeStack::size() const
+{
+	return D.Size();
+}
+
+bool DequeStack::empty() const
+{
+	return D.empty();
+}
+
+const Elem& DequeStack::top() const throw(StackEmpty)
+{
+	if (D.empty()) {
+		throw StackEmpty("Empty stack!");
+	}
+	else {
+		return D.front();
+	}
+}
+
+void DequeStack::push(const Elem& e)
+{
+	D.insertFront(e);
+}
+
+void DequeStack::pop() throw(StackEmpty)
+{
+	if (D.empty()) {
+		throw StackEmpty("Empty stack!");
+	}
+	D.removeFront();
+}</code></pre>
