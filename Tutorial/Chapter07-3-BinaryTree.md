@@ -205,3 +205,14 @@ template<class ItemType>
 TreeType<ItemType>::TreeType()
 {root = NULL;}
 
+template<class ItemType>
+void Destroy(TreeNode<ItemType>*& tree) {
+if (tree != NULL) {
+	Destroy(tree->left);
+	Destroy(tree->right);
+	delete tree;}
+}
+template<class ItemType>
+TreeType<ItemType>::~TreeType()
+ { Delete(root);}
+}</code></pre>
