@@ -231,7 +231,7 @@ void CopyTree(TreeNode*& copy,const TreeNode* originalTree){
  CopyTree(copy-->right, originalTree -->right);}
 }</code></pre>
 
-## 7.3-3) Binary Tree traverse (이진 트리 순회)
+## Binary Tree traverse (이진 트리 순회)
 ### 1) Inorder Traverse
 * **왼쪽 -> 본인 -> 오른쪽**
 <pre><code>
@@ -253,6 +253,10 @@ void PostOrder(TreeNode* tree, QueType& PostQue){
 }</code></pre>
 ### 3) Preorder Traverse
 * **본인 -> 왼쪽 -> 오른쪽**
+<pre><code>
 void PreOrder(TreeNode* tree, QueType& preQue){
   if(tree != NULL){
-  preQue.Em
+  preQue.Enqueue(tree->info);
+  preOrder(tree->left, preQue);
+  preOrder(tree->right, preQue);}
+}</code></pre>
