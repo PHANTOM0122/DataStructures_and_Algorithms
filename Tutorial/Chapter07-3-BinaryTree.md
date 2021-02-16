@@ -13,7 +13,7 @@ Binary Tree(이진트리)
 * **p.isRoot(): Root node?**
 * **p.isExternal(): Leave node?**
 
-## 7.3-2) Binary Tree interface 
+## 7.3-2) Binary Search Tree interface 
 > ### 강의 기준 
 <pre><code>
 template <class ItemType>
@@ -241,3 +241,18 @@ void Inorder(TreeNode * tree, QueType& InQue){
     InQue.Enqueue(tree->info);
     Inorder(tree->right, InQue);}
 }</code></pre>
+### 2) Postorder Traverse
+* **왼쪽 -> 오른쪽 -> 본인**
+* good for deletion
+<pre><code>
+void PostOrder(TreeNode* tree, QueType& PostQue){
+ if(tree != NULL){
+ PostOrder(tree->left, PostQue);
+ PostOrder(tree->right, PostQue);
+ PostQue.Enqueue(tree->info);}
+}</code></pre>
+### 3) Preorder Traverse
+* **본인 -> 왼쪽 -> 오른쪽**
+void PreOrder(TreeNode* tree, QueType& preQue){
+  if(tree != NULL){
+  preQue.Em
