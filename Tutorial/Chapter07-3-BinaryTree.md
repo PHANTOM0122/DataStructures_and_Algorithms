@@ -15,4 +15,73 @@ Binary Tree(이진트리)
 
 ## 7.3-2) Binary Tree interface 
 > ### 강의 기준 
-< 
+<pre><code>
+template <class ItemType>
+struct NodeType {
+	ItemType Info;
+	NodeType* next;
+};
+
+template <class ItemType>
+struct TreeNode {
+	ItemType Info;
+	TreeNode* left;
+	TreeNode* right;
+};
+
+enum OrderType { PRE_ORDER, IN_ORDER, POST_ORDER };
+
+template <class ItemType>
+class TreeType {
+public:
+	TreeType();
+	~TreeType();
+	TreeType(const TreeType<ItemType>&); // Deep copy를 위한 생성자
+	void operator=(const TreeType<ItemType>&); // copy를 위한 연산자
+	void makeEmpty();
+	bool IsEmpty() const;
+	bool IsFull() const;
+	int LengthIs() const;
+	void RetrieveItem(ItemType&, bool& found);
+	void Insert(ItemType);
+	void Delete(ItemType);
+	void ResetTree(OrderType);
+	void GetNextItem(ItemType&, OrderType, bool&);
+	void PrintTree(std::ofstream&) const;
+private:
+	TreeNode<ItemType>* root;
+ };</code></pre>
+> **IsFull() & IsEmpty()**
+ <pre><code>
+ template<class ItemType>
+bool TreeType<ItemType>::IsEmpty() const
+{
+	return (root == nullptr);
+}
+
+template<class ItemType>
+bool TreeType<ItemType>::IsFull() const
+{
+	// 새로운 Node가 만들어지면 not Full
+	NodeType* tempPtr;
+	try {
+		tempPtr = new NodeType;
+		delete location;
+		return false;
+	}
+	catch (std::bad_alloc exception) {
+		return true;
+	}
+ }</pre></code>
+> **Function countNodes**
+* Recursive fucntion
+* Base: **tree is empty**
+* General: **CountNodes(left) + CountNodes(right) + 1**
+<pre><code>
+template<class ItemType>
+int TreeType<ItemType>::LengthIs() const
+{if (root == NULL)
+		return 0;
+	else {
+		return LengthIs(root->left) + LengthIs(root->right) + 1;}
+}</code></pre>
