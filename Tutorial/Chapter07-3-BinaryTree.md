@@ -183,3 +183,25 @@ void TreeType<ItemType>::Delete(ItemType item)
    Delete(root, item);
 }
 </code></pre>
+> **Function Print**
+* **print items in tree from smallest to largest**
+* size: tree의 nodes수
+* **Base case : If tree = NULL, do nothing!**
+* **General case : left subtree -> 본인 -> rigth subtree 순서로 Traverse!**
+![image](https://user-images.githubusercontent.com/50229148/108045987-758cf500-7087-11eb-8b25-35fa1a340869.png)
+<pre><code>
+template<class ItemType>
+void TreeType<ItemType>::PrintTree(std::ofstream& out) const
+{
+	if (tree != NULL) {
+		PrintTree(root->left, out);
+		out << root->Info;
+		PrintTree(root->right, out);
+	}
+}</code></pre>
+> **Constructor & Destructor**
+<pre><code>
+template<class ItemType>
+TreeType<ItemType>::TreeType()
+{root = NULL;}
+
