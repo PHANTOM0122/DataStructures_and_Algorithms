@@ -13,7 +13,7 @@ Binary Tree(이진트리)
 * **p.isRoot(): Root node?**
 * **p.isExternal(): Leave node?**
 
-## 7.3-2) Binary Search Tree interface 
+# Binary Search Tree interface 
 > ### 강의 기준 
 <pre><code>
 template <class ItemType>
