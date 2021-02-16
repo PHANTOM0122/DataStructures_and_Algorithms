@@ -19,3 +19,33 @@ Tree
 * root(): 트리의 루트에 대한 위치를 반환. 비었으면 error
 * positions(): tree의 모든 노드의 위치 리스트를 반환
 
+## 7.1-3) C++ Tree interface
+<pre><code>
+template <typename E>
+class Position<E> {
+public:
+  E& operator*(); // 원소를 구하라
+  Position parent() const; // 부모를 구해라
+  PositionList children() const; // 노드의 자식리스트를 구하라
+  bool isRoot() const; // root node?
+  bool isExternal() const; // external(leave) node?
+};
+
+template <typename E>
+class Tree<E> {
+public:
+  class Position; // 노드 위치
+  class PositionList // 노드 위치 리스트
+public:
+  int size() const; // 노드의 갯수
+  bool empty() const; // 트리가 empty?
+  Position root() const; // 루트를 구하라
+  PositionList positions() const; // 모든 노드의 위치를 구하라
+};
+  </code></pre>
+## 7.1-4) 일반적인 트리를 위한 링크드 구조
+![image](https://user-images.githubusercontent.com/50229148/108031686-9e57bf00-7074-11eb-822a-621baa77f9c2.png)
+* root Node의 경우 부모는 NULL이고, leave Node의 경우 자식은 NULL
+
+  
+  
