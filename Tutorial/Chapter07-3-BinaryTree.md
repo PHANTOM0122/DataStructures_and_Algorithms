@@ -130,3 +130,16 @@ void TreeType<ItemType>::Insert(ItemType item)
 ![image](https://user-images.githubusercontent.com/50229148/108040922-3f4c7700-7081-11eb-9c13-7fc69f916654.png)
 3) Deleting a node with two children
 ![image](https://user-images.githubusercontent.com/50229148/108040948-48d5df00-7081-11eb-989f-e5b4415eeb20.png)
+* **1,2번 경우(Delete 0 or 1 child)**
+![image](https://user-images.githubusercontent.com/50229148/108041852-72dbd100-7082-11eb-9d99-336ad444fcd2.png)
+<pre><code>
+void DeleteNode(TreeNode *& tree){
+Itemtype Data;
+TreeNode * tempPtr;
+tempPtr = tree;
+if(tree->left == NULL){ 
+ tree = tree->right; delete tempPtr;}
+ else if(tree->right == NULL){
+ tree = tree->left; delete tempPtr;}
+}}</code></pre>
+* **3번 경우(Delete 2 child)**
