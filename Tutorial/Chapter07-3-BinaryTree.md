@@ -104,3 +104,21 @@ void TreeType<ItemType>::RetrieveItem(ItemType& item, bool& found)
 		found = true;}
 }</code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/108040099-3c04bb80-7080-11eb-8773-dda4b9e69a2b.png)
+> **Function InsertItem**
+* **Refrence type으로 TreeNode 받는 것!**
+<pre><code>
+template<class ItemType>
+void Insert(TreeNode<ItemType>*& tree, ItemType item) {
+	if (tree == NULL) { // Insertion place not found!
+		tree = new TreeNode<ItemType>;
+		tree->right = NULL;
+		tree->left = NULL;}
+	else if (item < tree->Info)
+		Insert(tree->left, item);
+	else 
+		Insert(tree->right, item);}
+template<class ItemType>
+void TreeType<ItemType>::Insert(ItemType item)
+{Insert(root, item);}
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/108040625-e250c100-7080-11eb-80e9-fc178243e2fe.png)
