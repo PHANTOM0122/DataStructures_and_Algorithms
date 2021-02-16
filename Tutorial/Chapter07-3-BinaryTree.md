@@ -230,3 +230,14 @@ void CopyTree(TreeNode*& copy,const TreeNode* originalTree){
  CopyTree(copy-->left, originalTree -->left);
  CopyTree(copy-->right, originalTree -->right);}
 }</code></pre>
+
+## 7.3-3) Binary Tree traverse (이진 트리 순회)
+### 1) Inorder Traverse
+* **왼쪽 -> 본인 -> 오른쪽**
+<pre><code>
+void Inorder(TreeNode * tree, QueType& InQue){
+  if(tree != NULL){
+    Inorder(tree->left, InQue);
+    InQue.Enqueue(tree->info);
+    Inorder(tree->right, InQue);}
+}</code></pre>
