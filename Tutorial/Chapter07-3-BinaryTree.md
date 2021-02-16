@@ -155,4 +155,25 @@ else{
   GetPredecessor(tree->left,data);
   tree->info = data;
   Delete(tree->left,data);}
-}</code></pre>
+}
+
+void GetPredecessor(TreeNode * tree, ItemType& data){ // Get rightmost node of left subtree
+while(tree->right != NULL){
+  tree = tree->right; data = tree->info; 
+}
+
+template<class ItemType>
+void TreeType<ItemType>::Delete(TreeNode * &tree, ItemType item)
+{
+	if (item < tree->info) {
+		Delete(tree->left, item);
+	}
+	else if (item > tree->info) {
+		Delete(tree->right, item);
+	}
+	else { // Node found!
+		DeleteNode(tree);
+	}
+}
+
+</code></pre>
