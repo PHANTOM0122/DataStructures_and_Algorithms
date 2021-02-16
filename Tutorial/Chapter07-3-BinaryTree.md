@@ -260,8 +260,6 @@ void PreOrder(TreeNode* tree, QueType& preQue){
   preOrder(tree->left, preQue);
   preOrder(tree->right, preQue);}
 }</code></pre>
-
-# Iterative version
 #### Modification of Class TreeType
 <pre><code>
 enum OrderType{PRE_ORDER, IN_ORDER, POST_ORDER}
@@ -303,3 +301,4 @@ void TreeType::GetNextItem(ItemType& item, orderType order, bool& finished){
 		     break;
      }
 } </code></pre>
+# Iterative version
