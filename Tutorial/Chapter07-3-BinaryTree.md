@@ -122,3 +122,11 @@ void TreeType<ItemType>::Insert(ItemType item)
 {Insert(root, item);}
 </code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/108040625-e250c100-7080-11eb-80e9-fc178243e2fe.png)
+> **Function DeleteItem**
+* 다음과 같은 3가지 상황을 고려
+1) Deleting a leaf
+![image](https://user-images.githubusercontent.com/50229148/108040847-28a62000-7081-11eb-8f0c-f76e63405a0a.png)
+2) Deleting a node with only one child
+![image](https://user-images.githubusercontent.com/50229148/108040922-3f4c7700-7081-11eb-9c13-7fc69f916654.png)
+3) Deleting a node with two children
+![image](https://user-images.githubusercontent.com/50229148/108040948-48d5df00-7081-11eb-989f-e5b4415eeb20.png)
