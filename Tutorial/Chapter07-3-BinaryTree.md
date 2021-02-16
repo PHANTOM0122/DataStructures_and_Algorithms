@@ -130,7 +130,7 @@ void TreeType<ItemType>::Insert(ItemType item)
 ![image](https://user-images.githubusercontent.com/50229148/108040922-3f4c7700-7081-11eb-9c13-7fc69f916654.png)
 3) Deleting a node with two children
 ![image](https://user-images.githubusercontent.com/50229148/108040948-48d5df00-7081-11eb-989f-e5b4415eeb20.png)
-* **1,2번 경우(Delete 0 or 1 child)**
+#### 1,2번 경우(Delete 0 or 1 child)
 ![image](https://user-images.githubusercontent.com/50229148/108041852-72dbd100-7082-11eb-9d99-336ad444fcd2.png)
 <pre><code>
 void DeleteNode(TreeNode *& tree){
@@ -142,4 +142,16 @@ if(tree->left == NULL){
  else if(tree->right == NULL){
  tree = tree->left; delete tempPtr;}
 }}</code></pre>
-* **3번 경우(Delete 2 child)**
+#### 3번 경우(Delete 2 child)
+* **Find predecessor(left subtree에서 가장 오른쪽(rightmost) Node! -> leftsub에서 가장 큰 원소) or 반대로 오른쪽에서 가장 작은 node!**
+* 지워질 data를 predecessor로 대체
+* delete predecessor node!
+![image](https://user-images.githubusercontent.com/50229148/108042360-0a412400-7083-11eb-8f9d-77bcc17cb04b.png)
+<pre><code>
+void DeleteNode(TreeNode *& tree){
+Itemtype Data; TreeNode * tempPtr = tree;
+else{
+  GetPredecessor(tree->left,data);
+  tree->info = data;
+  Delete(tree->left,data);}
+}</code></pre>
