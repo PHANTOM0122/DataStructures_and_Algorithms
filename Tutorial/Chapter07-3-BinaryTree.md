@@ -85,3 +85,22 @@ int TreeType<ItemType>::LengthIs() const
 	else {
 		return LengthIs(root->left) + LengthIs(root->right) + 1;}
 }</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/108039702-cac50880-707f-11eb-81e9-743d7328a313.png)
+> **Function RetrieveItem**
+* Recursive fucntion
+* Base: **1)item found! 2)Tree is empty(item not found!)**
+* General: **search left or right subtrees**
+<pre><code>
+template<class ItemType>
+void TreeType<ItemType>::RetrieveItem(ItemType& item, bool& found)
+{	if (root == NULL) // base Case 2 - not found!
+		found = false;
+	else if (item < root->Info) // General case - 기준보다 작을때
+		RetrieveItem(root->left, found); 
+	else if (item > root->Info) // General case - 기준보다 클때
+		RetrieveItem(root->right, found);
+	else { // base case 1 - Found!
+		item = root->Info;
+		found = true;}
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/108040099-3c04bb80-7080-11eb-8773-dda4b9e69a2b.png)
