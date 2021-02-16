@@ -146,6 +146,7 @@ if(tree->left == NULL){
 * **Find predecessor(left subtree에서 가장 오른쪽(rightmost) Node! -> leftsub에서 가장 큰 원소) or 반대로 오른쪽에서 가장 작은 node!**
 * 지워질 data를 predecessor로 대체
 * delete predecessor node!
+
 ![image](https://user-images.githubusercontent.com/50229148/108042360-0a412400-7083-11eb-8f9d-77bcc17cb04b.png)
 <pre><code>
 void DeleteNode(TreeNode *& tree){
