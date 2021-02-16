@@ -302,3 +302,62 @@ void TreeType::GetNextItem(ItemType& item, orderType order, bool& finished){
      }
 } </code></pre>
 # Iterative version
+<pre><code>
+void FindNode(TreeNode* tree, ItemType item, TreeNode* nodePtr, TreeNode* parentPtr) { 
+	nodePtr = tree;
+	parentPtr = nullptr; // tree -> root
+	bool found = false;
+	while (nodePtr != NULL && !found) {
+		if (item < nodePtr->info) {
+			parentPtr = nodePtr;
+			nodePtr = nodePtr->left;
+		}
+		else if (item > nodePtr->info) {
+			parentPtr = nodePtr;
+			nodePtr = nodePtr->right;
+		}
+		else {
+			found = true;
+		}
+	}
+}
+
+void TreeType::InsertItem(ItemType item) {
+	TreeNode* newnode;
+	TreeNode* nodeptr;
+	TreeNode* parentptr;
+	newnode = new TreeNode;
+	newnode->info = item;
+	newnode->left = NULL;
+	newnode->right = NULL;
+	FindNode(root, item, nodeptr, parentptr); 
+	if (parentptr == NULL) // Empty!
+		root = newnode;
+	else if (item < parentptr->info) 
+		parentptr->left = newnode; // 기준보다 작으면 왼쪽에 attach
+	else
+		parentptr->right = newnode; // 기준보다 크면 오른쪽에 attach
+}
+
+void TreeType::DeleteItem(ItemType item) {
+	TreeNode* nodeptr;
+	TreeNode* parentptr;
+	FindNode(root, item, nodeptr, parentptr);
+	if (nodeptr == root)
+		DeleteNode(root);
+	else {
+		if (parentptr->left == nodeptr)
+			DeleteNode(parentptr->left);
+		else
+			DeleteNode(parentptr->right);
+	}
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/108075080-47baa700-70ad-11eb-8cfa-29f2b45cb17f.png)
+![image](https://user-images.githubusercontent.com/50229148/108075514-cd3e5700-70ad-11eb-85f0-ddea2a6546c5.png)
+
+## Array representation
+* **Tree.nodes[index]**
+* **left child : tree.node[ index * 2 + 1 ]**
+* **right child : tree.node[ index * 2 + 2 ]**
+* **its parent : tree.node[ (index-1) / 2]**
+![image](https://user-images.githubusercontent.com/50229148/108075456-bb5cb400-70ad-11eb-87cc-3e718677af77.png)
