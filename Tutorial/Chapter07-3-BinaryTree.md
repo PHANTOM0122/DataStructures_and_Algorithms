@@ -212,7 +212,21 @@ if (tree != NULL) {
 	Destroy(tree->right);
 	delete tree;}
 }
+	
 template<class ItemType>
 TreeType<ItemType>::~TreeType()
  { Delete(root);}
+}
+
+TreeType::TreeType(const TreeType& originalTree)
+{CopyTree(root, originalTree.root);}
+
+void CopyTree(TreeNode*& copy,const TreeNode* originalTree){
+ if (originalTree == NULL)
+    copy = NULL;
+ else{
+ copy = new TreeNode;
+ copy-->info = originalTree --> info;
+ CopyTree(copy-->left, originalTree -->left);
+ CopyTree(copy-->right, originalTree -->right);}
 }</code></pre>
