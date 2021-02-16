@@ -260,3 +260,46 @@ void PreOrder(TreeNode* tree, QueType& preQue){
   preOrder(tree->left, preQue);
   preOrder(tree->right, preQue);}
 }</code></pre>
+
+# Iterative version
+#### Modification of Class TreeType
+<pre><code>
+enum OrderType{PRE_ORDER, IN_ORDER, POST_ORDER}
+class TreeType{
+  public:
+  // Same as before
+  private:
+    TreeNode * root;
+    QueType preQue;
+    QueType inQue;
+    QueType postQue;
+};</code></pre>
+> **Function ResetTree**
+* calls function to create a queue of the tree elements in the desired order
+<pre><code>
+void TreeType::ResetTree(orderType order){
+  switch(order){
+    case PRE_ORDER : PreOrder(root,preQue); break;
+    case IN_ORDER : InOrder(root, inQue); break;
+    case POST_ORDER : PostOrder(root, postQue); break;
+  }
+}</code></pre>
+> **Function GetNextItem**
+<pre><code>
+void TreeType::GetNextItem(ItemType& item, orderType order, bool& finished){
+  finished = false;
+  switch(order){
+    case PRE_ORDER : PreQue,Dequeue(item);
+    	  	     if(preQue.empty())
+		       finished = true;
+		     break;
+    case IN_ORDER : InQue,Dequeue(item);
+    	  	     if(inQue.empty())
+		       finished = true;
+		     break;
+    case POST_ORDER : PostQue,Dequeue(item);
+    	  	     if(postQue.empty())
+		       finished = true;
+		     break;
+     }
+} </code></pre>
