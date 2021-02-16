@@ -150,8 +150,9 @@ if(tree->left == NULL){
 ![image](https://user-images.githubusercontent.com/50229148/108042360-0a412400-7083-11eb-8f9d-77bcc17cb04b.png)
 <pre><code>
 void DeleteNode(TreeNode *& tree){
-Itemtype Data; TreeNode * tempPtr = tree;
-else{
+Itemtype Data; 
+TreeNode * tempPtr = tree;
+else{ // 기존 tree의 값은 getpredecessor 함수를 통해 얻은 새 data값으로 대입!
   GetPredecessor(tree->left,data);
   tree->info = data;
   Delete(tree->left,data);}
@@ -162,8 +163,8 @@ while(tree->right != NULL){
   tree = tree->right; data = tree->info; 
 }
 
-template<class ItemType>
-void TreeType<ItemType>::Delete(TreeNode * &tree, ItemType item)
+template< class ItemType >
+void TreeType<ItemType>::Delete(TreeNode * &tree, ItemType item) // item을 tree에서 삭제
 {
 	if (item < tree->info) {
 		Delete(tree->left, item);
@@ -175,5 +176,10 @@ void TreeType<ItemType>::Delete(TreeNode * &tree, ItemType item)
 		DeleteNode(tree);
 	}
 }
-
+	
+template< class ItemType >
+void TreeType<ItemType>::Delete(ItemType item)
+{
+   Delete(root, item);
+}
 </code></pre>
