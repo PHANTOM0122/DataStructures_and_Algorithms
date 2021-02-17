@@ -47,3 +47,40 @@ struct HeapType {
 	ItemType* elements; // Array to be allocated dynamically
 	int numElements;
 };</code></pre?
+![image](https://user-images.githubusercontent.com/50229148/108170542-9fa0ee80-713d-11eb-832d-9f6fca615043.png)
+#### Dequeue
+* **step1) root에 반환 item 값 대입**
+* **step2) root에 last leaf element assign**
+* **step3) length--**
+* **step4) reheapdown**
+<pre><code>
+void PQtype<ItemType>::Dequeue(ItemType& item)
+{
+	if (IsEmpty()) {
+		throw EmptyQueue();
+	}
+	else {
+		item = items.elements[0]; // item에 root assign
+		items.elements[0] = items.elements[length - 1]; // items[0]에 [length-1] 대입
+		length--;
+		items.ReheapDown(0, length - 1); // Heap priority reset!
+	}
+}</code></pre>
+#### Enqueue
+* **step1) length++**
+* **step2) reheapUp**
+<pre><code>
+void PQtype<ItemType>::Enqueue(ItemType newitem)
+{
+	if (IsFull()) {
+		throw FullQueue();
+	}
+	else {
+		length++;
+		items.elements[length-1] = newitem;
+		items.REheapUp(0, length-1);
+	}
+}</code></pre>
+
+## Time comparision
+![image](https://user-images.githubusercontent.com/50229148/108170958-29e95280-713e-11eb-992b-1e45443329db.png)
