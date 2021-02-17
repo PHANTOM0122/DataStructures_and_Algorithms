@@ -70,9 +70,13 @@ void HeapType<ItemType>::ReheapDown(int root, int bottom) // bottom : rightmost 
 	}
 }</code></pre>
 > **Removing largest element from the heap**
-  * tep1) last level rightmost element를 root에 복사
+  * step1) last level rightmost element를 root에 복사
   * step2) Delete rightmost element
   * step3) reheapDown을 통해 heap priority 재설정!
 ![image](https://user-images.githubusercontent.com/50229148/108167360-ea6c3780-7138-11eb-9bfd-5a1a65420d55.png)
 ![image](https://user-images.githubusercontent.com/50229148/108167368-eb9d6480-7138-11eb-9e8a-65864742d104.png)
 ![image](https://user-images.githubusercontent.com/50229148/108167371-ecce9180-7138-11eb-8d8e-8959320eae14.png)
+> **Insert new element to the heap**
+  * step1) last level rightmost next에 new element insert
+  * step2) reheapUp을 통해 heap priority 재설정!
+![image](https://user-images.githubusercontent.com/50229148/108167912-c78e5300-7139-11eb-8d6b-850524086e0d.png)
