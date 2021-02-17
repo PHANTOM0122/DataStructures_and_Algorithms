@@ -37,3 +37,35 @@ void HeapType<ItemType>::REheapUp(int root, int bottom)
 		}
 	}
 }</code></pre>
+> **ReheapDown function**
+  * **Deleteitem으로 인해 root에 가장 biggest value가 없는 경우**
+  * **parent와 child(left,right 중 큰 것)과 swap!!**
+  ![image](https://user-images.githubusercontent.com/50229148/108165948-c90a4c00-7136-11eb-9270-ea4be4712739.png)
+<pre><code>
+template<class ItemType>
+void HeapType<ItemType>::ReheapDown(int root, int bottom) // bottom : rightmost int the last level -> array last elem
+{
+	int maxChild;
+	int rightChild;
+	int leftChild;
+
+	leftChild = root * 2 + 1;
+	rightChild = root * 2 + 2;
+
+	if (leftChild <= bottom) { // left child가 존재하는 경우
+		if (leftChild == bottom) { // one child(==left child)
+			maxChild = leftChild;
+		}
+		else { // Two children!
+			if (elements[leftChild] < elements[rightChild])
+				maxChild = rightChild;
+			else
+				maxChild = leftChild; 
+		}
+
+		if (elements[root] < elements[maxChild]) {// case that violate heap priority
+			swap(elements[root], elements[maxChild]);
+			ReheapDown(maxChild, bottom); // Recursive
+		}
+	}
+}</code></pre>
