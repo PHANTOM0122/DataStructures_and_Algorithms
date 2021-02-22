@@ -14,3 +14,16 @@ void SequenceSearch(int* a, int length, int target) {
 	}
 	if (!found){cout << "Can't found!" << endl;}
 }</code></pre>
+
+## 이진탐색(Binary search)
+* **이진 탐색은 배열 내부 데이터가 이미 정렬되어 있는 상황에서 사용 가능한 알고리즘이다.**
+* **탐색 범위를 절반씩 좁혀가며 데이터를 탐색하는 특징이 있다 -> O(logN)**
+![image](https://user-images.githubusercontent.com/50229148/108699639-d2395580-7548-11eb-8948-e5546a0b58b1.png)
+<pre><code>
+int Binarysearch(vector<int> a, int start, int end, int target) {
+	if (start > end)return -1;
+	int mid = (start + end) / 2;
+	if (target > a[mid]) return Binarysearch(a, mid+1, end, target);
+	else if (target < a[mid]) return Binarysearch(a, start, mid-1, target);
+	else return mid;
+}</code></pre>
