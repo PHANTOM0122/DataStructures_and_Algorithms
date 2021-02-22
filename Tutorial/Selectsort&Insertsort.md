@@ -37,7 +37,7 @@ void InsertSort(vector<int>& v) {
 }
 
 void insertionSort(char* A, int n) { // n개의 문자의 배열을 정렬
-	for (int i = 1; i < n; i++) { // 삽입 루프
+	for (int i = 1; i < n-1; i++) { // 삽입 루프
 		char cur = A[ i ]; // 삽입하려는 현재의 문자
 		int j = i - 1; // 바로 앞의 문자에서 시작
 		while ((j >= 0) && (A[ j ] > cur)) { // A[ j ]가 순서에 어긋나 있는 동안
