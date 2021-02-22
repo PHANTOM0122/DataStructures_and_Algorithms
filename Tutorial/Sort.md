@@ -86,3 +86,17 @@ int main() {
 }</code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/108653026-d5145600-7508-11eb-97ab-af582a963227.png)
 ![image](https://user-images.githubusercontent.com/50229148/108653051-e1001800-7508-11eb-81d7-984e2d50045e.png)
+
+## 기수 정렬(Radix sort)
+* **기수 정렬은 자릿수를 기준으로 차례대로 데이터를 정렬하는 알고리즘이다.**
+* **각 데이터를 자릿수를 기준으로 분류하므로 가장 큰 자릿수를 D(ex 345의 경우 3자리수), O(DN)의 시간 복잡도를 가진다.
+* 아래와 같이 **마지막 원소부터 정렬을 시작하여 누적배열의 누적 value를 (index+1)로 하여 해당 위치에 들어가고 누적배열 값은--**
+![image](https://user-images.githubusercontent.com/50229148/108654394-ee6ad180-750b-11eb-8c3e-de1ea2faa9d7.png)
+![image](https://user-images.githubusercontent.com/50229148/108654411-f7f43980-750b-11eb-85d5-d75483c3484c.png)
+![image](https://user-images.githubusercontent.com/50229148/108654432-03476500-750c-11eb-8b73-a96c7114234a.png)
+![image](https://user-images.githubusercontent.com/50229148/108654712-9aacb800-750c-11eb-847a-b7fada71dc28.png)
+![image](https://user-images.githubusercontent.com/50229148/108654759-aef0b500-750c-11eb-8b83-1e5c0364e7b8.png)
+![image](https://user-images.githubusercontent.com/50229148/108654768-b6b05980-750c-11eb-81e9-cb362d760879.png)
+![image](https://user-images.githubusercontent.com/50229148/108654815-cdef4700-750c-11eb-9a4a-95c44a47c1f7.png)
+![image](https://user-images.githubusercontent.com/50229148/108654836-da739f80-750c-11eb-8762-9d72f3f01cc3.png)
+![image](https://user-images.githubusercontent.com/50229148/108654854-e1021700-750c-11eb-883e-a3e94a9de65f.png)
