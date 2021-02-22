@@ -1,4 +1,4 @@
-선택 정렬과 삽입 정렬
+Sort (다양한 정렬 방법)
 ============================
 ## 선택정렬
 * **선택정렬이란 가장 작은 것을 선택해서 앞으로 보내는 정렬 기법이다**
@@ -47,3 +47,13 @@ void insertionSort(char* A, int n) { // n개의 문자의 배열을 정렬
 		A[ j + i ] = cur; // 이곳이 cur에게 맞는 위치
 	}
 }</code></pre>
+## 퀵 정렬
+* **퀵 정렬이란 pivot을 기준으로 큰 값과 작은 값을 서로 교체하는 정렬 기법이다**
+* **값을 서로 교체하는데 N번, 엇갈린 경우 원소가 반으로 나누어지므로 원소를 나누는 데에 평균적으로 logN번이 소요되므로 O(NlogN)이다.
+* **left, right에서 시작하여 left경우   pivot보다 큰 원소를 right의 경우 pivot보다 작은 원소를 선택하여 left<right 경우 swap한다**
+* **pivot에 의해 편향된(ex 왼쪽으로 치우처짐) 경우 연산의 양이 O(N2)이다. -> algorithm 라이브러리 sort의 경우 O(NlogN)을 보장한다**
+<pre><code>
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/108651526-4c47eb00-7505-11eb-8829-e0d6986a106d.png)
+![image](https://user-images.githubusercontent.com/50229148/108651537-54078f80-7505-11eb-8ffa-355a9c238e7c.png)
+![image](https://user-images.githubusercontent.com/50229148/108651564-6386d880-7505-11eb-9025-8c68d5ac00bd.png)
