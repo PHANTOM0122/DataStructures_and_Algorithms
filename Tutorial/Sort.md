@@ -68,3 +68,11 @@ void QuickSort(int start, int end) {
 ![image](https://user-images.githubusercontent.com/50229148/108651526-4c47eb00-7505-11eb-8829-e0d6986a106d.png)
 ![image](https://user-images.githubusercontent.com/50229148/108651537-54078f80-7505-11eb-8ffa-355a9c238e7c.png)
 ![image](https://user-images.githubusercontent.com/50229148/108651564-6386d880-7505-11eb-9025-8c68d5ac00bd.png)
+
+## 계수 정렬(Counting sort)
+* **계수 정렬은 크기를 기준으로 데이터의 개수를 세는 정렬 알고리즘이다.**
+* **각 데이터를 바로 크기를 기준으로 분류하므로 O(N)이다**
+<pre><code>
+
+![image](https://user-images.githubusercontent.com/50229148/108653026-d5145600-7508-11eb-97ab-af582a963227.png)
+![image](https://user-images.githubusercontent.com/50229148/108653051-e1001800-7508-11eb-81d7-984e2d50045e.png)
