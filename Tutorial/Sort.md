@@ -100,3 +100,22 @@ int main() {
 ![image](https://user-images.githubusercontent.com/50229148/108654815-cdef4700-750c-11eb-9a4a-95c44a47c1f7.png)
 ![image](https://user-images.githubusercontent.com/50229148/108654836-da739f80-750c-11eb-8762-9d72f3f01cc3.png)
 ![image](https://user-images.githubusercontent.com/50229148/108654854-e1021700-750c-11eb-883e-a3e94a9de65f.png)
+<pre><code>
+void radixsort(int* a, int n) {
+	int result[MAX], maxValue = 0;
+	int exp = 1; // 자릿수 1의 자리부터
+	for (int i = 0; i < n; i++) {
+		if (a[i] > maxValue) maxValue = a[i]; // find Maxvalue
+	}
+
+	while (maxValue / exp > 0) { // 1의 자리부터 최고 자릿수까지 계산
+		int bucket[10] = { 0 }; // 자릿수 배열
+		for (int i = 0; i < n; i++) bucket[(a[i] / exp) % 10]++; // 자릿수 배열 처리
+		for (int i = 1; i < 10; i++) bucket[i] += bucket[i - 1]; // 누적 계산 처리
+		for (int i = n - 1; i >= 0; i--) { // 같은 자릿수 끼리는 순서를 유지. 뒤의 원소부터 시작
+			result[--bucket[(a[i] / exp) % 10]] = a[i]; // result [ 누적배열의 값-1 ]에 value입력
+		}
+		for (int i = 0; i < n; i++) a[i] = result[i]; // 기본 배열을 result배열로 갱신
+		exp *= 10; // 자릿수 증가
+	}
+}</code></pre>
