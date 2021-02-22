@@ -53,6 +53,17 @@ void insertionSort(char* A, int n) { // n개의 문자의 배열을 정렬
 * **left, right에서 시작하여 left경우   pivot보다 큰 원소를 right의 경우 pivot보다 작은 원소를 선택하여 left<right 경우 swap한다**
 * **pivot에 의해 편향된(ex 왼쪽으로 치우처짐) 경우 연산의 양이 O(N2)이다. -> algorithm 라이브러리 sort의 경우 O(NlogN)을 보장한다**
 <pre><code>
+void QuickSort(int start, int end) {
+	if (start > end) return; // 
+	int pivot = start, i = start + 1, j = end, temp; // 가장 왼쪽을 pivot이라 가정
+
+	while (i <= j) { // left <= right 일 경우에만 작동
+		while (i <= end && v[i] <= v[pivot]) i++; // i는 left에서 시작하여 v[pivot] 보다 큰 값의 index
+		while (j > start && v[j] >= v[pivot]) j--; // j는 right에서 시작하여 v[pivot] 보다 작은 값의 index
+		if (i > j) swap(v[pivot], v[j]); // left > right인 경우 pivot값과 right값 swap (right이 pivot보다 작은 값이므로!)
+		else swap(v[i], v[j]); // left<=right인 경우 left, right swap
+	}
+}
 </code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/108651526-4c47eb00-7505-11eb-8829-e0d6986a106d.png)
 ![image](https://user-images.githubusercontent.com/50229148/108651537-54078f80-7505-11eb-8ffa-355a9c238e7c.png)
