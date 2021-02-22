@@ -72,7 +72,17 @@ void QuickSort(int start, int end) {
 ## 계수 정렬(Counting sort)
 * **계수 정렬은 크기를 기준으로 데이터의 개수를 세는 정렬 알고리즘이다.**
 * **각 데이터를 바로 크기를 기준으로 분류하므로 O(N)이다**
+* **데이터의 크기가 한정적일 때 사용할 수 있다**
 <pre><code>
-
+int n, m;
+int a[MAX_VALUE];
+int main() {
+	cin >> n;
+	for (int i = 0; i < n; i++) { cin >> m; a[m]++; }
+	for (int i = 0; i < MAX_VALUE; i++) {
+		while (a[i] != 0) {cout << i << ' '; a[i]--;}
+	}
+	return 0;
+}</code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/108653026-d5145600-7508-11eb-97ab-af582a963227.png)
 ![image](https://user-images.githubusercontent.com/50229148/108653051-e1001800-7508-11eb-81d7-984e2d50045e.png)
