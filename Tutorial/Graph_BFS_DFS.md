@@ -85,3 +85,29 @@ int main() {
 }</code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/108811047-d79dab00-75ef-11eb-8fd7-950e9370d6de.png)
 ## DFS
+* **탐색을 함에 있어서 보다 깊은 것을 우선적으로 탐색하는 알고리즘이다.**
+* 전체 노드를 맹목적으로 탐색하고자 할 때 사용
+* **Stack에 기반하여 구할 수 있다**
+* **stack을 사용하지 않고도 재귀함수를 이용하여 구할 수 있으며, O(N)의 시간이 소요된다**
+> **DFS steps**
+1) **탐색 시작 노드를 stack에 삽입하고 방문처리**
+2) **스택의 최상단 노드에 방문하지 않은 인접 노드가 있으면 그 노드를 스택에 넣고 방문처리. 방문하지 않은 인접 노드가 없으면 스택에서 최상단 노드를 꺼낸다**
+3) 2번의 과정을 더 이상 수행할 수 없을 때까지 반복한다(재귀)
+![image](https://user-images.githubusercontent.com/50229148/108818549-e63e8f00-75fc-11eb-9ea7-d235132f18fb.png)
+<pre><code>
+void DFS(int index) { 
+	if (visited[index]) return;
+	else {
+		visited[index] = 1; // 방문 O
+		cout << index << " is visited!" << endl;
+		Node* cur = a[index]->next; 
+		while (cur != NULL) {
+			int nextindex = cur->index; // 다음 item의 index
+			DFS(nextindex);
+			cur = cur->next; // Recursion
+		}
+	}
+} </code></pre>
+![image](https://user-images.githubusercontent.com/50229148/108818158-56004a00-75fc-11eb-9d0b-4c1ab77aabff.png)
+
+![image](https://user-images.githubusercontent.com/50229148/108818018-20f3f780-75fc-11eb-84d1-893db093e0c8.png)
