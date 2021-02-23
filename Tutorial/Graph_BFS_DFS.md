@@ -111,3 +111,15 @@ void DFS(int index) {
 ![image](https://user-images.githubusercontent.com/50229148/108818158-56004a00-75fc-11eb-9d0b-4c1ab77aabff.png)
 
 ![image](https://user-images.githubusercontent.com/50229148/108818018-20f3f780-75fc-11eb-84d1-893db093e0c8.png)
+
+## BFS
+* **탐색을 함에 있어서 보다 너비를 우선적으로 탐색하는 알고리즘이다.**
+* 전체 노드를 맹목적으로 탐색하고자 할 때 사용
+* **Queue에 기반하여 구할 수 있다**
+* **고급 그래프 탐색 알고리즘에 자주 활용된다!**
+* **O(N)의 시간 복잡도를 가진다**
+> **BFS steps**
+1) **탐색 시작 노드를 큐에 삽입하고 방문 처리를 한다**
+2) **큐에서 노드를 꺼내 해당 노드의 인접 노드 중에서 방문하지 않은 노드들을 모두 큐에 삽입하고, 방문 처리를 한다**
+3) 2번의 과정을 더 이상 수행할 수 없을 때까지 반복한다(재귀)
+![image](https://user-images.githubusercontent.com/50229148/108820486-97462900-75ff-11eb-947e-8980080d6b99.png)
