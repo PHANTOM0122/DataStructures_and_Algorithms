@@ -122,4 +122,64 @@ void DFS(int index) {
 1) **탐색 시작 노드를 큐에 삽입하고 방문 처리를 한다**
 2) **큐에서 노드를 꺼내 해당 노드의 인접 노드 중에서 방문하지 않은 노드들을 모두 큐에 삽입하고, 방문 처리를 한다**
 3) 2번의 과정을 더 이상 수행할 수 없을 때까지 반복한다(재귀)
+
 ![image](https://user-images.githubusercontent.com/50229148/108820486-97462900-75ff-11eb-947e-8980080d6b99.png)
+
+<pre><code>
+struct Queue {
+	Node* front;
+	Node* rear;
+	int count; // 원소의 갯수
+};
+
+void queuePush(Queue* queue, int index) {
+	Node* temp = new Node;
+	temp->index = index;
+	temp->next = NULL;
+	if (queue->count == 0) { // queue is empty!
+		queue->front = temp; // 비어있으면 front에 삽입
+	}
+	else {
+		queue->rear->next = temp; // rear에 삽입
+	}
+
+	queue->rear = temp; // front에 삽입한 경우 때문
+	queue->count++; // 갯수 증가
+}
+
+int queuePop(Queue* queue) {
+	if(queue->count==0) // empty
+	{
+		cout << "EmptyQueue!";
+	}
+
+	Node* temp = queue->front;
+	int index = temp->index;
+	queue->front = temp->next; // front한칸 뒤로 이동!
+	delete temp;
+	queue->count--;
+	return index;
+}
+
+void BFS(int start) {
+	Queue q;
+	q.front = q.rear = NULL;
+	q.count = 0;
+	queuePush(&q, start); // start index Queue 삽입
+	visited[start] = 1; // 방문기록남김
+	while (q.count != 0) {
+		int x = queuePop(&q); // print current index 
+		cout << x << " is visited!" << endl;
+		
+		Node* cur = a[x]->next; // next element
+		while (cur != NULL) {
+			int next = cur->index;
+			if (!visited[next]) { // 다음번 원소를 처음 방문시
+				queuePush(&q, next); // index를 queue에 삽입
+				visited[next] = 1;
+			}
+			cur = cur->next;
+		}
+	}
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/108822594-a4184c00-7602-11eb-8479-2b4404468f16.png)
