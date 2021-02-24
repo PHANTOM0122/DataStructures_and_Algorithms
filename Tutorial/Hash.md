@@ -17,7 +17,65 @@ Hash
 ### 선형 조사법
 ![image](https://user-images.githubusercontent.com/50229148/108973181-692c1c00-76c7-11eb-9afb-b592bb0afcd5.png)
 * 충돌이 발생하기 시작하면 유사한 값을 가지는 데이터끼리 서로 밀집되는 집중 결합이 발생한다는 문제점이 있다
+<pre><code>
+struct Student {
+	int id;
+	string name;
+};
+void init(Student** hashTable)
+{
+	for (int i = 0; i < TABLE_SIZE; i++) {
+		hashTable[i] = NULL;
+	}
+}
 
+void destructor(Student** hashTable) {
+	for (int i = 0; i < TABLE_SIZE; i++) {
+		if (hashTable[i] != NULL)
+			delete hashTable[i];
+	}
+}
+
+// Empty 공간의 index return
+int findEmpty(Student** hashTable, int id)
+{
+	int i = id % TABLE_SIZE;
+	while (1) {
+		if (hashTable[i] == NULL) { // Break; 
+			return i % TABLE_SIZE;
+			break;
+		}
+		i++; // if hashTable[i] isn't empty!
+	}
+}
+
+int search(Student** hashTable, int id)
+{
+	int i = id & TABLE_SIZE;
+	while (1) {
+		if (hashTable[i % TABLE_SIZE] == NULL) return -1; // empty!
+		else if (hashTable[i % TABLE_SIZE]->id == id) return i; // id가 아닌 hash값이 같은 id가 존재하는 경우 생각
+		i++;
+	}
+}
+
+void add(Student** hashTable, Student* input, int key)
+{
+	hashTable[key] = input;
+}
+
+Student* getValue(Student** hashTable, int key) {
+	return hashTable[key];
+}
+
+void print(Student** hashTable)
+{
+	for (int i = 0; i < TABLE_SIZE; i++) {
+		if (hashTable[i] != NULL) {
+			cout << "키: [" << i << "].  이름: " << hashTable[i]->name << endl;
+		}
+	}
+}</code></pre>
 ### 이차 조사법
 * **선형 조사법을 약간 변형한 형태로 key를 선택할 때 완전 제곱수를 더해 나가는 방식이다**
 * 테이블의 크기가 가득 차면, 크기를 확장하여 계속해서 테이블을 유지
