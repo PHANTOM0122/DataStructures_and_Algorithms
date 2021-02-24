@@ -26,4 +26,58 @@ Hash
 * **체이닝 기법은 연결 리스트를 활용해 특정한 키를 가지는 항목들을 연결하여 저장**
 * **연결리스트를 사용한다는 점에서 삽입과 삭제가 용이. 동적할당을 통해 크기 재설정 용이.**
 ![image](https://user-images.githubusercontent.com/50229148/108973702-02f3c900-76c8-11eb-9f06-32ef5a1caa1d.png)
+<pre><code>
+struct Student {
+	int id;
+	char name[20];
+};
 
+struct Bucket {
+	Student* data;
+	Bucket* next;
+};
+
+void constructor(Bucket** hashTable)
+{
+	for (int i = 0; i < TABLE_SIZE; i++) {
+		hashTable[i] = NULL;
+	}
+}
+
+void destructor(Bucket** hashTable) {
+	for (int i = 0; i < TABLE_SIZE; i++) {
+		if (hashTable[i] != NULL) {
+			delete hashTable[i];
+		}
+	}
+}
+
+int isExist(Bucket** hashTable, int id)
+{
+	int i = id % TABLE_SIZE;
+	if (hashTable[i] == NULL) return 0;
+	else {
+		Bucket* cur = hashTable[i];
+		while (cur != NULL) {
+			if (cur->data->id == id) { return i; break; }
+			cur = cur->next;
+		}
+	}
+	return 0; // not Found!
+}
+
+void add(Bucket** hashTable, Student* input) // addFront!
+{
+	int i = input->id % TABLE_SIZE;
+	if (hashTable[i] == NULL) { // empty table에 삽입
+		hashTable[i] = new Bucket;
+		hashTable[i]->data = input;
+		hashTable[i]->next = nullptr;
+	}
+	else { // exist한 hash에 삽입
+		Bucket* cur = new Bucket;
+		cur->data =input;
+		cur->next = hashTable[i];
+		hashTable[i] = cur;
+	}
+}</code></pre>
