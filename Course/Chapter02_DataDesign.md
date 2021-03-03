@@ -25,7 +25,7 @@ Data Design and Implementation
 2) **Unstructed: not organized(순서가 없는) data type. Ex) classes, structs**
 
 ## Record at logical level
-* **Record: composite data type으로서, 동일한 종류의 elements를 가질 필요는 없다** (Array와 대비된다)
+* **Record: 유한한 갯수의 elements의 모음. composite data type, 동일한 종류의 elements를 가질 필요는 없다** (Array와 대비된다)
 <pre><code>
 struct CarType{
   int year;
