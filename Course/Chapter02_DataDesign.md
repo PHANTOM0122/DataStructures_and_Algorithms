@@ -23,3 +23,16 @@ Data Design and Implementation
 ## Two forms of Composite Data types
 1) **Structed: 일정한 순서로 data가 조직화되어 있어서, organization에 따라 access 방법이 달라진다 Ex) Array**
 2) **Unstructed: not organized(순서가 없는) data type. Ex) classes, structs**
+
+## Record at logical level
+* **Record: composite data type으로서, 동일한 종류의 elements를 가질 필요는 없다** (Array와 대비된다)
+<pre><code>
+struct CarType{
+  int year;
+  char name[10];
+  float price;
+};</code></pre>
+* . 연산자를 이용하여 struct member에 접근이 가능하다
+* valid struct operations : = (등호), pass as parameter(입력), return(출력) 값으로 될 수 있다
+**구조체, class는 기본적으로 parameter로 전달될 시 pass by value로 진행된다. 따라서 & 를 이용하여 pass by reference를 이용하기도 한다**
+
