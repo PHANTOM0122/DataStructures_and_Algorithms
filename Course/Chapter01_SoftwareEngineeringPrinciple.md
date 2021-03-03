@@ -49,4 +49,4 @@ Software engineering principle
 1) **Robustness: 에러가 발생하더라도 죽지 않는 견고한 프로그램을 만드는 것이 중요하다**
 2) **Preconditions: postconditions이 참이라 할 때, 함수나 연산의 초기 입력값이 참이라고 가정**
 3) **Postconditions: preconditions이 참이라 할 때, 함수나 연산에 의해 results를 예측하는 것.
-** pre&post condition 모두 valitation의 문제이다. 
+**pre&post condition 모두 valitation의 문제이다. -> 우연히 test case를 통과한 경우를 대비 수학적으로 증명 노력 -> 쉽지는 않다** 
