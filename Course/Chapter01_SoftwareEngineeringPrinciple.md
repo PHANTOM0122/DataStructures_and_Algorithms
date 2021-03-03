@@ -35,13 +35,18 @@ Software engineering principle
 * object-oriented: nouns를 강조 -> **focus on Data objects**
 
 > **verification vs validation**
-* **verification : 일을 올바르게 하고 있는가?**
-* **validation: 일을 spec대로 만들고 있는가?**
+* **verification : 설계/개발 출력 결과가 해당 단계의 입력 요구사항에 적합한지를 확인하는 평가 절차**
+* **validation: 최종 설계/개발 결과물이 사용자 요구사항과 사용 목적에 적합한지를 확인하는 과정**
 
 > **Types of Errors**
   1) specification : 기능 설명 오류
   2) design : 설계 오류
   3) coding : 구현 오류
   4) input : Test case를 잘 못 만든 경우
-** 단계가 내려갈수록 비용이 증가한다 -> 에러는 초기에 발견하는 것이 중요하다**
-  
+**단계가 내려갈수록 비용이 증가한다 -> 에러는 초기에 발견하는 것이 중요하다**
+
+> **Controlling Errors**
+1) **Robustness: 에러가 발생하더라도 죽지 않는 견고한 프로그램을 만드는 것이 중요하다**
+2) **Preconditions: postconditions이 참이라 할 때, 함수나 연산의 초기 입력값이 참이라고 가정**
+3) **Postconditions: preconditions이 참이라 할 때, 함수나 연산에 의해 results를 예측하는 것.
+** pre&post condition 모두 valitation의 문제이다. 
