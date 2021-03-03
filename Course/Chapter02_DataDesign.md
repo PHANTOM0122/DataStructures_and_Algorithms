@@ -53,3 +53,17 @@ int a = 4; int b[a]; -> 안되는 이유: a의 값은 compile시 결정되는데
 ![image](https://user-images.githubusercontent.com/50229148/109773384-7bb3d180-7c42-11eb-929d-abe95e27386a.png)
 
 ## 2차원 배열의 logical level
+* **Array operation: creation, storing value, retrieving value. -> assign(=)은 불가하다, return type이 될 수도 없다**
+* [ row ] [ col ]을 이용하여 component position에 접근가능하다
+* memory는 linear 함으로, 2차원 배열을 저장할 시 row major. column major방식이 존재한다(아래와 같이 row major를 많이 사용)
+![image](https://user-images.githubusercontent.com/50229148/109773827-fb41a080-7c42-11eb-957e-da4a6736b109.png)
+
+## C++ class data type
+* **class: unsturcted type으로써 data member와 member function을 encapsulate한 data type이다**
+* client: class와 객체를 이용하는 software
+* 선언 헤더 파일과 구현 파일을 분리하여 사용 -> client에게는 header파일만 보여주면 된다
+* :: 연산자를 이용하여 class member fuction에 접근할 수 있다
+> Three inter-related constructs
+  * class: object 구조를 결정한다
+  * object: 기본적인 run-time 요소
+  * inheritance: 상속을 통해 is-a relation ship 형성. **다형성(polymorphism의 경우 runtime시 결정)**
