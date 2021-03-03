@@ -36,3 +36,16 @@ struct CarType{
 * valid struct operations : = (등호), pass as parameter(입력), return(출력) 값으로 될 수 있다
 **구조체, class는 기본적으로 parameter로 전달될 시 pass by value로 진행된다. 따라서 & 를 이용하여 pass by reference를 이용하기도 한다**
 
+> Records at Implementation level
+* 실행하기 위해서는 메모리 공간을 할당 받아야 한다
+* **Base address: first cell of record의 memory address**
+* Member-length-offset-table을 이용하여 메모리 주소 계산 가능
+
+## 1차원 배열의 logical level
+* **1차원 배열은 finited,fixed size,homogenous elements 해야한다**
+* **상대적인 위치가 존재하며, 어떤 elements도 즉시 access가 가능하다**
+* **Array operation: creation, storing value, retrieving value. -> assign(=)은 불가하다**
+* **Array가 parameter로 전달될 시, 자동으로 pass by refrence로 넘어간다**
+<pre><code>
+int a = 4; int b[a]; -> 안되는 이유: a의 값은 compile시 결정되는데 array크기는 compile할 때 알려줘야 하므로 compile전에 이미 결정되어야 한다
+</code></pre>
