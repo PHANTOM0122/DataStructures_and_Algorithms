@@ -315,3 +315,10 @@ void mySortedType::RetrieveItem(ItemType& target, bool& found) {
 	}
 }
 </code></pre>
+
+## Big-O Comparision
+| OPERATION | UnsortedList | SortedList |
+|:---:|:---:|:---:|
+| RetrieveItem | O(N) | O(N)-linear search<br>O(log2(N))-Binary search|
+| InsertItem | Find: O(1) <br> Put: O(1) <br> Combined: O(1) | Find: O(N) <br> Put: O(N)(moving down!) <br> Combined: O(N) |
+| DeleteItem | Find: O(N) <br> Put: O(1) <br> Combined: O(N) | Find: O(N) <br> Put: O(N)(moving up!) <br> Combined: O(N) |
