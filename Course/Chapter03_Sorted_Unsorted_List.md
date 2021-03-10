@@ -7,7 +7,7 @@ ADTs Unsorted List and Sorted List
 
 ### Generic Data Type
 * operations are defined but types of the items being manipulated are not defined!
-> **class ItemType**
+#### class ItemType
 <pre><code>
 const int MAX_ITEMS = 5;
 enum RealtionType{LESS, EQUAL. GREATER}
@@ -49,7 +49,7 @@ void ItemType::Print(std::ostream& out) const
 }
 </code></pre>
 
-### class UnsortedType
+#### class UnsortedType
 <pre><code>
 class SortedType {
 public:
