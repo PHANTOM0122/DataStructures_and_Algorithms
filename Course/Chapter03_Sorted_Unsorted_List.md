@@ -182,7 +182,11 @@ void mySortedType::RetrieveItem(const ItemType& target, bool& found) {
 }
 
 void mySortedType::InsertItem(const ItemType& item) {
-	// Same as original!
+    if (endCursor >= MAX_ITEMS) { throw OutOfRange(); } // when list if full!
+    else {
+	   info[endCursor] = item;
+	   endCursor++;
+	}
 }
 
 void mySortedType::DeleteItem(const ItemType& target) {
