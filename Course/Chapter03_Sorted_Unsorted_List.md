@@ -134,3 +134,77 @@ void SortedType::GetNextItem(ItemType& result)
 	result = info[currentPos];
 }
 </code></pre>
+
+#### class mySortedType
+class mySortedType {
+	mySortedType(int MAX);
+	bool IsFull();
+	int LengthIs();
+	void RetrieveItem(const ItemType&, bool&);
+	void InsertItem(const ItemType& item);
+	void DeleteItem(const ItemType& target);
+	void Reset();
+	ItemType GetNextItem();
+private:
+	// int length;
+	ItemType* info;
+	int endCursor;
+	int startCursor;
+};
+
+mySortedType::mySortedType(int MAX = 10)
+{
+	int length;
+	cin >> length;
+
+	info = new ItemType[MAX];
+	startCursor = 0;
+	endCursor = length-1;
+}
+
+bool mySortedType::IsFull() { // using without length!
+	try {
+		info[endCursor++];
+		return false;
+	}
+	catch (out_of_range){
+		return true;
+	}
+}
+
+int mySortedType::LengthIs() {
+	return endCursor;
+}
+
+void mySortedType::RetrieveItem(const ItemType& target, bool& found) {
+	// Same as original!
+}
+
+void mySortedType::InsertItem(const ItemType& item) {
+	// Same as original!
+}
+
+void mySortedType::DeleteItem(const ItemType& target) {
+	int location = 0;
+	bool found = false;
+	// check whether target is in the list
+	RetrieveItem(target, found);
+
+	if (!found) { cout << "Items are not in the list!" << endl; }
+	else { // target is in the list!
+		// find location to delete
+		while (target.ComparedTo(info[location]) != EQUAL)
+			location++;
+
+		info[location] = info[endCursor];
+		endCursor--;
+	}
+}
+
+void mySortedType::Reset() {
+	startCursor = 0;
+}
+ItemType mySortedType::GetNextItem() {
+	return info[startCursor];
+	startCursor++;
+}</code></pre>
