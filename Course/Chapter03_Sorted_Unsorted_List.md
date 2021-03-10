@@ -269,3 +269,49 @@ void SortedType::DeleteItem(ItemType& target)
 	}
 	length--;
 }</code></pre>
+
+#### class mySortedType
+<pre><code>
+class mySortedType {
+public:
+	mySortedType(int max); // Same as myUnSortedType!
+	bool IsFull();// Same as myUnSortedType!
+	int LengthIs();// Same as myUnSortedType!
+	void RetrieveItem(ItemType& target, bool& found);
+	void InsertItem(const ItemType& item); // Same as UnSortedType!
+	void DeleteItem(ItemType& target); // Same as UnSortedType!
+	void ResetList(); // Same as myUnSortedType!
+	void GetNextItem(); // Same as myUnSortedType!
+private:
+	// int length;
+	ItemType* info;
+	int endCursor;
+	int startCursor;
+
+};
+
+void mySortedType::RetrieveItem(ItemType& target, bool& found) {
+	// Binary search!
+	found = false;
+	bool moreToSearch = (startCursor <= endCursor);
+
+	while (moreToSearch && !found) {
+		int midCursor = (startCursor + endCursor) / 2;
+		switch (target.ComparedTo(info[midCursor]))
+		{
+		case LESS:
+			endCursor = midCursor - 1;
+			moreToSearch = (startCursor <= endCursor);
+			break;
+		case GREATER:
+			startCursor = midCursor + 1;
+			moreToSearch = (startCursor <= endCursor);
+			break;
+		case EQUAL:
+			found = true;
+			target = info[midCursor];
+			break;
+		}
+	}
+}
+</code></pre>
