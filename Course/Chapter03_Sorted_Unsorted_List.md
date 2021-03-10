@@ -213,3 +213,59 @@ ItemType mySortedType::GetNextItem() {
 	return info[startCursor];
 	startCursor++;
 }</code></pre>
+
+#### class SortedType
+<pre><code>
+class SortedType {
+public:
+	SortedType(); // same as UnsortedType!
+	bool IsFull(); // same as UnsortedType!
+	int LengthIs(); // same as UnsortedType!
+	void RetrieveItem(ItemType& target, bool& found); // same as UnsortedType!
+	void InsertItem(const ItemType& item); 
+	void DeleteItem(ItemType& target);
+	void Reset();
+	void GetNextItem(ItemType& result);
+
+private:
+	int length;
+	ItemType info[MAX_ITEMS];
+	int currentPos;
+};
+
+void SortedType::InsertItem(const ItemType& item)
+{
+	int location = 0;
+	// find location to insert!
+	bool moreToSearch = (location < length);
+	while (moreToSearch) {
+		switch (item.ComparedTo(info[location]))
+		{
+		case LESS:
+			moreToSearch = false;
+			break;
+		case GREATER:
+			location++;
+			moreToSearch = (location < length);
+			break;
+		}
+	}
+
+	for (int idx = length; idx > location; idx--) {
+		info[idx] = info[idx - 1];
+	}
+	info[location] = item;
+	length--;
+}
+
+void SortedType::DeleteItem(ItemType& target)
+{
+	int location = 0;
+	while (target.ComparedTo(info[location]) != EQUAL) {
+		location++;
+	}
+	for (int idx = location + 1; idx < length; idx++) {
+		info[idx - 1] = info[idx];
+	}
+	length--;
+}</code></pre>
