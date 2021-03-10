@@ -136,6 +136,7 @@ void SortedType::GetNextItem(ItemType& result)
 </code></pre>
 
 #### class mySortedType
+<pre><code>
 class mySortedType {
 	mySortedType(int MAX);
 	bool IsFull();
