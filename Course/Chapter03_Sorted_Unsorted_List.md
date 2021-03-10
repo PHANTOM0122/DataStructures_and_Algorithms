@@ -49,3 +49,88 @@ void ItemType::Print(std::ostream& out) const
 }
 </code></pre>
 
+### class UnsortedType
+<pre><code>
+class SortedType {
+public:
+	SortedType();
+	bool IsFull();
+	int LengthIs();
+	void RetrieveItem(ItemType& target, bool& found);
+	void InsertItem(const ItemType& item);
+	void DeleteItem(const ItemType& target);
+	void ResetItem();
+	void GetNextItem(ItemType& result);
+private:
+	int length;
+	ItemType info[MAX_ITEMS];
+	int currentPos;
+};
+
+SortedType::SortedType()
+{
+	length = 0; currentPos = -1;
+}
+
+bool SortedType::IsFull()
+{
+	return (length == MAX_ITEMS);
+}
+
+int SortedType::LengthIs()
+{
+	return length;
+}
+
+void SortedType::RetrieveItem(ItemType& target, bool& found) // linear-search!
+{
+	bool moreToSearch;
+	int location = 0;
+	found = false;
+	moreToSearch = (location < length); // linear-search!
+	
+	while (moreToSearch && !found) {
+		switch (target.ComparedTo(info[location]))
+		{
+		case LESS:
+		case GREATER:
+			location++;
+			moreToSearch = (location < length);
+			break;
+		case EQUAL:
+			found = true;
+			target = info[location];
+			break;
+		}
+	}
+}
+
+void SortedType::InsertItem(const ItemType& item)
+{	// if list is not Full!
+	info[length] = item;
+	length++;
+}
+
+void SortedType::DeleteItem(const ItemType& target) 
+{
+	int location = 0;
+	// find location to delete!
+	while (target.ComparedTo(info[location]) != EQUAL) {
+		location++;
+	}
+
+	info[location] = info[length - 1];
+	length--;
+}
+
+void SortedType::ResetItem()
+{
+	currentPos = -1;
+}
+
+void SortedType::GetNextItem(ItemType& result)
+{
+	currentPos++;
+	result = info[currentPos];
+}
+</code></pre>
