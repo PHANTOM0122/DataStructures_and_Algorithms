@@ -314,6 +314,33 @@ void mySortedType::RetrieveItem(ItemType& target, bool& found) {
 		}
 	}
 }
+
+void mySortedType::InsertItem(const ItemType& item) {
+	int location = 0;
+	// find location to insert!
+	bool moreToSearch = (location < endCursor);
+	while (moreToSearch) {
+		switch (item.ComparedTo(info[location]))
+		{
+		case LESS:
+			moreToSearch = false;
+			break;
+		case GREATER:
+			location++;
+			moreToSearch = (location < endCursor);
+			break;
+		}
+	}
+
+	try {
+		for (int idx = endCursor+1; idx > location; idx--) {
+			info[idx] = info[idx - 1];
+		}
+		info[location] = item;
+		endCursor--;
+	}
+	catch (FullList) {}
+}
 </code></pre>
 
 ## Big-O Comparision
