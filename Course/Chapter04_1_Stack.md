@@ -110,4 +110,5 @@ Ex) Myclass.h -> a.cpp(define Myclass), b.cpp(Using Myclass)에서 사용한다 
 -> **전체에서 같이 실행되는 파일 중에서 main함수는 1개만 있어야 한다!**
 
 ## Address in Memory!
-* **address binding: 
+* **address binding: variable name(문자)와 variable value가 저장된 메모리의 주소를 묶는 것을 의미한다**
+* 
