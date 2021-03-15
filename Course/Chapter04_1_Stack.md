@@ -113,4 +113,27 @@ Ex) Myclass.h -> a.cpp(define Myclass), b.cpp(Using Myclass)에서 사용한다 
 * **address binding: variable name(문자)와 variable value가 저장된 메모리의 주소를 묶는 것을 의미한다**
 * X는 2000번, number는 2002번, ch는 2006번과 같은 의미이다!
 ![image](https://user-images.githubusercontent.com/50229148/111113223-cb7c8c00-85a4-11eb-8f71-b20f4aef2f14.png)
+* **&(referencing operator): variable의 address를 get!**
+* ** * (dereferecing operator): 가리키는 address의 value를 get!**
+* Null, nullptr : 아무것도 안 가리키는 pointer! -> if * ptr = nullptr, * ptr = 2 (Error!발생!) -> nullptr에 값을 정해줄 수 없다!
 
+## Allocation of memory!
+1) STATIC ALLOCATION 
+* **compile time**동안 메모리가 할당된다. 
+* **STATIC DATA: 프로그램 시작시 memory가 할당되어 생성되며, 프로그램 종료시 destroy된다. **
+2) AUTOMATIC ALLOCATION 
+* **AUTOMATIC DATA: 함수가 실행 시 생성되며, 함수 실행동안 살아있으며, return후 종료 시 소멸된다.**
+3) DYANAIC ALLOCATION
+* **DYNAMIC DATA: new라는 operator가 실행되면서 메모리가 할당된다. 이것은 프로그램이 끝나도 자동으로 destroy되지 않는다. 반드시 delete연산자가 실행되어야 destroy된다!**
+* 만약 메모리가 부족하여 메모리 할당을 못 해주는 경우, null pointer가 할당된다!
+* ** 배열을 delete 하는 경우, delete p가 아닌 delete p[]라고 나타낸다!**
+#### Exmaple)
+<pre><code>
+void f(){
+int x; // 함수가 실행 시 memory가 할당된다. 함수 종료시, 자동으로 destroy!
+static int y; // 변수y의 주소가 고정된다. 프로그램이 끝나도, 함수가 종료되도 y의 주소는 변하지 않는다!
+}
+
+int * p = new int (100); // p는 배열의 첫 원소를 가리킨다. new int(100)의 경우는 이름이 없는 변수이다(anonymous variable)!
+</code></pre>
+ 
