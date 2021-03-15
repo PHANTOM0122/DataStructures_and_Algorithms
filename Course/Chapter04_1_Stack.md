@@ -111,4 +111,6 @@ Ex) Myclass.h -> a.cpp(define Myclass), b.cpp(Using Myclass)에서 사용한다 
 
 ## Address in Memory!
 * **address binding: variable name(문자)와 variable value가 저장된 메모리의 주소를 묶는 것을 의미한다**
-* 
+* X는 2000번, number는 2002번, ch는 2006번과 같은 의미이다!
+![image](https://user-images.githubusercontent.com/50229148/111113223-cb7c8c00-85a4-11eb-8f71-b20f4aef2f14.png)
+
