@@ -19,7 +19,7 @@ public:
 class EmptyStack{
 public:
 	EmptyStack() {
-		std::cout << "Full Stack! " << "\n";
+		std::cout << "Empty Stack! " << "\n";
 	}
 };
 
@@ -88,3 +88,19 @@ ItemType StackType<ItemType>::Top()
 	return items[top];
 }
   </code></pre>
+
+## class Template
+* **다양한 Type에 대하여 한번에 처리해 주는 기능의 generic Type!**
+> **Actual parameter & formal parameter**
+  * formal parameter : Ex) int add(int x, int y) -> ( )안이 formal parameter!
+  * Actual parameter : Ex) add(1,2) -> ( )안이 actual parameter!
+> **When creating class template, .cpp파일이 실행되는 순서**
+ 1) '#'들을 코드에서 제거
+ 2) C++ 컴파일러가 실행
+ 3) ".obj" 파일이 생성 -> Library와의 Link를 통해 ".exe" 파일이 생성된다.
+ #### Exmaple) class template의 작동 메커니즘
+ <pre><code> 
+ Before) template <class T> class M{T xx;}(class-form); -> compiler가 actual-instance generate! -> After) class M<int>{ int xx;}(actual-instance);
+ </code></pre>
+
+ 
