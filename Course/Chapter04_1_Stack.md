@@ -102,6 +102,9 @@ ItemType StackType<ItemType>::Top()
  <pre><code> 
  Before) template <class T> class M{T xx;}(class-form); -> compiler가 actual-instance generate! -> After) class M<int>{ int xx;}(actual-instance);
  </code></pre>
-> **Seperated compliation**
-Ex) Myclass.h -> a.cpp(define Myclass), b.cpp(Using Myclass)에서 사용한다 생각. 
+> **Seperated compliation**<br>
+Ex) Myclass.h -> a.cpp(define Myclass), b.cpp(Using Myclass)에서 사용한다 가정<br>
 -> **template 정의와 operation이 같이 있어야 actaul-instace로 바꾸기 용이하다!**
+-> a.cpp -> a.obj -> a.exe (main함수 포함 X)<br> 
+-> b.cpp -> b.obj -> a.exe (main함수 포함 O)<br>
+-> **전체에서 같이 실행되는 파일 중에서 main함수는 1개만 있어야 한다!**
