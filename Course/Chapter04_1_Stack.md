@@ -23,7 +23,7 @@ public:
 	}
 };
 
-template <class ItemType>
+template < class ItemType >
 class StackType {
 public:
 	// Constructor
@@ -40,31 +40,31 @@ private:
 	ItemType items[MAX_ITEMS];
 };
 
-template <class ItemType>
+template < class ItemType >
 StackType<ItemType>::StackType()
 {
 	top = -1;
 }
 
-template <class ItemType>
+template < class ItemType >
 bool StackType<ItemType>::IsFull()
 {
 	return (top == MAX_ITEMS - 1);
 }
 
-template <class ItemType>
+template < class ItemType >
 bool StackType<ItemType>::IsEmpty()
 {
 	return (top == -1);
 }
 
-template <class ItemType>
+template < class ItemType >
 bool StackType<ItemType>::IsLength()
 {
 	return (top + 1);
 }
 
-template <class ItemType>
+template < class ItemType >
 void StackType<ItemType>::Push(const ItemType& item)
 {
 	if (IsFull()) { throw FullStack(); }
@@ -72,7 +72,7 @@ void StackType<ItemType>::Push(const ItemType& item)
 	items[top] = item;
 }
 
-template <class ItemType>
+template < class ItemType >
 void StackType<ItemType>::Pop()
 {
 	if (IsEmpty()) {
@@ -81,7 +81,7 @@ void StackType<ItemType>::Pop()
 	top--;
 }
 
-template <class ItemType>
+template < class ItemType >
 ItemType StackType<ItemType>::Top()
 {
 	if (IsEmpty()) { throw EmptyStack(); }
