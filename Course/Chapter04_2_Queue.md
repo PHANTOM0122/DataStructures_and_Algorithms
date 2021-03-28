@@ -5,7 +5,7 @@ Queue
 - **Added at rear, removed at front (First In, First Out)**
 
 # ADT of Queue
-Transformers : Enqueue, Dequeue
+Transformers : Enqueue, Dequeue, MakeEmpty
 Observers : IsEmpty, IsFull, LengthIs
 Iterator : front, rear
 
@@ -14,3 +14,11 @@ Iterator : front, rear
   2. remove이후 array의 원소를 1칸씩 앞으로 이동시킨다 -> 시간이 많이 든다!
   3. 1&2를 해결하기 위해서는 **circular structure**를 사용하자
 
+# class QueueType
+<pre><code>
+#include "itemType.h"
+template < class Itemtype>
+class QueueType{
+  
+}
+</code></pre>
