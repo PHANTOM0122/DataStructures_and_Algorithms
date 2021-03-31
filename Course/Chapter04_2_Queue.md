@@ -76,5 +76,40 @@ void QueType< ItemType > :: Dequeue(ItemType& item) {
   front = (front+1) % maxQue; // Circular 
   item = items[ front ];
 }
-
 </code></pre>
+
+# class CountedQueueType
+<pre><code>
+class CountedQueueType : public QueueType <ItemType>{
+public:
+  CountedQueueType();
+  void Enqueue( ItemType newitem );
+  void Dequeue( ItemType& item);
+  int LengthIs() const;
+private:
+  int length; // number of items on the counted queue
+}
+
+template < class Itemtype >
+CountedType<ItemType>::CountedQueueType(){
+  length = 0;
+}
+  
+template < class Itemtype >
+int CountedType<ItemType>::LengthIs() const{
+  return length;
+}
+  
+template < class Itemtype >
+void CountedType<ItemType>::Enqueue(ItemType newItem){
+  length++;
+  QueType< ItemType >::Enqueue( newItem );
+}
+  
+template < class Itemtype >
+void CountedType<ItemType>::Dequeue(ItemType item){
+  length--;
+  QueType< ItemType >::Dequeue( item );
+}</code></pre>
+
+# palindrome!
