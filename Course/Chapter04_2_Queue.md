@@ -122,3 +122,42 @@ void CountedType<ItemType>::Dequeue(ItemType item){
 }</code></pre>
 
 # palindrome!
+<pre><code>
+#include <iostream>
+#include <string>
+#include <stack>
+#include <queue>
+
+int main(){
+  string Input;
+  getline(cin, Input); // Get string from user!
+  bool IsPalindrome = true;
+  
+  stack<char> s;
+  queue<char> q;
+  
+  for(char ch : Input){
+    if(ch == ' ') {continue;}
+    ch = toupper(ch);
+    s.push(ch);
+    q.push(ch);
+  }
+  
+  char stack_char, queue_char;
+  while (!s.empty() && !q.empty()) { // stack과 queue의 크기는 모두 같아야 하고, 비어있지 않아야 한다.
+		stack_char = s.top();
+		queue_char = q.front();
+		
+		if (stack_char != queue_char) {
+			Palindrome = false;
+			break;
+		}
+
+		s.pop();
+		q.pop();
+	}
+
+	if (Palindrome) { cout << input << " is a Palindrome!" << endl; }
+	else { cout << input << " isn't a Palindrome!" << endl; }
+}
+</code></pre>
