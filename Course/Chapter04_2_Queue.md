@@ -67,6 +67,14 @@ bool QueType< ItemType > :: IsFull () {
 
 template < class Itemtype >
 void QueType< ItemType > :: Enqueue(ItemType item) {
-  return ( rear == front );  
+  rear = (rear+1) % maxQue; // Circular
+  items[ rear ] = item;
 }
+
+template < class Itemtype >
+void QueType< ItemType > :: Dequeue(ItemType& item) {
+  front = (front+1) % maxQue; // Circular 
+  item = items[ front ];
+}
+
 </code></pre>
