@@ -13,6 +13,7 @@ Iterator : front, rear
   1. 한쪽 방향으로 rear, front가 이동하니 array 한계에 도달할 수 있다. 
   2. remove이후 array의 원소를 1칸씩 앞으로 이동시킨다 -> 시간이 많이 든다!
   3. 1&2를 해결하기 위해서는 **circular structure**를 사용하자
+![image](https://user-images.githubusercontent.com/50229148/113130136-acddec80-9256-11eb-814b-5c7cf0ec94b1.png)
 
 # class QueueType
 <pre><code>
