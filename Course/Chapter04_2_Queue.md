@@ -9,11 +9,14 @@ Transformers : Enqueue, Dequeue, MakeEmpty
 Observers : IsEmpty, IsFull, LengthIs
 Iterator : front, rear
 
-> Implementation Issue 
-  1. 한쪽 방향으로 rear, front가 이동하니 array 한계에 도달할 수 있다. 
-  2. remove이후 array의 원소를 1칸씩 앞으로 이동시킨다 -> 시간이 많이 든다!
-  3. 1&2를 해결하기 위해서는 **circular structure**를 사용하자
+# Implementation Issue 
+1. 한쪽 방향으로 rear, front가 이동하니 array 한계에 도달할 수 있다. 
+2. remove이후 array의 원소를 1칸씩 앞으로 이동시킨다 -> 시간이 많이 든다!
+3. 1&2를 해결하기 위해서는 **circular structure**를 사용하자
 ![image](https://user-images.githubusercontent.com/50229148/113130136-acddec80-9256-11eb-814b-5c7cf0ec94b1.png)
+![image](https://user-images.githubusercontent.com/50229148/113130452-0fcf8380-9257-11eb-8cc4-da0d2dbb798f.png)
+![image](https://user-images.githubusercontent.com/50229148/113130484-1827be80-9257-11eb-9da0-ec425485f207.png)
+
 
 # class QueueType
 <pre><code>
@@ -78,6 +81,11 @@ void QueType< ItemType > :: Dequeue(ItemType& item) {
   item = items[ front ];
 }
 </code></pre>
+
+
+![image](https://user-images.githubusercontent.com/50229148/113130533-24138080-9257-11eb-8933-dd8b61805315.png)
+![image](https://user-images.githubusercontent.com/50229148/113130547-283f9e00-9257-11eb-9902-91d2d679e476.png)
+
 
 # class CountedQueueType
 <pre><code>
