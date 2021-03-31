@@ -19,6 +19,17 @@ Iterator : front, rear
 #include "itemType.h"
 template < class Itemtype>
 class QueueType{
-  
+public:
+  QueType(); // default Constructor -> static allocation
+  QueType(int max); // Parameterized Constructor -> Dynamic allocation
+  ~QueType();
+  bool IsFull() const;
+  void Enqueue(ItemType item);
+  void Dequeue(ItemType& item);
+private:
+  int front;
+  int rear;
+  int maxQue;
+  ItemType* items; 
 }
 </code></pre>
