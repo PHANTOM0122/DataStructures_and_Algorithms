@@ -17,13 +17,14 @@ Iterator : front, rear
 # class QueueType
 <pre><code>
 #include "itemType.h"
-template < class Itemtype>
+template < class Itemtype >
 class QueueType{
 public:
   QueType(); // default Constructor -> static allocation
   QueType(int max); // Parameterized Constructor -> Dynamic allocation
   ~QueType();
   bool IsFull() const;
+  bool IsEmpty() const;
   void Enqueue(ItemType item);
   void Dequeue(ItemType& item);
 private:
@@ -31,5 +32,41 @@ private:
   int rear;
   int maxQue;
   ItemType* items; 
+}
+
+template < class Itemtype >
+QueType< ItemType > :: QueType () {
+  maxQue = 100 // Default size of array!
+  front = maxQue - 1;
+  rear = maxQue - 1;
+  items = new ItemType(maxQue); // Static allocation!
+}
+
+template < class Itemtype >
+QueType< ItemType > :: QueType (int max) {
+  maxQue = max + 1 // get size of array!
+  front = maxQue - 1;
+  rear = maxQue - 1;
+  items = new ItemType(maxQue); // Dynamic allocation!
+}
+
+template < class Itemtype >
+QueType< ItemType > :: ~QueType () {
+  delete[] items;
+}
+
+template < class Itemtype >
+bool QueType< ItemType > :: IsEmpty () {
+  return ( rear == front );  
+}
+
+template < class Itemtype >
+bool QueType< ItemType > :: IsFull () {
+  return ( (rear+1) % maxQue == front );  
+}
+
+template < class Itemtype >
+void QueType< ItemType > :: Enqueue(ItemType item) {
+  return ( rear == front );  
 }
 </code></pre>
