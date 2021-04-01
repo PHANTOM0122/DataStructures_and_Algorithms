@@ -123,10 +123,10 @@ void CountedType<ItemType>::Dequeue(ItemType item){
 
 # palindrome!
 <pre><code>
-#include <iostream>
-#include <string>
-#include <stack>
-#include <queue>
+#include < iostream >
+#include < string >
+#include < stack >
+#include < queue >
 
 int main(){
   string Input;
