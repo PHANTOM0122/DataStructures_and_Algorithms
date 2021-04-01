@@ -157,7 +157,7 @@ int main(){
 		q.pop();
 	}
 
-	if (Palindrome) { cout << input << " is a Palindrome!" << endl; }
+	if (IsPalindrome) { cout << input << " is a Palindrome!" << endl; }
 	else { cout << input << " isn't a Palindrome!" << endl; }
 }
 </code></pre>
