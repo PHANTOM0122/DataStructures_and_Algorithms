@@ -298,4 +298,35 @@ void UnsortedType<ItemType>::InsertItem(ItemType item) {
 	length++;
 }</code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/113696658-3be27d00-970d-11eb-8c5a-1daa8df77c76.png)
+#### DeleteItem
+-**삭제할 node기준으로 좌우의 노드를 연결시켜줘야 한다->삭제할 노드를 가리키는 tempLoc, 삭제할 노드 이전을 가리키는 Loc을 알아야 한다**
+-**Loc->next = tempLoc->next 한 이후에 노드를 삭제한다(순서 중요!)** 
+<pre><code>
+template < class ItemType >
+void UnsortedType<ItemType>::DeleteItem(ItemType& item) {
+	NodeType<ItemType>* location = listData;
+	NodeType<ItemType>* tempLoc;
+	bool found = false;
+	if (item == listData->info) {
+		tempLoc = location;
+		listData = listData->next; // Delete first node
+	}
 
+	else {
+		while (!(item == (location->next)->info))
+			location = location->next;
+
+		RetrieveItem(item, found); // item이 있는지 확인한다!
+		if (found) {
+			// delete node at location->next
+			tempLoc = location->next;
+			location->next = (location->next)->next; // 삭제될 원소의 오른쪽 원소를 point!
+			delete tempLoc;
+			length--;
+		}
+		else {
+			// item is not in list!
+		}
+	}
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/113697003-a3003180-970d-11eb-9906-f2f555343e6c.png)
