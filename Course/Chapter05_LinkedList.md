@@ -114,3 +114,28 @@ void LLStackType<ItemType>::Pop() {
  ![image](https://user-images.githubusercontent.com/50229148/113688539-5a904600-9704-11eb-8836-19decc31e93e.png)
 
 
+# Linked List를 이용한 QueueType!
+<pre><code>
+template <class ItemType>
+class LLQueueType {
+public:
+	LLQueueType();
+	~LLQueueType();
+	bool IsFull() const;
+	bool IsEmpty() const;
+	void Enqueue(ItemType);
+	void Dequeue(ItemType& item);
+	void makeEmpty();
+
+private:
+	NodeType<ItemType>* front;
+	NodeType<ItemType>* rear;
+};
+
+// Constructor!
+template< class ItemType >
+LLQueueType<ItemType>::LLQueueType() {
+	front = nullptr;
+	rear = nullptr;
+}</code></pre>
+
