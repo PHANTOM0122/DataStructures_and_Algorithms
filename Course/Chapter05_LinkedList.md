@@ -334,5 +334,6 @@ void UnsortedType<ItemType>::DeleteItem(ItemType& item) {
 
 # Linked List를 이용한 SortedType
 ![image](https://user-images.githubusercontent.com/50229148/113697003-a3003180-970d-11eb-9906-f2f555343e6c.png)
-![Uploading image.png…]()
+![image](https://user-images.githubusercontent.com/50229148/113700911-6256e700-9712-11eb-9f82-93bc8c79ce9e.png)
+
 
