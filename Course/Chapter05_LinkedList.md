@@ -157,7 +157,7 @@ LLQueueType<ItemType>::~LLQueueType() {
 - IsFull의 경우 stack과 동일
 - **IsEmpty의 경우 front == rear이면 empty로 판단 가능하다**
 <code><pre>
-template<class ItemType>
+template< class ItemType >
 bool LLQueueType<ItemType>::IsFull() const {
 	try {
 		NodeType<ItemType>* temp;
@@ -166,8 +166,7 @@ bool LLQueueType<ItemType>::IsFull() const {
 	}
 	catch (FullQueue);
 }
-
-template<class ItemType>
+template< class ItemType >
 bool LLQueueType<ItemType>::IsEmpty() const {
 	return (front == rear);}
 </code></pre>
