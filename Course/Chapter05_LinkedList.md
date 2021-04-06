@@ -139,3 +139,55 @@ LLQueueType<ItemType>::LLQueueType() {
 	rear = nullptr;
 }</code></pre>
 
+#### Destructor
+- **front != rear일 때까지, tempPtr로 지울 Node(front가 가리킨 노드)를 point한다**
+- **front = front -> next (다음 원소로 front이동)**
+- **기존 노드(tempPtr) 삭제**
+<pre><code>
+template< class ItemType >
+LLQueueType<ItemType>::~LLQueueType() {
+	while (!IsEmpty()) {
+		NodeType<ItemType>* tempPtr;
+		tempPtr = front;
+		front = front->next;
+		delete tempPtr;
+	}
+}</code></pre>
+#### IsFull, IsEmpty
+- IsFull의 경우 stack과 동일
+- **IsEmpty의 경우 front == rear이면 empty로 판단 가능하다**
+<code><pre>
+template<class ItemType>
+bool LLQueueType<ItemType>::IsFull() const {
+	try {
+		NodeType<ItemType>* temp;
+		temp = new NodeType<ItemType>;
+		delete temp;
+	}
+	catch (FullQueue);
+}
+
+template<class ItemType>
+bool LLQueueType<ItemType>::IsEmpty() const {
+	return (front == rear);
+	}</code></pre>
+
+#### Enqueue
+1) **tempPtr로 새로운 노드(next는 nullptr)를 가리키고, 기존의 rear의 next에 새로운 노드를 연결시킨다**
+2) **이후 rear = tempPtr(Newnode)을 통해 rear의 위치를 1증가시킨다!**
+<pre><code>
+template< class ItemType >
+void LLQueueType<ItemType>::Enqueue(ItemType item){
+	if (IsFull) { throw FullQueue(); }
+	else {
+		NodeType<ItemType> temp;
+		temp = new NodeType<ItemType>;
+		temp->info = item;
+		temp->next = nullptr;
+		if (rear == nullptr)
+			front = temp; // front가 nullptr이다가 처음 Node를 가리키는 경우!
+		else
+			rear->next = temp; // (if rear-> next == nullptr인 경우, 위의 예외처리)
+		rear = temp;
+	}
+}</code></pre>
