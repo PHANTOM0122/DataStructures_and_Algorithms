@@ -215,5 +215,22 @@ void LLQueueType<ItemType>::Dequeue(ItemType& item) {
 ![image](https://user-images.githubusercontent.com/50229148/113691795-cf18b400-9707-11eb-9039-7a941890d260.png)
 ![image](https://user-images.githubusercontent.com/50229148/113692395-78f84080-9708-11eb-937d-0305a2e60f23.png)
 
+#### makeEmpty
+- **Destructor처럼 front가 계속 rear쪽으로 이동하면서 기존 노드를 delete해야 한다**
+- **마지막 노드를 지우는 경우 front와 rear를 nullptr로 지정해준다**
+<pre><code>
+template< class ItemType >
+void LLQueueType<ItemType>::makeEmpty() {
+	while (!IsEmpty()) {
+		NodeType<ItemType>* tempPtr;
+		tempPtr = front;
+		front = front->next;
+		delete tempPtr;
+	}
+	rear = nullptr;
+}
+</code></pre>
 ### circular queue design
 - **rear->next가 nullptr이 아닌 front를 가리키면 된다**
+
+# Linked List를 이용한 UnsortedType!
