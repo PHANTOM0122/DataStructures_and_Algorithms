@@ -191,3 +191,24 @@ void LLQueueType<ItemType>::Enqueue(ItemType item){
 		rear = temp;
 	}
 }</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/113691803-d0e27780-9707-11eb-972c-c57e975b65a3.png)
+
+#### Dequeue
+1) **tempPtr로 지울 노드(front가 가리키는 노드)를 먼저 가리킨다**
+2) **front = front->next를 통해 front의 위치를 1증가시킨다**
+3) **기존의 노드(tempPtr)을 delete한다**
+<pre><code>
+template<class ItemType>
+void LLQueueType<ItemType>::Dequeue(ItemType& item) {
+	if (IsEmpty) { throw EmptyQueue(); }
+	else {
+		NodeType<ItemType>* temp;
+		temp = front;
+		front = front->next;
+		item = temp->info;
+		if (front == nullptr)
+			rear = nullptr;
+		delete temp;
+	}
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/113691795-cf18b400-9707-11eb-9039-7a941890d260.png)
