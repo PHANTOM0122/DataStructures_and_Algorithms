@@ -285,3 +285,17 @@ void UnsortedType<ItemType>::RetrieveItem(ItemType& item, bool& found) {
 		}
 	}
 }</code></pre>
+
+#### InsertItem
+<pre><code>
+template < class ItemType >
+void UnsortedType<ItemType>::InsertItem(ItemType item) {
+	NodeType<ItemType>* location;
+	location = new NodeType<ItemType>;
+	location->info = item;
+	location->next = listData;
+	listData = location;
+	length++;
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/113696658-3be27d00-970d-11eb-8c5a-1daa8df77c76.png)
+
