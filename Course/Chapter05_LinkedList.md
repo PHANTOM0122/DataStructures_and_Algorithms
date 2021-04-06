@@ -35,7 +35,10 @@ template <class ItemType>
 LLStackType<ItemType>::LLStackType() {
 	topPtr = nullptr;
 }
-
+</code></pre>
+#### Destructor
+- **topPtr이 nullptr이 될 때까지, tempPtr로 지울 Node를 가리키고 지우면서 topPtr = topPtr->next를 가리킨다. (끝까지 가면서 지운다)** 
+<pre><code>	
 template <class ItemType>
 LLStackType<ItemType>::~LLStackType() {
 	NodeType<ItemType> tempPtr;
@@ -73,10 +76,7 @@ ItemType LLStackType<ItemType>::Top() {
 		return topPtr->info;
 	}
 }
- 	
-	</pre></code>
-![image](https://user-images.githubusercontent.com/50229148/113688105-f4a3be80-9703-11eb-8833-197d99fd3def.png)
-
+</pre></code>
 <code><pre>
 template <class ItemType>
 void LLStackType<ItemType>::Push(ItemType item) {
@@ -86,6 +86,7 @@ void LLStackType<ItemType>::Push(ItemType item) {
 	temp->next = topPtr;
 	topPtr = temp;
 }</pre></code>
+![image](https://user-images.githubusercontent.com/50229148/113688105-f4a3be80-9703-11eb-8833-197d99fd3def.png)
 
 <code><pre>
 template <class ItemType>
