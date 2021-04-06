@@ -233,3 +233,55 @@ void LLQueueType<ItemType>::makeEmpty() {
 - **rear->next가 nullptr이 아닌 front를 가리키면 된다**
 
 # Linked List를 이용한 UnsortedType!
+<pre><code>
+template <class ItemType>
+class UnsortedType {
+public:
+	UnsortedType();
+	~UnsortedType();
+	void makeEmpty();
+	bool IsFull() const;
+	int LengthIs() const;
+	void RetrieveItem(ItemType& item, bool& found);
+	void InsertItem(ItemType);
+	void DeleteItem(ItemType& item);
+	void ResetList();
+	void GetNextItem(ItemType& item);
+private:
+	NodeType<ItemType>* listData;
+	int length;
+	NodeType<ItemType>* currentPos;
+};
+
+template <class ItemType>
+UnsortedType<ItemType>::UnsortedType() {
+	length = 0;
+	listData = nullptr;
+}
+
+template <class ItemType>
+int UnsortedType<ItemType>::LengthIs() const {
+	return length;}
+</code></pre>
+
+#### RetrireveItem(item, bool& found) 
+- **item이 list에 있으면 found가 true가 된다**
+<pre><code>
+template < class ItemType >
+void UnsortedType<ItemType>::RetrieveItem(ItemType& item, bool& found) {
+	bool moreToSearch;
+	NodeType<ItemType>* location;
+	location = listData; // listData의 첫번째 element를 가리킨다
+	found = false;
+	moreToSearch = (location != nullptr); // location이 끝까지 안갔을때까지 실행
+	while (moreToSearch && !found) {
+		if (item == location->info) {
+			found = true;
+			item = location->info;
+		}
+		else {
+			location = location->next; // location ++
+			moreToSearch = (location != nullptr);
+		}
+	}
+}</code></pre>
