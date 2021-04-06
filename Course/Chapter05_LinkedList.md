@@ -14,7 +14,7 @@ struct NodeType {
 </code></pre>
 
 # Linked List를 이용한 StackType!
-- 
+
 <pre><code>
 template <class ItemType>
 class LLStackType {
@@ -47,8 +47,10 @@ LLStackType<ItemType>::~LLStackType() {
 		topPtr = topPtr->next;
 		delete tempPtr;
 	}
-}
-
+}</code></pre>
+#### IsFull
+- **새로운 Node를 만드는 것을 try 해보고 exceptrion이 발생하면 FullStack인 것을 알 수 있다**
+<pre><code>
 template <class ItemType>
 bool LLStackType<ItemType>::IsFull() {
 	NodeType<ItemType>* location;
@@ -60,13 +62,17 @@ bool LLStackType<ItemType>::IsFull() {
 	catch (FullStack) {
 		return true;
 	}
-}
-
+}</code></pre>
+#### IsEmpty
+- **새로운 Node를 만드는 것을 try 해보고 exceptrion이 발생하면 FullStack인 것을 알 수 있다**
+<pre><code>
 template <class ItemType>
 bool LLStackType<ItemType>::IsEmpty() {
 	return	(topPtr == nullptr);
-}
-
+}</code></pre>
+#### Top
+- topPtr이 가리키는 node의 info를 return 한다
+<code><pre>
 template <class ItemType>
 ItemType LLStackType<ItemType>::Top() {
 	if (IsEmpty()) {
@@ -77,6 +83,9 @@ ItemType LLStackType<ItemType>::Top() {
 	}
 }
 </pre></code>
+#### Push
+- **tempPtr로 새로운 Node를 가리키고, 새 노드의 next를 topPtr->next(삽입 후 오른쪽 element)를 가리킨다**
+- **이후, 기존의 topPtr로 새로운 노드를 가리킨다**
 <code><pre>
 template <class ItemType>
 void LLStackType<ItemType>::Push(ItemType item) {
@@ -87,7 +96,9 @@ void LLStackType<ItemType>::Push(ItemType item) {
 	topPtr = temp;
 }</pre></code>
 ![image](https://user-images.githubusercontent.com/50229148/113688105-f4a3be80-9703-11eb-8833-197d99fd3def.png)
-
+#### Pop
+- **tempPtr로 topPtr이 가리키는 노드를 가리키고, topPtr = topPtr->next (다음 순서의 지울 원소를 가리킨다)**
+- **이후, 기존의 노드였던 tempPtr를 delete**
 <code><pre>
 template <class ItemType>
 void LLStackType<ItemType>::Pop() {
