@@ -169,8 +169,8 @@ bool LLQueueType<ItemType>::IsFull() const {
 
 template<class ItemType>
 bool LLQueueType<ItemType>::IsEmpty() const {
-	return (front == rear);
-	}</code></pre>
+	return (front == rear);}
+</code></pre>
 
 #### Enqueue
 1) **tempPtr로 새로운 노드(next는 nullptr)를 가리키고, 기존의 rear의 next에 새로운 노드를 연결시킨다**
@@ -192,6 +192,7 @@ void LLQueueType<ItemType>::Enqueue(ItemType item){
 	}
 }</code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/113691803-d0e27780-9707-11eb-972c-c57e975b65a3.png)
+![image](https://user-images.githubusercontent.com/50229148/113692431-831a3f00-9708-11eb-8415-839ec0e4c0f8.png)
 
 #### Dequeue
 1) **tempPtr로 지울 노드(front가 가리키는 노드)를 먼저 가리킨다**
@@ -206,9 +207,13 @@ void LLQueueType<ItemType>::Dequeue(ItemType& item) {
 		temp = front;
 		front = front->next;
 		item = temp->info;
-		if (front == nullptr)
-			rear = nullptr;
+		if (front == nullptr) // 위의 action이후 front가 nullptr, front->next가 오류가 발생하므로 rear역시 null로 만들어주어 Isempty()조건에 걸리게 한다
+			rear = nullptr; 
 		delete temp;
 	}
 }</code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/113691795-cf18b400-9707-11eb-9039-7a941890d260.png)
+![image](https://user-images.githubusercontent.com/50229148/113692395-78f84080-9708-11eb-937d-0305a2e60f23.png)
+
+### circular queue design
+- **rear->next가 nullptr이 아닌 front를 가리키면 된다**
