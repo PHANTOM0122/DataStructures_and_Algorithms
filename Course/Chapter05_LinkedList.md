@@ -333,6 +333,34 @@ void UnsortedType<ItemType>::DeleteItem(ItemType& item) {
 ![image](https://user-images.githubusercontent.com/50229148/113700737-2b80d100-9712-11eb-8e83-205aafe79578.png)
 
 # Linked List를 이용한 SortedType
+<pre><code>
+template < class ItemType >
+void SortedType< ItemType >::RetrieveItem(ItemType& item, bool& found){
+
+NodeType< ItemType >* location; 
+location = listData;
+found = false;
+
+while(location != nullptr && !found) {
+	if(location->info != item){
+	 	location = location->next;
+		}
+	else if(location->info == item){
+		found = true;
+		item = location -> info;
+	 	}
+	else{location = nullptr)
+	}
+}
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/113965718-e02d0680-9868-11eb-917d-7a6d8a94df5e.png)
+![image](https://user-images.githubusercontent.com/50229148/113965745-e9b66e80-9868-11eb-855f-f01faa1edd40.png)
+![image](https://user-images.githubusercontent.com/50229148/113965779-f8048a80-9868-11eb-8d41-bada23fe319f.png)
+![image](https://user-images.githubusercontent.com/50229148/113965792-fe930200-9868-11eb-8353-5d7871fd59b8.png)
+
+
+
+
 ![image](https://user-images.githubusercontent.com/50229148/113697003-a3003180-970d-11eb-9906-f2f555343e6c.png)
 ![image](https://user-images.githubusercontent.com/50229148/113700911-6256e700-9712-11eb-9f82-93bc8c79ce9e.png)
 
