@@ -167,8 +167,8 @@ void DLSortedList::Print() {
 
 # Linked List as an Array!
 - **Linked List Node의 next에는 address가 아닌 index 값을 넣는다**
-![image](https://user-images.githubusercontent.com/50229148/114683134-bbde9780-9d4a-11eb-8eea-f93c5d075420.png)
-![image](https://user-images.githubusercontent.com/50229148/114683148-bed98800-9d4a-11eb-92b6-2e464f7d7d94.png)
+![image](https://user-images.githubusercontent.com/50229148/114683134-bbde9780-9d4a-11eb-8eea-f93c5d075420.png = 300x120)
+![image](https://user-images.githubusercontent.com/50229148/114683148-bed98800-9d4a-11eb-92b6-2e464f7d7d94.png = 300x120)
 
 # Deep Copy vs Shallow Copy!
 - Deep Copy는 데이터를 새로 복사해서 만든다
