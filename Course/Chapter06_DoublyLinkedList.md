@@ -178,8 +178,8 @@ void DLSortedList::Print() {
 ![image](https://user-images.githubusercontent.com/50229148/114684514-f09f1e80-9d4b-11eb-82e5-c2dff8328ecb.png)
 ![image](https://user-images.githubusercontent.com/50229148/114684592-03b1ee80-9d4c-11eb-88a5-2e03bf7e8c46.png)
 ### shallow copy이후 pop연산을 실행하면은 다음과 같다
-![Uploading image.png…]()
-
+- **Dangling point가 발생하게 된다!**
+![image](https://user-images.githubusercontent.com/50229148/114687162-6d32fc80-9d4e-11eb-861b-0fa4598382e8.png)
 # Deep copy를 위한 constructor & operator'='
 <pre><code>
 class StackType {
