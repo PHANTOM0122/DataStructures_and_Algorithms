@@ -178,6 +178,37 @@ void DLSortedList::Print() {
 ![image](https://user-images.githubusercontent.com/50229148/114684514-f09f1e80-9d4b-11eb-82e5-c2dff8328ecb.png)
 ![image](https://user-images.githubusercontent.com/50229148/114684592-03b1ee80-9d4c-11eb-88a5-2e03bf7e8c46.png)
 ### shallow copy이후 pop연산을 실행하면은 다음과 같다
-![image](https://user-images.githubusercontent.com/50229148/114684787-3a880480-9d4c-11eb-9192-edb85379c77d.png)
 
+# Deep copy를 위한 constructor & operator'='
+<pre><code>
+class StackType {
+	// Copy constructor
+	StackType(const StackType& anotherStack) { // 반드시 & 기호 붙어줘야한다
+		NodeType* ptr1;
+		NodeType* ptr2;
+		if (anotherStack.topPtr == nullptr) {
+			topPtr = nullptr; // anotherStack is empty -> this stack should be empty!
+		}
+		else {
+			topPtr = new NodeType;
+			topPtr->info = anotherStack.topPtr->info; // another스택의 topPtr값을 복사!
+			ptr1 = anotherStack.topPtr->next;
+			ptr2 = topPtr; 
+			while (ptr1 != nullptr) { // Deep copy other nodes!
+				ptr2->next = new NodeType; // topPtr -> newNode 이렇게 계속 연결해가며 데이터를 복사한다
+				ptr2 = ptr2->next; 
+				ptr2->info = ptr1->info; // anotherStack의 정보를 this에 copy
+				ptr1 = ptr1->next; // anotherstack next element point!
+			}
+			ptr2->next = nullptr;
+		}
+	}
+	// operator overloading!
+	void operator= (StackType another) {
+		// Same as original Stack!
+	}
+private:
+	NodeType* topPtr;
+};
+</code></pre>
 
