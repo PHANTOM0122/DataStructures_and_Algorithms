@@ -166,7 +166,18 @@ void DLSortedList::Print() {
 </code></pre>
 
 # Linked List as an Array!
+- **Linked List Node의 next에는 address가 아닌 index 값을 넣는다**
+![image](https://user-images.githubusercontent.com/50229148/114683134-bbde9780-9d4a-11eb-8eea-f93c5d075420.png)
+![image](https://user-images.githubusercontent.com/50229148/114683148-bed98800-9d4a-11eb-92b6-2e464f7d7d94.png)
 
 # Deep Copy vs Shallow Copy!
 - Deep Copy는 데이터를 새로 복사해서 만든다
 - Shallow Copy는 데이터를 기존의 것과 같이 쓴다! -> shallow copy 한 후에 transform을 하면 기존의 것도 같이 바뀌므로 문제가 발생한다!
+- **pass by value, =는 shallow copy를 만든다**
+![image](https://user-images.githubusercontent.com/50229148/114684352-cc434200-9d4b-11eb-88f2-bfd90c350da7.png)
+![image](https://user-images.githubusercontent.com/50229148/114684514-f09f1e80-9d4b-11eb-82e5-c2dff8328ecb.png)
+![image](https://user-images.githubusercontent.com/50229148/114684592-03b1ee80-9d4c-11eb-88a5-2e03bf7e8c46.png)
+### shallow copy이후 pop연산을 실행하면은 다음과 같다
+![image](https://user-images.githubusercontent.com/50229148/114684787-3a880480-9d4c-11eb-9192-edb85379c77d.png)
+
+
