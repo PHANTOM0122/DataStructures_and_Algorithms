@@ -67,3 +67,8 @@ int a = 4; int b[a]; -> 안되는 이유: a의 값은 compile시 결정되는데
   * class: object 구조를 결정한다
   * object: 기본적인 run-time 요소
   * inheritance: 상속을 통해 is-a relation ship 형성. **다형성(polymorphism의 경우 runtime시 결정)**
+
+## Offset table
+![image](https://user-images.githubusercontent.com/50229148/115098262-0be77500-9f6a-11eb-881c-83cc92252265.png)
+![image](https://user-images.githubusercontent.com/50229148/115098277-24578f80-9f6a-11eb-802a-95ec8a89a4ef.png)
+
