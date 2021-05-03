@@ -101,3 +101,56 @@ inline int CountNodes(NodeType<ItemType>* root)
 		return CountNodes(root->left) + CountNodes(root->right) + 1;
 	}
 }</code></pre>
+
+## RetrieveItem
+- **이 역시 마찬가지로 recursion을 사용하여 판단한다**
+- leaf까지 갔지만 없는 경우 base case!
+<pre><code>
+template<class ItemType>
+inline void TreeType<ItemType>::RetrieveItem(ItemType& target, bool& found)
+{
+	RetrieveItem(root, target, found);
+}
+
+template<class ItemType>
+void RetrieveItem(NodeType<ItemType>* root, ItemType& target, bool& found)
+{
+	if (tree == nullptr) { found = false; }
+	else if (target < root->info)
+		RetrieveItem(root->left, target, found);
+	else if (target > root->info)
+		RetrieveItem(root->right, target, found);
+	else // base : found!
+	{
+		item == root->info;
+		found = true;
+	}
+	}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/116847489-9b0cb200-ac25-11eb-9d6f-1e9002c0b1e5.png)
+
+## InsertItem
+- **parameter를 무조건 reference type으로 넣어주어야 하는 것이 가장 중요하다!**
+<pre><code>
+template<class ItemType>
+inline void TreeType<ItemType>::InsertItem(ItemType item)
+{
+	InsertItem(root, item);
+}
+
+template<class ItemType>
+void InsertItem(NodeType<ItemType>*& root, ItemType item)
+{
+	if (root == nullptr) { // 처음으로 삽입 
+		root = new NodeType;
+		root->info = item;
+		root->right = nullptr;
+		root->left = nullptr;
+	}
+	else if (item < root->info) {
+		InsertItem(root->left, item);
+	}
+	else {
+		InsertItem(root->right, item);
+	}
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/116847457-87614b80-ac25-11eb-95a7-8a6c94b14ea2.png)
