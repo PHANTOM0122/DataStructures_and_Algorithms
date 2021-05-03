@@ -51,3 +51,15 @@ private:
 };
 </code></pre>
 
+## constructor & destructor
+<pre><code>
+template < class ItemType >
+TreeType<ItemType>::TreeType() {
+	root = nullptr;
+}
+
+template < class ItemType >
+TreeType<ItemType>::~TreeType() {
+	MakeEmpty();
+}</pre></code>
+
