@@ -82,3 +82,22 @@ inline bool TreeType<ItemType>::ISFull() const
 	}
 	catch (std::bad_alloc) { return true; }
 }</code></pre>
+
+## Length함수
+- **Recursion 방법을 이용하여 노드 수를 구한다**
+<pre><code>
+// Recursion을 이용하여 count Node!
+template<class ItemType>
+inline int TreeType<ItemType>::LengthIs() const
+{
+	return countNodes(root);
+}
+
+template<class ItemType>
+inline int CountNodes(NodeType<ItemType>* root)
+{
+	if (root == nullptr) { return 0; }
+	else {
+		return CountNodes(root->left) + CountNodes(root->right) + 1;
+	}
+}</code></pre>
