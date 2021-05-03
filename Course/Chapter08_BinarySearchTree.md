@@ -26,3 +26,28 @@ struct NodeType {
 	NodeType<ItemType>* left;
 	NodeType<ItemType>* right;
 };</code></pre>
+
+## TreeType class
+<pre><code>
+template < class ItemType >
+class TreeType {
+public:
+	TreeType();
+	~TreeType();
+	TreeType(const TreeType< ItemType >&); // Deep copy constructor
+	void operator=(const TreeType< ItemType >&);
+	void MakeEmpty();
+	bool IsEmpty() const;
+	bool ISFull() const;
+	int LengthIs() const;
+	void RetrieveItem(ItemType&, bool&);
+	void InsertItem(ItemType);
+	void DeleteItem(ItemType);
+	void ResetTree(OrderType);
+	void GetNextItem(ItemType&, OrderType, bool&);
+	void PrintTree(ofstream&) const;
+private:
+	TreeNode<ItemType>* root;
+};
+</code></pre>
+
