@@ -63,3 +63,22 @@ TreeType<ItemType>::~TreeType() {
 	MakeEmpty();
 }</pre></code>
 
+## bool IsEmpty, IsFull
+<pre><code>
+template<class ItemType>
+inline bool TreeType<ItemType>::IsEmpty() const
+{
+	return (root == nullptr);
+}
+
+template<class ItemType>
+inline bool TreeType<ItemType>::ISFull() const
+{
+	NodeType* location;
+	try {
+		location = new NodeType;
+		delete location;
+		return false;
+	}
+	catch (std::bad_alloc) { return true; }
+}</code></pre>
