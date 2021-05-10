@@ -154,3 +154,22 @@ void InsertItem(NodeType<ItemType>*& root, ItemType item)
 	}
 }</code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/116847457-87614b80-ac25-11eb-95a7-8a6c94b14ea2.png)
+	
+## DeleteItem
+**아래와 같은 3가지 경우를 고려해야 한다**
+#### 1) Leaf node를 지우는 경우
+![image](https://user-images.githubusercontent.com/50229148/117602701-4bca0280-b18c-11eb-91f5-71bc98068a4b.png)
+- **간단히 delete leaf node만 하면 된다**
+#### 2) one child를 가진 node를 지우는 경우
+
+3) two child를 가진 node를 지우는 경우
+
+<pre><code>
+
+</code></pre>
+
+## InsertItem
+- **parameter를 무조건 reference type으로 넣어주어야 하는 것이 가장 중요하다!**
+<pre><code>
+
+</code></pre>
