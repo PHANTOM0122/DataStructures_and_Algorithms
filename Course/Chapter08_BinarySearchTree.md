@@ -165,11 +165,46 @@ void InsertItem(NodeType<ItemType>*& root, ItemType item)
 ![image](https://user-images.githubusercontent.com/50229148/117602787-7f0c9180-b18c-11eb-8562-864a0e1e8b96.png)
 - **parent에 자기 자식을 연결시키면 된다**
 
-3) two child를 가진 node를 지우는 경우
+#### 3) two child를 가진 node를 지우는 경우
 ![image](https://user-images.githubusercontent.com/50229148/117602861-a3686e00-b18c-11eb-8f6e-aa8eb27e2bab.png)
 - **Left substree의 max or Right subtree의 min을 Deleting node로 대체한다**
 
 <pre><code>
+// Function GetPredecessor : left subtree의 maxitem을 찾는 역학을 한다
+template < class ItemType >
+void GetPredecessor(NodeType< ItemType >* tree, ItemType& data) {
+	while (tree->right != NULL)
+		tree = tree->right; // move tree Ptr to most right element of Tree!
+	data = tree->info;
+}
+
+// Function DeleteNode : Getpredecessor에서 찾은 위치의 노드를 제거하고 info를 treePtr에서의 info로 대체하는 역할을 한다.
+template< class ItemType >
+void DeleteNode(NodeType< ItemType >*& tree) {
+	
+	ItemType data;
+	NodeType* tempPtr;
+	tempPtr = tree;
+	
+	// 0 or 1 child
+	if (tree->left == NULL) { 
+		tree = tree->right; // move to right child
+		delete tempPtr;
+	}
+
+	else if (tree->right == NULL) { 
+		tree = tree->left; // move to left child
+		delete tempPtr; 
+	}
+
+	// 2 children
+	else {
+		Getpredecessor(tree->left, data); // left subtree의 max item을 찾는다!
+		tree->info = data;
+		Delete(tree->left, data);
+	}
+}
+
 
 </code></pre>
 
