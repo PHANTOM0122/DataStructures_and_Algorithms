@@ -376,3 +376,28 @@ inline void TreeType<ItemType>::GetNextItem(ItemType& item, OrderType order, boo
 		break;
 	}
 }</code></pre>
+
+# Iterative version!
+- Recursive 하게 짯던 코드를 iterative하게 바꾼다!
+
+## FindNode
+<pre><code>
+void FindNode(TreeNode* tree, ItemType item, TreeNode*& nodePtr, TreeNode*& parentPtr){
+   nodePtr = tree;
+   parentPtr = nullptr;
+   bool found = false;
+   while(nodePtr != nullptr && !found){
+   	if(item < nodePtr->info){
+		parentPtr = nodePtr;
+		nodePtr = nodePtr->left; // left Subtree Search!
+		}
+	else if( item > nodePtr->info ){
+		parentPtr = nodePtr;
+		nodePtr = nodePtr->right; // right Subtree Search!
+		}
+	else 
+		found = true; // item == nodePtr->info
+	}
+}</code></pre>
+
+## InsertItem
