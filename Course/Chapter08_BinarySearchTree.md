@@ -349,3 +349,30 @@ inline void TreeType<ItemType>::ResetTree(OrderType order)
 	}
 }</code></pre>
 
+## GetNextItem
+<pre><code>
+template<class ItemType>
+inline void TreeType<ItemType>::GetNextItem(ItemType& item, OrderType order, bool& finished)
+{
+	finished = false;
+	switch (order)
+	{
+	case OrderType::PRE_OREDER:
+		PreQueue.Dequeue(item);
+		if (PreQueue.IsEmpty())
+			finished = true;
+		break;
+	case OrderType::IN_OREDER:
+		InQueue.Dequeue(item);
+		if (InQueue.IsEmpty())
+			finished = true;
+		break;
+	case OrderType::POST_ORDER:
+		PostQueue.Dequeue(item);
+		if (PostQueue.IsEmpty())
+			finished = true;
+		break;
+	default:
+		break;
+	}
+}</code></pre>
