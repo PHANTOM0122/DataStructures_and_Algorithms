@@ -205,6 +205,23 @@ void DeleteNode(NodeType< ItemType >*& tree) {
 	}
 }
 
+// Function Delete : Recursive하게 
+template < class ItemType >
+void Delete (NodeType< ItemType >*& tree, ItemType item) {
+	// Removes item from tree!!
+	if (item < tree->info)
+		Delete(tree->left, item);
+	else if (item > tree->info)
+		Delete(tree->right, item);
+	else
+		DeleteNode(tree); // Node found!
+}
+
+template<class ItemType>
+inline void TreeType<ItemType>::DeleteItem(ItemType data)
+{
+	Delete(root, data);
+}
 
 </code></pre>
 
