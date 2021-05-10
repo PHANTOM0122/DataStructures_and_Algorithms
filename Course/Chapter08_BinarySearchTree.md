@@ -281,3 +281,7 @@ template < class ItemType >
 TreeType<ItemType>::TreeType(const TreeType< ItemType >& originalTree) {
 	CopyTree(root, originalTree.root);
 }</code></pre>
+
+## Tree Traversal
+-**tree의 모든 노드를 방문하는 순서이다**
+#### 1) 
