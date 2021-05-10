@@ -427,8 +427,38 @@ void TreeType::InsertItem(ItemType item){
 		parentPtr->left = newNode; // Attach new node to left child!
 	else 
 		parentPtr->right = newNode; // Attach new node to right child!
-}
+}</code></pre>
 
 ## DeleteItem
+- **FindNode 함수를 통해 delete할 노드를 찾고, 앞에서 구현한 deleteNode함수를 이용한다.**
+<pre><code>
+void TreeType::DeleteItem(ItemType item){
+	
+	// Declare
+	TreeNode* nodePtr;
+	TreeNode* parentPtr;
+	
+	// Find location to delete!
+	FindNode(root, item, nodePtr, parentPtr);
+	
+	if(nodePtr == root)
+		DeleteNode(root);
+	else{
+	    if (parent->left == nodePtr) // parent의 left child가 지우는 노드일 경우
+	    	DeleteNode(parent->left);
+	    else // parent의 right child가 지우는 노드일 경우	
+	    	DeleteNode(parent->right);
+	    }
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/117615081-3234b500-b1a4-11eb-870d-65b51b72da6d.png)
 
-		
+# Array based Tree
+- **linkded list를 이용하지 않고 Array의 index를 이용하여 tree를 표현한다**
+- **Left child = parentIndex * 2 + 1, Right child = parentIndex * 2 + 2, parentIndex = (index-1)/2**
+![image](https://user-images.githubusercontent.com/50229148/117615388-a1aaa480-b1a4-11eb-9c31-22dd11b47210.png)
+
+## Big=O comparision
+![image](https://user-images.githubusercontent.com/50229148/117615129-437dc180-b1a4-11eb-86e9-9f148473ea6b.png)
+
+
+	
