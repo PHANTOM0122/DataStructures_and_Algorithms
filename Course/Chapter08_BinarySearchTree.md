@@ -225,8 +225,24 @@ inline void TreeType<ItemType>::DeleteItem(ItemType data)
 
 </code></pre>
 
-## InsertItem
-- **parameter를 무조건 reference type으로 넣어주어야 하는 것이 가장 중요하다!**
+## printtItem
+- **Inorder(left child -> parent -> right child) 순서로 print 하는 것이 point!**
+![image](https://user-images.githubusercontent.com/50229148/117609817-9f901800-b19b-11eb-9ed3-39f55cabb48b.png)
 <pre><code>
+template< class ItemType >
+void PrintTree(NodeType< ItemType > tree, ofstream& out) {
+	
+	// Inorder traverse is important!
+	if (tree != NULL) {
+		PrintTree(tree->left.out); // left child
+		out << tree->info; // tree itself
+		PrintTree(tree->right.out); // right child
+	}
+}
 
+template< class ItemType >
+inline void TreeType< ItemType >::PrintTree(ofstream& out) const
+{
+	PrintTree(root, out);
+}
 </code></pre>
