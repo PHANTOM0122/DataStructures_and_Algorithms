@@ -283,5 +283,33 @@ TreeType<ItemType>::TreeType(const TreeType< ItemType >& originalTree) {
 }</code></pre>
 
 ## Tree Traversal
--**tree의 모든 노드를 방문하는 순서이다**
-#### 1) 
+- **tree의 모든 노드를 방문하는 순서이다**
+#### 1) Inorder
+- **left -> right -> parent** 순서이다
+<pre><code>
+template< class ItemType >
+void Inorder(NodeType< ItemType >* tree, QueueType<ItemType>& InQueue) {
+	if (tree != NULL) { // base Case : tree == nullptr!
+		Inorder(tree->left, InQueue);
+		InQueue.Enqueue(tree->info);
+		Inorder(tree->right);
+	}
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/117611366-51304880-b19e-11eb-81d2-2ba3e1d6cbde.png)
+
+#### 2) Postorder
+- **left child -> right child -> parent 순서이다**
+- Useful with binary tree!
+<pre><code>
+template< class ItemType >
+void Postorder(NodeType< ItemType >* tree, QueueType<ItemType>& postQueue) {
+	if (tree != NULL) { // base Case : tree == nullptr!
+		Postorder(tree->left, postQueue);
+		Postorder(tree->right, postQueue);
+		postQueue.Enqueue(tree->info);
+	}
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/117611628-c8fe7300-b19e-11eb-81b6-18d530e15590.png)
+
+#### 3) Preorder
+
