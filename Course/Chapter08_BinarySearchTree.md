@@ -160,9 +160,14 @@ void InsertItem(NodeType<ItemType>*& root, ItemType item)
 #### 1) Leaf node를 지우는 경우
 ![image](https://user-images.githubusercontent.com/50229148/117602701-4bca0280-b18c-11eb-91f5-71bc98068a4b.png)
 - **간단히 delete leaf node만 하면 된다**
+
 #### 2) one child를 가진 node를 지우는 경우
+![image](https://user-images.githubusercontent.com/50229148/117602787-7f0c9180-b18c-11eb-8562-864a0e1e8b96.png)
+- **parent에 자기 자식을 연결시키면 된다**
 
 3) two child를 가진 node를 지우는 경우
+![image](https://user-images.githubusercontent.com/50229148/117602861-a3686e00-b18c-11eb-8f6e-aa8eb27e2bab.png)
+- **Left substree의 max or Right subtree의 min을 Deleting node로 대체한다**
 
 <pre><code>
 
