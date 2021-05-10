@@ -239,7 +239,7 @@ inline void TreeType<ItemType>::DeleteItem(ItemType data)
 
 </code></pre>
 
-## printtItem
+## printItem
 - **Inorder(left child -> parent -> right child) 순서로 print 하는 것이 point!**
 ![image](https://user-images.githubusercontent.com/50229148/117609817-9f901800-b19b-11eb-9ed3-39f55cabb48b.png)
 <pre><code>
@@ -260,3 +260,24 @@ inline void TreeType< ItemType >::PrintTree(ofstream& out) const
 	PrintTree(root, out);
 }
 </code></pre>
+
+## Copy Constructor
+- **모든 노드를 일일이 방문하면서 복사를 진행해야 한다**
+<pre><code>
+/// <Copy constructor>
+template < class ItemType >
+void CopyTree(NodeType < ItemType >*& copy, const NodeType < ItemType >* originalTree) {
+	if (originalTree == NULL)
+		copy = NULL;
+	else {
+		copy = new NodeType< ItemType >;
+		copy->info = originalTree->info;
+		CopyTree(copy->left, originalTree->left);
+		CopyTree(copy->right, originalTree->right);
+	}
+}
+
+template < class ItemType >
+TreeType<ItemType>::TreeType(const TreeType< ItemType >& originalTree) {
+	CopyTree(root, originalTree.root);
+}</code></pre>
