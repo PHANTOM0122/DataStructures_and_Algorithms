@@ -324,6 +324,28 @@ void Preorder(NodeType< ItemType >* tree, QueueType<ItemType>& preQueue) {
 	}
 }</code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/117611848-2db9cd80-b19f-11eb-8496-04bc2b43bccc.png)
-![Uploading image.png…]()
 
+## ResetTree
+- Iterative한 방법이다
+- **generates a queue of node contents in the indicated order**
+<pre><code>
+template<class ItemType>
+inline void TreeType<ItemType>::ResetTree(OrderType order)
+{
+	/// Calls function to create a queue of the tree elements in the disired order
+	switch (order)
+	{
+	case OrderType::PRE_OREDER:
+		Preorder(root, PreQueue);
+		break;
+	case OrderType::IN_OREDER:
+		Inorder(root, InQueue);
+		break;
+	case OrderType::POST_ORDER:
+		Postorder(root, PostQueue);
+		break;
+	default:
+		break;
+	}
+}</code></pre>
 
