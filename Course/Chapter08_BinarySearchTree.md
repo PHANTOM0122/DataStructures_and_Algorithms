@@ -51,17 +51,31 @@ private:
 };
 </code></pre>
 
-## constructor & destructor
+## constructor
 <pre><code>
 template < class ItemType >
 TreeType<ItemType>::TreeType() {
 	root = nullptr;
-}
+}</pre></code>
 
+## Destructor
+- **모든 노드를 방문하면서 delete를 해줘야 한다!**
+- **PostOrder(left child -> right child -> parent) 순서로 방문하여 delete를 해야한다**
+<pre><code>
 template < class ItemType >
 TreeType<ItemType>::~TreeType() {
-	MakeEmpty();
-}</pre></code>
+	Destroy(root);
+}
+
+void Destroy(NodeType*& tree){
+   if(tree == nullptr)
+   // 왼족 -> 오른쪽 ->자기 자신 순서로 delete해야 한다!
+   {	Destroy(tree->left);
+   	Destory(tree->right);
+	delete tree;
+   }
+}
+</pre></code>
 
 ## bool IsEmpty, IsFull
 <pre><code>
