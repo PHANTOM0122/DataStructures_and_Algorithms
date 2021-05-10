@@ -381,6 +381,7 @@ inline void TreeType<ItemType>::GetNextItem(ItemType& item, OrderType order, boo
 - Recursive 하게 짯던 코드를 iterative하게 바꾼다!
 
 ## FindNode
+- parent 노드와 child 노드 pointer를 모두 알고 있어야 한다!
 <pre><code>
 void FindNode(TreeNode* tree, ItemType item, TreeNode*& nodePtr, TreeNode*& parentPtr){
    nodePtr = tree;
@@ -401,3 +402,33 @@ void FindNode(TreeNode* tree, ItemType item, TreeNode*& nodePtr, TreeNode*& pare
 }</code></pre>
 
 ## InsertItem
+- **FindNode를 통해 Insertion place를 찾고 -> Attach newNode!**
+- FindNode의 결과 아래와 같이 된다!
+![image](https://user-images.githubusercontent.com/50229148/117613539-09132500-b1a2-11eb-9e46-300704d75c4e.png)
+<pre><code>
+void TreeType::InsertItem(ItemType item){
+	
+	// Declare
+	TreeNode* newNode;
+	TreeNode* nodePtr; // child node pointer
+	TreeNode* parentPtr; // Parent node pointer
+	
+	// Make new node to attach
+	newNode = new TreeNode;
+	newNode->info = item;
+	newNode->left = newNode->rihgt = nullptr;
+	
+	// Find location to insert
+	FindNode(root, item, nodePtr, parentPtr);
+	
+	if(parentPtr == nullptr) // root에 삽입하는 경우!
+		root = newNode;
+	else if( item < parentPtr->info ) 
+		parentPtr->left = newNode; // Attach new node to left child!
+	else 
+		parentPtr->right = newNode; // Attach new node to right child!
+}
+
+## DeleteItem
+
+		
