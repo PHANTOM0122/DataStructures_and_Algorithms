@@ -299,7 +299,7 @@ void Inorder(NodeType< ItemType >* tree, QueueType<ItemType>& InQueue) {
 
 #### 2) Postorder
 - **left child -> right child -> parent 순서이다**
-- Useful with binary tree!
+- good for Deletion!
 <pre><code>
 template< class ItemType >
 void Postorder(NodeType< ItemType >* tree, QueueType<ItemType>& postQueue) {
@@ -312,4 +312,18 @@ void Postorder(NodeType< ItemType >* tree, QueueType<ItemType>& postQueue) {
 ![image](https://user-images.githubusercontent.com/50229148/117611628-c8fe7300-b19e-11eb-81b6-18d530e15590.png)
 
 #### 3) Preorder
+- **parent -> left child -> right child 순서이다**
+- Useful with binary tree!
+<pre><code>
+template< class ItemType >
+void Preorder(NodeType< ItemType >* tree, QueueType<ItemType>& preQueue) {
+	if (tree != NULL) { // base Case : tree == nullptr!
+		preQueue.Enqueue(tree->info);
+		Preorder(tree->left, preQueue);
+		Preorder(tree->right, preQueue);
+	}
+}</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/117611848-2db9cd80-b19f-11eb-8496-04bc2b43bccc.png)
+![Uploading image.png…]()
+
 
