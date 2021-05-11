@@ -68,7 +68,7 @@ TreeType<ItemType>::~TreeType() {
 }
 
 void Destroy(NodeType*& tree){
-   if(tree == nullptr)
+   if(tree != nullptr)
    // 왼족 -> 오른쪽 ->자기 자신 순서로 delete해야 한다!
    {	Destroy(tree->left);
    	Destory(tree->right);
