@@ -88,49 +88,85 @@ void HeapType < ItemType > :: ReheapUp( int root, int bottom ) // bottom : right
 ![image](https://user-images.githubusercontent.com/50229148/118811251-bfd07d00-b8e7-11eb-8dfc-f9a58541375c.png)
 ![image](https://user-images.githubusercontent.com/50229148/118811260-c19a4080-b8e7-11eb-8abe-83518dca7ce5.png)
 
-## Priority Queue
+# Priority Queue
 - **우선순위 큐는 오직 highest-priority(ex. max or min) element만 언제나 접근 가능해야 한다**
-<pre><code>
-template < class ItemType >
-TreeType<ItemType>::TreeType() {
-	root = nullptr;
-}</pre></code>
 
-## Destructor
-- **모든 노드를 방문하면서 delete를 해줘야 한다!**
-- **PostOrder(left child -> right child -> parent) 순서로 방문하여 delete를 해야한다**
+## ADT of Priority Queue
+- Transformers : MakeEmpty, Enqueue, Dequeue
+- Observers : IsEmpty, IsFull
+- UnsortedList, Array-based-List, LinkedSortedList, BinarySearchTree, Heap이 이용 가능하다
+
+## Class PQType Declaration
 <pre><code>
 template < class ItemType >
-TreeType<ItemType>::~TreeType() {
-	Destroy(root);
+class PQType{
+public:
+	PQType(int);
+	~PQType();
+	void MakeEmpty();
+	bool IsEmpty() const;
+	bool IsFull() const;
+	void Enqueue(ItemType newitem);
+	void Dequeue(ItemType& item);
+private:
+	int length;
+	HeapType< ItmeType > items; // Array
+	int maxItems; // Max length of Array
+};
+</pre></code>
+
+## Constructor & Destructor
+<pre><code>
+template < class ItemType >
+PQType < ItemType > :: PQType(int max){
+	maxItems = max;
+	items.elements = new ItemType[max]; // Dynamic allocation
+	length = 0;
 }
 
-void Destroy(NodeType*& tree){
-   if(tree != nullptr)
-   // 왼족 -> 오른쪽 ->자기 자신 순서로 delete해야 한다!
-   {	Destroy(tree->left);
-   	Destory(tree->right);
-	delete tree;
-   }
+template < class ItemType >
+PQType < ItemType > :: MakeEmpty() {
+	length = 0;
+}
+
+template < class ItemType >
+PQType < ItemType > :: ~PQType() {
+	delete[] items.elements;
 }
 </pre></code>
 
-## bool IsEmpty, IsFull
+## Dequeue
+- **가장 큰 item을 뽑아낸 후, heap을 재정렬한다**
+- **last leaf의 item을 root로 보내고 length를 줄인후, ReheapDown을 이용한다**
 <pre><code>
 template<class ItemType>
-inline bool TreeType<ItemType>::IsEmpty() const
-{
-	return (root == nullptr);
-}
+void PQType< ItemType >::Dequeue(ItemType& item){
+ if(length==0)
+ 	throw EmptyPQ();
+ else
+ {
+     item = items.elements[0]; // Root Node(max)를 item에 저장
+     items.elements[0] = items.elements[ length - 1 ]; // 마지막 원소를 root에 복사
+     length--;
+     item.ReheapDown(0, length-1);
+ }
+}    
+</code></pre>
 
+## Enqueue
+- **가장 큰 item을 뽑아낸 후, heap을 재정렬한다**
+- **last leaf의 item을 root로 보내고 length를 줄인후, ReheapDown을 이용한다**
+<pre><code>
 template<class ItemType>
-inline bool TreeType<ItemType>::ISFull() const
-{
-	NodeType* location;
-	try {
-		location = new NodeType;
-		delete location;
-		return false;
-	}
-	catch (std::bad_alloc) { return true; }
-}</code></pre>
+void PQType< ItemType >::Dequeue(ItemType newitem){
+ if(length==MaxItems)
+ 	throw FullPQ();
+ else
+ {
+    length++; // Array 길이 증가
+    items.elements[ length - 1 ] = newItem; // 마지막 원소에 newitem 삽입
+    items.ReheapUp(0, length-1)l // Heap 재정렬!
+ }
+}    
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/118813581-425a3c00-b8ea-11eb-87c6-c830d53c0a9c.png)
