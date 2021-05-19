@@ -52,20 +52,44 @@ void HeapType < ItemType > :: ReheapDown( int root, int bottom ) // bottom : rig
   }
 }
 </code></pre>
+![image](https://user-images.githubusercontent.com/50229148/118811444-fd350a80-b8e7-11eb-8986-cf78664d557b.png)
 
 ## ReheapUp
 <pre><code>
+// bottom is the index of the node that may violate the heap order priority
+void HeapType < ItemType > :: ReheapUp( int root, int bottom ) // bottom : rightmost node in the last level
+{
+    int parent;
+    
+    if (bottom > root) // tree isn't empty!
+    {
+    	parent = (bottom - 1) / 2;  
+	if(elements[parent] < elements[bottom])
+	{	
+	    Swap( elements[parents], elements[bottom]);
+	    ReheapUp(root, parent); // Recursion -> 계속해서 Heap 순서 재정렬!
+ 	}
+    }
+}
 </code></pre>
+![image](https://user-images.githubusercontent.com/50229148/118811456-00c89180-b8e8-11eb-9d3b-fb4c0f33a599.png)
 
-## 
-<pre><code>
-</code></pre>
+## Removing largest element from the heap
+1. Copy the bottom rightmost element to the root // Array의 마지막 index 원소를 root에 복사
+2. Delete the bottom rightmost node
+3. ReheapDown을 이용하여 힙 순서 재정렬!
+![image](https://user-images.githubusercontent.com/50229148/118810999-73853d00-b8e7-11eb-80d1-e7ae7e12e5da.png)
+![image](https://user-images.githubusercontent.com/50229148/118811008-754f0080-b8e7-11eb-917b-31cfef1aafca.png)
+![image](https://user-images.githubusercontent.com/50229148/118811012-76802d80-b8e7-11eb-893c-d689b394f655.png)
 
-## 
-<pre><code>
-</code></pre>
+## Insert new element into the heap
+1. Insert the new element in th next bottom leftmost place // Array 끝(complete tree 가장 오른쪽)에 새로운 원소 삽입
+2. ReheapUp을 이용하여 힙 순서 재정렬!
+![image](https://user-images.githubusercontent.com/50229148/118811251-bfd07d00-b8e7-11eb-8dfc-f9a58541375c.png)
+![image](https://user-images.githubusercontent.com/50229148/118811260-c19a4080-b8e7-11eb-8abe-83518dca7ce5.png)
 
-## constructor
+## Priority Queue
+- **우선순위 큐는 오직 highest-priority(ex. max or min) element만 언제나 접근 가능해야 한다**
 <pre><code>
 template < class ItemType >
 TreeType<ItemType>::TreeType() {
