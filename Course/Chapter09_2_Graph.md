@@ -176,4 +176,55 @@ void DepthFirstSearch(GraphType< VertexType > graph, VertexType startVertex, Ver
 ![image](https://user-images.githubusercontent.com/50229148/119370237-04955300-bcf0-11eb-836c-fd8f5c4edc71.png)
 ![image](https://user-images.githubusercontent.com/50229148/119370249-065f1680-bcf0-11eb-8680-cc1b66ab3490.png)
 
+## 2) Breadth-First-Search(BFS)
+- Visit all the nodes on one level before going to next level
+- **내려가기 전 옆부터 보고 가야한다는 얘기**
+- **Queue를 사용하여 FIFO**
 
+#### Implementation
+<pre><code>
+// BFS
+template < class VertexType >
+void BreadthFirstSearch(GraphType< VertexType > graph, VertexType startVertex, VertexType endVertex) {
+	QueueType< VertexType > queue;
+	QueueType< VertexType > vertexQ;
+
+	bool found = false;
+	VertexType vertex;
+	VertexType item;
+
+	graph.ClearMarks();
+	queue.Enqueue(startVertex);
+	do {
+		queue.Dequeue(vertex);
+		if (vertex == endVertex) // Base case : found하는 경우!
+			found = true;
+		else {
+			if (!graph.IsMarked(vertex)) {
+				graph.MarkVertex(vertex);
+				graph.GetToVertices(vertex, vertexQ); // 임시 큐에 먼저 vertex를 넣는다
+
+				while (!vertexQ.IsEmpty()) {
+					vertexQ.Dequeue(item); // vertexQ dequeue
+					if (!graph.IsMarked(item))
+						queue.Enqueue(item); // dequeue한 item을 큐에 넣는다
+				}
+			}
+		}
+	} while (!queue.IsEmpty() && !found);
+	
+	if (!found)
+		cout << "Path not found" << endl;
+
+}
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/119370957-dfedab00-bcf0-11eb-9fe1-a26647e16971.png)
+![image](https://user-images.githubusercontent.com/50229148/119370970-e3813200-bcf0-11eb-80cd-67eef02731a4.png)
+![image](https://user-images.githubusercontent.com/50229148/119370980-e5e38c00-bcf0-11eb-8672-5b37797b05e5.png)
+
+# ADT Set Definitions
+- Sets cannot contain dulplicates(집합의 원소는 중복이 없다)
+- If item does not in a set, then item from the set doesn't change the set
+- set는 정렬되어있지 않다.
+- Bit연산과 Array-index를 활용하여 집합을 나타낼 수 있다. 
+![image](https://user-images.githubusercontent.com/50229148/119371826-b3865e80-bcf1-11eb-93b2-fb81a945aaf1.png)
