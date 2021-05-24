@@ -125,11 +125,55 @@ inline bool GraphType<VertexType>::IsMarked(VertexType target) const
 }
 </code></pre>
 
-2) **Adjacency List(Linked-List) : 1D array -> to represent the vertices **
+2) **Adjacency List(Linked-List) : 1D array -> to represent the vertices**
 ![image](https://user-images.githubusercontent.com/50229148/119369443-25a97400-bcef-11eb-8981-f969873f47ce.png)
 - **구현 시험 문제에 출제 가능**
 
+# Graph Searching
+## 1) Depth-First-Search(DFS)
+- Visit all nodes in branch to its deepest point before moving up(Travel as far as you can down a path)
+- 자식부터 먼저 봐야기 때문에 **Stack**을 사용한다
+#### Implementation
+<pre><code>
+template < class VertexType >
+void DepthFirstSearch(GraphType< VertexType > graph, VertexType startVertex, VertexType endVertex) {
 
+	StackType< VertexType > stack;
+	QueueType< VertexType > vertexQ;
 
+	bool found = false;
+	VertexType vertex;
+	VertexType item;
+
+	graph.ClearMarks();
+	stack.Push(startVertex);
+	do {
+		stack.Pop(vertex);
+		
+		if (vertex == endVertex)
+			found = true; // end까지 도달하는 경우
+		
+		else {	
+			if (!graph.IsMarked(vertex)) { // 방문한 적이 없는 경우
+				graph.MarkVertex(vertex); // 방문 기록 남기기
+				graph.GetToVertices(vertex, vertexQ); // Queue에 먼저 자식들을 넣는다
+			}
+
+			// Queue의 원소들을 stack에 push!
+			while(!vertexQ.IsEmpty()){
+				vertexQ.Dequeue(item);
+				if (!graph.IsMarked(item)) // 방문 기록 확인!
+					stack.Push(item);
+			}
+		}
+	} while (!stack.IsEmpty() && !found);
+
+	if (!found)
+		cout << "Path not found!" << endl;
+}
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/119370225-019a6280-bcf0-11eb-981d-8d4241d694a7.png)
+![image](https://user-images.githubusercontent.com/50229148/119370237-04955300-bcf0-11eb-836c-fd8f5c4edc71.png)
+![image](https://user-images.githubusercontent.com/50229148/119370249-065f1680-bcf0-11eb-8680-cc1b66ab3490.png)
 
 
