@@ -109,7 +109,7 @@ template<class VertexType>
 inline void GraphType<VertexType>::ClearMarks()
 {
 	for (int i = 0; i < numVertices; i++)
-		vertices[i] = false;
+		marks[i] = false;
 }
 
 template<class VertexType>
