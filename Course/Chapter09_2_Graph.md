@@ -123,6 +123,13 @@ inline bool GraphType<VertexType>::IsMarked(VertexType target) const
 {
 	return marks[IndexIs(vertices, target)] == true;
 }
+
+template < class VertexType >
+int IndexIs(VertexType list[], VertexType target) {
+	for (int i = 0; i < sizeof(list) / sizeof(VertexType); i++)
+		if (list[i] == target)
+			return i;
+}
 </code></pre>
 
 2) **Adjacency List(Linked-List) : 1D array -> to represent the vertices**
