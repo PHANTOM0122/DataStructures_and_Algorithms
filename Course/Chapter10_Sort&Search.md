@@ -113,3 +113,57 @@ void InsertionSort(ItemType list[], int numElements)
 - **list의 Maximum element는 항상 Heap의 root에서 발견된다는 점을 이용한다 -> root를 list의 마지막으로 옮긴다 -> Heap 재정렬 -> 다시 root를 list 마지막 이전으로 옮긴다 -> ...
 이 과정을 계속 반복!**
 - **HEAP : complete binary tree의 Shape이면서, parent >= child인 order를 가지고 있는 tree**
+<pre><code>
+// 4. Heap Sort
+template <class ItemType>
+void ReheapDown(ItemType list[], int root, int bottom) {
+
+	int maxChild;
+	int rightChild = root * 2 + 2;
+	int leftChild; = root * 2 + 1;
+
+	// leftchild가 array 벗어나면 no!
+	if (leftChild <= bottom) {
+
+		// Find maxchild!
+		// one child case
+		if (leftChild == bottom)
+			maxChild = leftChild;
+		// two children case
+		else
+		{
+			if (list[leftChild] >= list[rightChild])
+				maxChild = leftChild;
+			else
+				maxChild = rightChild;
+		}
+
+		// Swap maxchild and root
+		if (list[root] < list[maxChild]) {
+			swap(list[root], list[maxChild]);
+			ReheapDown(maxChild, bottom);
+		}
+	}
+}
+
+template <class ItemType>
+void HeapSort(ItemType list[], int numElements) {
+
+	int index;
+
+	// Convert array to Heap
+	for (int index = numElements / 2 - 1; index >= 0; index--) { // non-leaf node들에 대해서
+		// ReheapDown(ItemType list[], int root, int bottom)
+		// 가장 아래의 단말이 아닌 노드부터 heap정렬을 시작한다
+		ReheapDown(list, index, numElements - 1);
+	}
+
+	// Sort the array
+	for (int index = numElements - 1; index >= 1; index--) { // index==0인 경우는 1개밖에 없으므로 할 필요가 없다
+		// Heap의 root와 list의 unsorted된 마지막 원소와 swap
+		swap(list[0], list[index]);
+		ReheapDown(values, 0, index - 1); // Heap을 다시 정렬시켜 root가 max하게 만든다!
+	}
+}
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/120192190-d5359780-c255-11eb-84a5-84864e3adda8.png)
