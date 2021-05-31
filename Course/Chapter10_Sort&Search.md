@@ -113,7 +113,7 @@ void InsertionSort(ItemType list[], int numElements)
 - **list의 Maximum element는 항상 Heap의 root에서 발견된다는 점을 이용한다 -> root를 list의 마지막으로 옮긴다 -> Heap 재정렬 -> 다시 root를 list 마지막 이전으로 옮긴다 -> ...
 이 과정을 계속 반복!**
 - **HEAP : complete binary tree의 Shape이면서, parent >= child인 order를 가지고 있는 tree**
-- Time complexity = (N/2)(log N) [ create heap from array ] + (N-1)(log N) [ compares for sorting loop ]
+- Time complexity = (N/2)(log N) [ create heap from array ] + (N-1)(log N) [ compares for sorting loop ] = O (N * log N)
 <pre><code>
 // 4. Heap Sort
 template <class ItemType>
