@@ -71,3 +71,40 @@ void BubbleSort(ItemType list[], int numElements) {
 		current++;
 	}
 }</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/120187939-702b7300-c250-11eb-83de-d3e0d2912a55.png)
+
+# 3) Insertion Sort
+- **Array를 분할 후, 앞 부분을 배열해놓은 상태에서 new element를 알맞은 순서에 Insert하는 것이다**
+- Time complexity = 1 + 2 + 3 + ... + N = O(N*N)
+<pre><code>
+// 3. Insertion sort
+
+// list의 end index 원소를 정렬시킨다!
+template <class ItemType>
+void InsertItem(ItemType list[], int start, int end) {
+	
+	bool finished = false;
+	int current = end;
+	bool moreToSearch = (current != start);
+
+	while (moreToSearch && !finished) {
+		
+		if (list[current] < list[current - 1]) {
+			swap(list[current], list[current - 1]);
+			current--;
+			moreToSearch = (current != start);
+		}
+		else
+			finished = false;
+	}
+}
+
+template <class ItemType>
+void InsertionSort(ItemType list[], int numElements)
+{
+	for (int count = 0; count < numElements; count++) {
+		InsertItem(list, 0, count); // Count의 값이 자기의 자리를 찾아라!
+	}
+}
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/120187961-76215400-c250-11eb-9eaf-85d40497f513.png)
