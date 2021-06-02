@@ -305,3 +305,9 @@ void CollectQueues(ItemType values[], QueType<ItemType> queues[], int radix)
 1) Linear Searching
 2) High-Probablity Ordering
 3) Key Ordering
+
+# Hashing
+- **searching을 O(1)을 목표로 한다**
+- **Collision이 발생한다는 Issue!**
+
+## Resolving collsion 1
