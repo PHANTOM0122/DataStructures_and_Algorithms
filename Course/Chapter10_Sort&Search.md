@@ -300,3 +300,8 @@ void CollectQueues(ItemType values[], QueType<ItemType> queues[], int radix)
 	}
 }
 </code></pre>
+
+# Search
+1) Linear Searching
+2) High-Probablity Ordering
+3) Key Ordering
