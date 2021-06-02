@@ -206,3 +206,97 @@ void QuickSort(ItemType list[], int first, int last) {
 }
 </code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/120507427-c4c22000-c401-11eb-8567-007c2520c7f7.png)
+
+# 6) Merge Sort
+- **Array를 최대한 절반씩으로 나눈 후에, sort 시키고 다시 merge한다.**
+<pre><code>
+template <class ItemType>
+void MergeSort(ItemType list[], int first1, int last1, int first2, int last2) {
+	
+	int SIZE = last2 - first1 + 1;
+	ItemType temp[SIZE];
+
+	// Merge first and second array!
+	int current1 = first1;
+	int current2 = first2;
+
+	// Merge된 list의 index
+	int current = 0;
+
+	while (current != last2) {
+		if (list[current1] <= list[current2]) {
+			temp[current] = temp[current1];
+			current1++; current++;
+		}
+		else {
+			list[current] = list[crrent2];
+			temp[current] = temp[current2];
+			current2++; current++;
+		}
+	}
+
+	// Reassign to original
+	for (current = 0; current < size; current++) {
+		list[first1 + current] = temp[current];
+	}
+}
+
+// 무조건 절반으로 최대한 divide한 이후에, sort한 이후 다시 merge!
+template <class ItemType>
+void MergeSort(ItemType list[], int first, int last) {
+	if (first < last) {
+		int middle = (first + last) / 2;
+		// Divide
+		MergeSort(list, first, middle);
+		MergeSort(list, middle + 1, last);
+
+		Merge(list, first, middle, middle + 1, last);
+	}
+}
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/120508182-782b1480-c402-11eb-8468-627e6933b493.png)
+
+# 7) Radix Sort
+- **Radix : 진수를 의미. Ex) 2진수, 4진수, 10진수 ....**
+- Queue를 사용하여 임시저장후 다시 sort!
+- 일의 자리부터 sort하여 숫자의 최대 자리수까지 sort!
+<pre><code>
+template<class ItemType>
+void RadixSort(ItemType values, int numValues, int numPositions, int radix)
+	// Post: Elements in values are in order by key.
+{
+	QueType<int> queues[10]; // 0~9까지 labeling
+	// With default constructor, each queue size is 500
+	int whichQueue;
+
+	for (int position = 1; position <= numPositions; position++) // Position : 최대 자리수
+	{
+		for (int counter = 0; counter < numValues; counter++)
+		{
+			whichQueue = values[counter].SubKey(position);
+			queues[whichQueue].Enqueue(values[counter]);
+		}
+		CollectQueues(values, queues, radix);
+	}
+}
+
+template<class ItemType>
+void CollectQueues(ItemType values[], QueType<ItemType> queues[], int radix)
+	// Post: queues are concatanated with queue[0]'s on top and 
+	//       queue[9]'s on the bottom and copied into values.
+{
+	int index = 0;
+	ItemType item;
+
+	for (int counter = 0; counter < radix; counter++)
+	{
+		while (!queues[counter].IsEmpty())
+		{
+			queues[counter].Dequeue(item);
+			values[index] = item;
+			index++;
+		}
+
+	}
+}
+</code></pre>
