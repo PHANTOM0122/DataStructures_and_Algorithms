@@ -168,3 +168,41 @@ void HeapSort(ItemType list[], int numElements) {
 }
 </code></pre>
 ![image](https://user-images.githubusercontent.com/50229148/120192190-d5359780-c255-11eb-84a5-84864e3adda8.png)
+
+# 5) Quick Sort
+- **splitpoint를 기준으로 앞뒤로 array를 divide 한 후, 다시 subarray를 split하여 sort 한다**
+- **Left subarray는 splitval보다 작아야 하며, Right subarray는 splitval보다 커야 한다**
+<pre><code>
+// 5. Quick sort
+template <class ItemType>
+void Split(ItemType list[], int first, int last) {
+	// Pivot을 first element라 가정
+	int left = first + 1;
+	int right = last;
+	if (left < right) {
+		while (list[left] < list[0]) { // left는 pivot보다 큰 값을 찾으면 stop!
+			left++;
+		}
+		while (list[right] > list[0]) { // left는 pivot보다 큰 값을 찾으면 stop!
+			right--;
+		}
+	}
+	// Swap pivot and right 
+	swap(list[0], list[right]);
+}
+
+// Pre : first < last
+// Post : Sorts array values [first, last] into 오름차순
+template <class ItemType>
+void QuickSort(ItemType list[], int first, int last) {
+	if (first < last) {
+
+		int splitPoint; 
+		Split(values, first, last, splitPoint); // Split  function은 splitpoint를 받아온다!
+		// Divide & Conquer
+		QuickSort(list, first, splitPoint - 1);
+		QuickSort(list, splitPoint + 1, last);
+	}
+}
+</code></pre>
+![image](https://user-images.githubusercontent.com/50229148/120507427-c4c22000-c401-11eb-8567-007c2520c7f7.png)
