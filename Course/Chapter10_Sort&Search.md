@@ -310,4 +310,16 @@ void CollectQueues(ItemType values[], QueType<ItemType> queues[], int radix)
 - **searching을 O(1)을 목표로 한다**
 - **Collision이 발생한다는 Issue!**
 
-## Resolving collsion 1
+## Resolving collsion 1- Rehashing
+1) Linear probing : (HashValue + 1) % 100, (HashValue + constant ) % array size
+- **기존의 hash key가 꽉 찬 경우, 인접한(바로 아래)의 노드에 저장. Search역시 마찬가지로 원래 key로 간다음 없으면 아래로 내려가고, empty가 될때까지 search 한다**
+2) Quadratic probing : (HashValue + I*I ) % array size
+3) Random probing : HashValue + random number ) % array size
+- **Linear Probing의 경우 delete할 때, empty가 발생하여 인접한 바로 아래의 element들을 다시 위로 보내야 한다 -> O(N)**
+![image](https://user-images.githubusercontent.com/50229148/120510926-dd800500-c404-11eb-8ffd-d7931e4fa2ec.png)
+
+## Resolving collsion 2 - Buckets and Chaining
+1) Bucket : matrix를 이용하여 해당 key에 collision을 방지!
+![image](https://user-images.githubusercontent.com/50229148/120510441-65194400-c404-11eb-8820-c323aa5b96dc.png)
+2) Chain : linked list를 이용하여 same hash location을 계속 잇는다
+![image](https://user-images.githubusercontent.com/50229148/120510429-60ed2680-c404-11eb-9f28-a915f1cfa7fb.png)
